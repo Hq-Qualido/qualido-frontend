@@ -6,20 +6,24 @@ export default function CartCard() {
   return (
     <>
     <div className="cart-card">
+
         <div className="cart-image">
             <img src={book} alt="" />
         </div>
+
         <div className="cart-details">
             <h3 className="item-name">The Best Book Bro</h3>
-            <div className="inStock">
-                In Stock
-            </div>
+    
+            <div className="save-percentage">Save 100%</div>
+            <div className="In-Stock my-1">In Stock</div>
+
+            
             <div className="price">
                 $599 <span style={{textDecoration:"line-through"}}>699</span>
             </div>
         </div>
-        <div className="buttons">
 
+        <div className="buttons">
         <div className="delete-btn mx-1">
             Delete Item
         </div>
@@ -27,6 +31,7 @@ export default function CartCard() {
             View More
         </div>
         </div>
+
     </div>
     </>
   )

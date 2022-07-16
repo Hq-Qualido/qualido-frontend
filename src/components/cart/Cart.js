@@ -2,19 +2,23 @@ import React from 'react'
 import { FaCheckCircle } from 'react-icons/fa'
 import './Cart.css'
 import CartCard from './CartCard'
+import { Link } from "react-router-dom";
+import Footer from '../footer/Footer';
 
 export default function Cart() {
   return (
     <>
         <div className="cart-page">
 
-
             <div className="cart-items">
-            <div className="cart-heading">
+            <div className="cart-heading my-2">
                 <h1>Products in your cart</h1>
-                <div className="add-btn">Add More</div>
+                <Link to="/products" className="add-btn">Add More</Link>
             </div>
             <div className="cart-items-body">
+                <CartCard />
+                <CartCard />
+                <CartCard />
                 <CartCard />
                 <CartCard />
             </div>
@@ -35,6 +39,7 @@ export default function Cart() {
             </div>
             </div>
         </div>
+        <Footer />
     </>
   )
 }
