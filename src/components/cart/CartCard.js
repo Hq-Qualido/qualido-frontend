@@ -14,7 +14,7 @@ export default function CartCard() {
         <div className="cart-details">
             <h3 className="item-name">The Best Book Bro</h3>
     
-            <div className="save-percentage">Save 100%</div>
+            {/* <div className="save-percentage">Save 100%</div> */}
             <div className="In-Stock my-1">In Stock</div>
 
             
@@ -24,11 +24,11 @@ export default function CartCard() {
         </div>
 
         <div className="buttons">
-        <div className="delete-btn mx-1">
-            Delete Item
+        <div className="remove-btn mx-1">
+            Remove
         </div>
-        <div className="view-more-btn mx-1">
-            View More
+        <div className="info-btn mx-1">
+             More Info
         </div>
         </div>
 

@@ -18,9 +18,18 @@ export default function Cart() {
             <div className="cart-items-body">
                 <CartCard />
                 <CartCard />
-                <CartCard />
-                <CartCard />
-                <CartCard />
+                <div className="empty-cart">
+                  <lottie-player
+                    src="https://assets4.lottiefiles.com/private_files/lf30_e3pteeho.json"
+                    background="transparent"
+                    speed="1"
+                    style={{width: "280px", height: "280px"}}
+                    loop
+                    autoplay
+                  ></lottie-player>
+                  <p>Your cart is empty!! <br /> Browse our products and add to your cart.</p>
+                <Link to="/products" className="info-btn">Add Items</Link>
+          </div>
             </div>
             </div>
 

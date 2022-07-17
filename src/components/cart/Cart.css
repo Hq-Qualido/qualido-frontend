@@ -1,221 +1,229 @@
-.cart-page{
-    display: grid;
-    grid-template-columns: 3fr 1.2fr;
-    grid-template-rows: auto;
-    grid-template-areas: "cart-items cart-action";
-    padding: 1rem;
+.cart-page {
+  display: grid;
+  grid-template-columns: 3fr 1.2fr;
+  grid-template-rows: auto;
+  grid-template-areas: "cart-items cart-action";
+  padding: 1rem;
 }
 
-.cart-items{
-    grid-area: cart-items;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    margin-top: 2rem;
-    /* margin-left: 1rem; */
-    /* margin-right: 1rem; */
-
+.cart-items {
+  grid-area: cart-items;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin-top: 2rem;
 }
-.cart-heading{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
+.cart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
 }
-.add-btn{
-    border: 2px solid #00A1B6;
-    background-color: none;
-    color: #00A1B6;
-    width: fit-content;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
+.add-btn {
+  border: 2px solid #00a1b6;
+  background-color: none;
+  color: #00a1b6;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
-
-.add-btn:hover{
-    border: 2px solid #00899B;
-    color: #00899B;
-    cursor: pointer;
+.add-btn:hover {
+  border: 2px solid #00899b;
+  color: #00899b;
+  cursor: pointer;
 }
-.cart-items-body{
-    width: auto;
-    height: 70vh;
-    background-color: rgb(250, 250, 250);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* flex-direction: row; */
-    flex-wrap: wrap;
-    padding: 1.5rem;
-    border-radius: 15px;
-    overflow-y: auto;
+.cart-items-body {
+  width: auto;
+  height: 70vh;
+  background-color: rgb(250, 250, 250);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  border-radius: 15px;
+  overflow-y: auto;
 }
 
-
-
-
-.cart-action{
-    grid-area: cart-action;
-    background-color: #fff;
-    box-shadow: 0px 1px 60px 5px #6B6B6B33;
-    border-radius: 20px;
-    padding: 2rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 2rem;
-    height: fit-content;
+.cart-action {
+  grid-area: cart-action;
+  background-color: #fff;
+  box-shadow: 0px 1px 60px 5px #6b6b6b33;
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  height: fit-content;
 }
 
-.cart-action .order-summary{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+.cart-action .order-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
-.cart-action .order-summary p{
-    margin: 0 5px;
+.cart-action .order-summary p {
+  margin: 0 5px;
 }
 
-.order-details{
-    font-size: 25px;
-    font-weight: 500;
-    margin: 10px 0px;
+.order-details {
+  font-size: 25px;
+  font-weight: 500;
+  margin: 10px 0px;
 }
 
- .buy-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #00A1B6;
-    border: 1px solid #00A1B6;
-    border-radius: 5px;
-    color: #ffffff;
-    padding: 0.5rem 1.3rem;
-    text-transform: capitalize;
-    margin: 10px 0px;
-    }
- .buy-btn:hover{
-        cursor: pointer;
-        background-color: #00899B;
+.buy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00a1b6;
+  border: 1px solid #00a1b6;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 0.5rem 1.3rem;
+  text-transform: capitalize;
+  margin: 10px 0px;
 }
-    
+.buy-btn:hover {
+  cursor: pointer;
+  background-color: #00899b;
+}
+
 /* CART CARD CSS  */
-.cart-card{
-    width: fit-content;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-    width: fit-content;
-    /* border: 2px solid green; */
-    border-radius: 20px;
-    margin: 10px;
-    box-shadow: 0px 5px 30px 0px #54545426;
+.cart-card {
+  width: fit-content;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: fit-content;
+  border-radius: 20px;
+  margin: 10px;
+  box-shadow: 0px 5px 30px 0px #54545426;
+  padding: 0.5rem;
+}
+.cart-image {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.cart-image img {
+  width: 165px;
+}
+.cart-image img:hover {
+  width: 165px;
+  transform: scale(1.05);
+  transition: all 0.1s ease-in-out;
+}
+.cart-details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 1rem;
+}
+.cart-details .item-name {
+  color: #00899b;
+}
+.price {
+  font-size: 25px;
+  font-weight: 500;
+}
+.price span {
+  font-size: 20px;
+  font-weight: 400;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.remove-btn {
+  background-color: #ff001ea8;
+  /* background-color: #ffd7d7; */
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: fit-content;
+}
+.remove-btn:hover {
+  cursor: pointer;
+  background-color: #ff001f;
+  color: #fff;
+}
+
+.info-btn {
+  background-color: #00a1b6;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: fit-content;
+  text-decoration: none;
+}
+.info-btn:hover {
+  cursor: pointer;
+  background-color: #00899b;
+  color: #fff;
+}
+
+.empty-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.empty-cart p {
+  text-align: center;
+}
+/* CART CARD CSS  */
+
+@media only screen and (max-width: 900px) {
+  .cart-page {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "cart-items"
+      " cart-action";
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .cart-items-body {
     padding: 0.5rem;
-}
-.cart-image{
-width: fit-content;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-.cart-image img{
-width: 165px;
-border-radius: 10px;
-}
-.cart-details{
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding: 1rem;
-}
-.cart-details .item-name{
-    color: #00899B;
-}
-.price{
-    font-size: 25px;
-    font-weight: 500;
-}
-.price span{
-    font-size: 20px;
-    font-weight: 400;
-}
-.buttons{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-.delete-btn{
-    background-color: #FFD7D7;
-    color: #FF001F;
-    padding: 5px  10px;
-    border-radius: 5px;
-    width: fit-content;
-}
-.delete-btn:hover{
-    cursor: pointer;
-    background-color: #ff001ea8;
-    /* background-color: #FF001F; */
-    color: #fff;
-}
+  }
 
-.view-more-btn{
-    background-color: #00A1B6;
-    color: #fff;
-    padding: 5px  10px;
-    border-radius: 5px;
-    width: fit-content;
-}
-.view-more-btn:hover{
-    cursor: pointer;
-    background-color: #00899B;
-}
-
-/* CART CARD CSS  */
-
-
-
-@media only screen and (max-width:900px){
-    .cart-page{
-        grid-template-columns: auto;
-        grid-template-rows: auto auto;
-        grid-template-areas: "cart-items"
-        " cart-action";
-        padding: 1rem;
-    }
-    
-}
-
-
-@media only screen and (max-width:600px){
-    .cart-items-body{
-        padding: 0.5rem;
-    }
-    
-    .cart-card{
+  .cart-card {
     flex-direction: column;
     width: 100%;
-    padding: 0.5rem 0.3rem ;
+    padding: 0.5rem 0.3rem;
     border-radius: 10px;
-}
-.cart-image img{
+  }
+ .cart-image img {
     width: 90%;
-    border: 1px solid red;
-    }
-} 
+    border-radius: 10px;
+  }
+  
+  .cart-image img:hover {
+    width: 90%;
+    transform: scale(1);
+  } 
+}
 
-@media only screen and (max-width:450px){
-   
-    .add-btn{
-        padding: 2px 5px;
-        text-align: center;
-    }
-    
-} 
+@media only screen and (max-width: 450px) {
+  .add-btn {
+    padding: 2px 5px;
+    text-align: center;
+  }
+}
