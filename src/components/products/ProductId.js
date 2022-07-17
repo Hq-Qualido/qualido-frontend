@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import Footer from "../footer/Footer";
 import { useParams } from 'react-router-dom';
+import { useLocation } from "react-router";
 
 
 export default function ProductId() {
   let { productId } = useParams();
+  const location = useLocation();
 
   const [indivProd , setIndivProd] = useState([]);
   const [sameProds , setSameProds] = useState([]);
@@ -38,7 +40,8 @@ export default function ProductId() {
   useEffect(()=>{
     fetchProductData();  
     fetchSimiliarProducts(); 
-  },[productId]);
+    window.scrollTo(0, 0);
+  },[productId,location]);
 
   return (
     <>
