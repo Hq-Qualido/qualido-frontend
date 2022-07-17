@@ -62,11 +62,11 @@ export default function ProductId() {
             </h1>
 
 
-        {/* <div className="tags">
-        {indivProd.tags.map((t)=>{
+        <div className="tags">
+        {indivProd.tags?.map((t)=>{
             return (<p key={t} className="mx-1"> #{ t } </p>)
           })}
-        </div>   */}
+        </div>  
             
             <div className="ratings-reviews mb-3">
               <FaStar color="orange" />
