@@ -10,8 +10,8 @@ import { useParams } from 'react-router-dom';
 export default function ProductId() {
   let { productId } = useParams();
 
-  const [indivProd , setIndivProd] = useState({});
-  const [sameProds , setSameProds] = useState({});
+  const [indivProd , setIndivProd] = useState([]);
+  const [sameProds , setSameProds] = useState([]);
   const [category , setCategory] = useState('');
 
   const fetchProductData = async () => {
@@ -38,7 +38,7 @@ export default function ProductId() {
   useEffect(()=>{
     fetchProductData();  
     fetchSimiliarProducts(); 
-  },[]);
+  },[productId]);
 
   return (
     <>
@@ -114,7 +114,7 @@ export default function ProductId() {
         <h3 className="text-center">View Similiar products...</h3>
         <div className="products-list-body">
 
-        {/* {sameProds.slice(0,4)?.map((p)=>{
+        {sameProds.slice(0,4)?.map((p)=>{
           return (
             <ProductCard
               key={p._id}
@@ -123,13 +123,8 @@ export default function ProductId() {
               navigator={true}
           />
           )
-        })} */}
+        })}
         
-{/*         
-        <ProductCard
-        id="62c6e23f7bf811b8bbc1a309"
-              navigator={true}
-        /> */}
         </div>
       </div>
       {/* SIMILIAR PRODUCT LIST ENDS */}
