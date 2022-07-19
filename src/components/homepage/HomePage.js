@@ -82,9 +82,7 @@ export default function HomePage() {
               <h1 className="slider-heading slideLeft-text">Grab The Best </h1>
               <h1 className="slider-heading slideRight-text">Deals Here! </h1>
               <p className="slider-para">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
-                aliquid iste cum voluptates nihil commodi quidem sapiente omnis
-                delectus ea.
+                Now get all the books you have always wanted to read at much cheaper prices than anywhere else.
               </p>
               <button className="button-52">Shop Now</button>
             </div>
@@ -104,9 +102,7 @@ export default function HomePage() {
               </h1>
               <h1 className="slider-heading slideRight-text">Are Now Here! </h1>
               <p className="slider-para">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
-                aliquid iste cum voluptates nihil commodi quidem sapiente omnis
-                delectus ea.
+              We have brought you the latest most trendy books better and before than anyone else.
               </p>
               <button className="button-52">Shop Now</button>
             </div>
@@ -124,9 +120,7 @@ export default function HomePage() {
               <h1 className="slider-heading slideLeft-text">Now Library at </h1>
               <h1 className="slider-heading slideRight-text">your home! </h1>
               <p className="slider-para">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
-                aliquid iste cum voluptates nihil commodi quidem sapiente omnis
-                delectus ea.
+              No need to leave your comfort , we'll deliver all your books to your home at very minimal prices.
               </p>
               <button className="button-52">Shop Now</button>
             </div>
