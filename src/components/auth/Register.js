@@ -3,14 +3,18 @@ import './Login.css'
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 // import Footer from '../footer/Footer'
+import {FaRegFrown} from 'react-icons/fa'
 
 import LoginGirl from '../../assets/loginGirl.png'
 import google from '../../assets/google.png'
+import OtpPopup from './OtpPopup';
 
 export default function Register() {
+    const [popup,setPopup] = useState(false);
+    const [errors,setErrors] = useState('');
     const [userData,setUserData] = useState({
         email:"",
-        username:"",
+        fullName:"",
         createPass:"",
         confirmPass:"",
     })
@@ -23,7 +27,19 @@ export default function Register() {
         })
     }
     const handleSubmit=()=>{
-        console.log(userData)
+        console.log(userData);
+        if (!userData.email) {
+            setErrors('Email required!');
+          } else if (!/\S+@\S+\.\S+/.test(userData.email)) {
+            setErrors('Email address is invalid!');
+          }else if (userData.fullName.length < 3) {
+            setErrors('Enter your full name!');
+          }
+        else if (userData.createPass !== userData.confirmPass){
+            setErrors('Password did not match!');
+        }else
+        setErrors('')
+
     }
 
   return (
@@ -57,18 +73,22 @@ export default function Register() {
                         autoComplete='off'
                         /> 
                         </label>
-                    <label htmlFor="username">Username
+
+
+                    <label htmlFor="fullName">Your Name
                     <input 
                         type="text" 
-                        name="username"
-                        id="username"
-                        value={userData.username}
+                        name="fullName"
+                        id="fullName"
+                        value={userData.fullName}
                         onChange={handleChange}
                         required
-                        placeholder='Enter your username'
+                        placeholder='Enter your full name'
                         autoComplete='off'
                         /> 
                         </label>
+
+
                     <label htmlFor="createPass">Create Password
                     <input 
                         type="password" 
@@ -82,11 +102,11 @@ export default function Register() {
                         />
                     </label>
                      
-                    <label htmlFor="confPass">Confirm Password
+                    <label htmlFor="confirmPass">Confirm Password
                     <input 
                         type="password" 
-                        name="confPass"
-                        id="confPass"
+                        name="confirmPass"
+                        id="confirmPass"
                         value={userData.confirmPass}
                         onChange={handleChange}
                         required
@@ -96,7 +116,21 @@ export default function Register() {
                     </label>
                      
                             <br />
-                        <div onClick={handleSubmit} className="dislodged-border">Signup</div>
+                          { errors.length>0 &&  <div className="error-box "> <span className= 'mx-1'> <FaRegFrown /> 
+                          </span>
+                            { errors }
+                          </div>
+                           }
+
+
+                                <div className="dislodged-border" 
+                        onClick={(e)=>{
+                            setPopup(true);
+                            handleSubmit(e);
+                            }}>
+                            Signup
+                            </div>
+                        {/* <div onClick={handleSubmit} className="dislodged-border" onClick={()=>setPopup(true)}>Signup</div> */}
 
                         <div className="with-google my-4">
                        <Link to="/" style={{textDecoration:"none"}}>
@@ -108,6 +142,8 @@ export default function Register() {
             </div>
         </div>
     </div>
+{ errors.length<=0 &&
+    <OtpPopup trigger={popup} userMail={userData.email} setTrigger={setPopup}/>}
     {/* <Footer /> */}
     </>
   )
