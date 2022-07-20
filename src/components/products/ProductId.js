@@ -11,7 +11,7 @@ import { useLocation } from "react-router";
 export default function ProductId() {
   let { productId } = useParams();
   const location = useLocation();
-
+  const randomNumber = Math.random()*10;
   const [indivProd , setIndivProd] = useState([]);
   const [sameProds , setSameProds] = useState([]);
   const [category , setCategory] = useState('');
@@ -117,7 +117,7 @@ export default function ProductId() {
         <h3 className="text-center">View Similiar products...</h3>
         <div className="products-list-body">
 
-        {sameProds.slice(0,4)?.map((p)=>{
+        {sameProds.slice(randomNumber,randomNumber+4)?.map((p)=>{
           return (
             <ProductCard
               key={p._id}
