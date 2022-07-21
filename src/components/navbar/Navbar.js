@@ -15,6 +15,7 @@ export default function Navbar() {
           </div>
         </Link>
         <form className="d-flex nav-searchBar" role="search">
+        <span className="search-icon"> <FaSearch /> </span>
           <input
             className="search-bar me-1"
             type="search"
@@ -24,11 +25,11 @@ export default function Navbar() {
         </form>
 
         <div className="text-light nav-menu">
-          <Link to="/cart" className="nav-menu-item mx-2">
-            <FaCartPlus />
+          <Link to="/cart" className="nav-menu-item">
+           <span> <FaCartPlus />   </span> Cart
           </Link>
-          <Link to="/login" className="nav-menu-item mx-2">
-            <FaUserCircle />
+          <Link to="/login" className="nav-menu-item">
+          <span> <FaUserCircle />  </span>   Account
           </Link>
         </div>
       </nav>
