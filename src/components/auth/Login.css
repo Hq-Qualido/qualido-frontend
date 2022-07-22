@@ -65,6 +65,7 @@ input[type="text"],
   border-radius: 5px;
   border: 1px solid grey;
 }
+
 .error-box{
     font-size: 15px;
     color: red;
@@ -78,6 +79,10 @@ input[type="text"],
     justify-content: flex-start;
     flex-direction: row;
 }
+.error{
+  border: 1px solid red;
+}
+
 /* ____________ */
 .dislodged-border {
   background: #00a1b6;
@@ -152,7 +157,7 @@ input[type="text"],
   position: relative;
   width: fit-content;
   height: fit-content;
-  padding: 3rem;
+  padding:3.5rem 3rem;
   background-color: #ffffff;
   box-shadow: 3px 0px 50px 4px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -180,15 +185,18 @@ input[type="text"],
   color: #00899b;
 }
 
-.popup .otp input {
-  width: 300px;
-  letter-spacing: 40px;
-  outline: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
+#otp input[type="text"]{
+  width: 40px;
+  height: 40px;
+  padding: 5px;
 
-/* POPUP PAGE CSS  */
+}
+.resend-otp{
+  color: #00899b;
+  align-items: center;
+  vertical-align: middle;
+}
+/* POPUP PAGE CSS ENDS */
 
 /* ____________ */
 
@@ -246,7 +254,4 @@ input[type="text"],
     color: #00899b;
   }
 
-  .popup .otp input {
-    letter-spacing: 30px;
-  }
 }

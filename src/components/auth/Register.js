@@ -14,7 +14,7 @@ export default function Register() {
     const [errors,setErrors] = useState('');
     const [userData,setUserData] = useState({
         email:"",
-        fullName:"",
+        fullname:"",
         createPass:"",
         confirmPass:"",
     })
@@ -26,20 +26,38 @@ export default function Register() {
             [name]:value,
         })
     }
-    const handleSubmit=()=>{
+    async function handleSubmit(){
         console.log(userData);
         if (!userData.email) {
             setErrors('Email required!');
           } else if (!/\S+@\S+\.\S+/.test(userData.email)) {
             setErrors('Email address is invalid!');
-          }else if (userData.fullName.length < 3) {
+          }else if (userData.fullname.length < 3) {
             setErrors('Enter your full name!');
+          }else if( userData.createPass.length<=6){
+            setErrors('Weak password!');
           }
         else if (userData.createPass !== userData.confirmPass){
-            setErrors('Password did not match!');
-        }else
-        setErrors('')
-
+            setErrors('Passwords did not match!');
+        }
+        else{
+            setErrors('')
+            console.log(userData.confirmPass)
+        const response = await fetch(` https://qualido.herokuapp.com/api/auth/register`,
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    email:userData.email ,
+                    fullname:userData.fullname ,
+                    password:userData.confirmPass ,
+                }),
+                headers: {
+                            'Content-Type': 'application/json',
+                           }
+            })
+            const data =await response.json();
+                 console.log(data,"data")       
+        }
     }
 
   return (
@@ -71,16 +89,17 @@ export default function Register() {
                         required
                         placeholder='Enter your e-mail'
                         autoComplete='off'
+                        className={errors.length>0? "error":""}
                         /> 
                         </label>
 
 
-                    <label htmlFor="fullName">Your Name
+                    <label htmlFor="fullname">Your Name
                     <input 
                         type="text" 
-                        name="fullName"
-                        id="fullName"
-                        value={userData.fullName}
+                        name="fullname"
+                        id="fullname"
+                        value={userData.fullname}
                         onChange={handleChange}
                         required
                         placeholder='Enter your full name'
@@ -130,7 +149,6 @@ export default function Register() {
                             }}>
                             Signup
                             </div>
-                        {/* <div onClick={handleSubmit} className="dislodged-border" onClick={()=>setPopup(true)}>Signup</div> */}
 
                         <div className="with-google my-4">
                        <Link to="/" style={{textDecoration:"none"}}>

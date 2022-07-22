@@ -20,8 +20,23 @@ export default function Login() {
             [name]:value,
         })
     }
-    const handleSubmit=()=>{
+    async function handleSubmit(){
         console.log(values)
+      
+              const response = await fetch(
+           ` https://qualido.herokuapp.com/api/auth/login`,
+           {
+             method: "POST",
+             body: JSON.stringify({
+             email:values.email,
+             password:values.password,
+             }),
+             headers: {
+               'Content-Type': 'application/json',
+             }
+           })
+           const data =await response.json();
+           console.log(data)
     }
 
   return (
