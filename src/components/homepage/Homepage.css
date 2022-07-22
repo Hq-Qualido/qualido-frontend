@@ -97,10 +97,12 @@ text-align: center;
   padding: 0.5rem;
   margin: 0.5rem;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 .categories .categories-body .category-item-body .item-image img{
   width: 150px;
+  transform: scale(1.1);
 }
 
 .categories .categories-body .category-item-body .item-image:nth-child(n){
@@ -109,6 +111,7 @@ text-align: center;
 
 .categories .categories-body .category-item .category-type{
   color: #00899B;
+  text-transform: capitalize;
 }
 
 .customer-reviews .customer-reviews-row{

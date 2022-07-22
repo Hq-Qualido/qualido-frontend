@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Slider from "react-slick";
 import "./Homepage.css";
 import Categories from "./Categories";
@@ -9,13 +9,6 @@ import WhyUS from "./WhyUS";
 import s1 from "../../assets/s1.png";
 import s2 from "../../assets/s2.png";
 import s3 from "../../assets/s3.png";
-import item1 from "../../assets/item1.png";
-import academics from "../../assets/academics.png";
-import Love from "../../assets/Love.png";
-import romance from "../../assets/romance.png";
-import selfHelp from "../../assets/selfHelp.png";
-import motivation from "../../assets/motivation.png";
-import fiction from "../../assets/fiction.png";
 import customerPic from "../../assets/customerPic.png";
 import Privacy from "../../assets/Privacy.png";
 import Service from "../../assets/Service.png";
@@ -24,6 +17,20 @@ import Footer from "../footer/Footer";
 
 
 export default function HomePage() {
+
+  const [allCategories , setAllCategories]=useState([]);
+  
+  const fetchCategories = async () => {
+    const categs ="https://qualido.herokuapp.com/api/categories";
+  const catResponse = await fetch(categs)
+  const catList = await catResponse.json()
+  setAllCategories(catList.categories)
+}
+  useEffect(()=>{
+  fetchCategories();    
+},[])
+
+  
   const settings = {
     dots: true,
     infinite: true,
@@ -171,24 +178,17 @@ export default function HomePage() {
       <div className="container-fluid categories my-5">
       <h1 className="text-center section-heading mb-5 ">Categories</h1>
     <div className="row categories-body">
-
-    <Categories url="/products" image={academics} title="Academics" />
-    <Categories url="/products" image={academics} title="Competitive" />
-    <Categories url="/products" image={Love} title="Love" />
-    <Categories url="/products" image={romance} title="Romance" />
-    <Categories url="/products" image={selfHelp} title="Self Help" />
-    <Categories url="/products" image={motivation} title="Motivation" />
-    <Categories url="/products" image={fiction} title="Fiction" />
-    <Categories url="/products" image={Love} title="Science" />
-    <Categories url="/products" image={item1} title="Mistory" />
-    <Categories url="/products" image={romance} title="Thriller" />
-    <Categories url="/products" image={fiction} title="History" />
-    <Categories url="/products" image={motivation} title="Prose" />
-    <Categories url="/products" image={selfHelp} title="Poetry" />
-    <Categories url="/products" image={item1} title="Spiritual" />
-    <Categories url="/products" image={romance} title="Biography" />
-    <Categories url="/products" image={academics} title="Comics" />
-    <Categories url="/products" image={motivation} title="Adult" />
+      {allCategories.length>0 ?( allCategories?.map((item)=>{
+        return (
+         <Categories key={item._id} {...item}/>
+        )
+      }))
+      :
+      (
+        <h4>Loading...</h4>
+      )
+      
+      }
 </div>
 </div>
 

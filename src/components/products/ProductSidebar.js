@@ -21,6 +21,7 @@ export default function ProductSidebar(props) {
     }
   
     const dummyCategories = [
+      "Comics",
       "Academics",
       "Competitive",
       "Fantasy",
@@ -33,7 +34,6 @@ export default function ProductSidebar(props) {
       "History",
       "PoetryProse",
       "Spiritual",
-      "Comics",
       "Fiction",
       "LoveRomance",
       "Biography",
