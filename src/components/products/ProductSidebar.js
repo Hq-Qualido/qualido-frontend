@@ -20,16 +20,43 @@ export default function ProductSidebar(props) {
       props.returnCategory(e.target.id)
     }
   
+    const dummyCategories = [
+      "Academics",
+      "Competitive",
+      "Fantasy",
+      "LifestyleNutrition",
+      "SelfHelp",
+      "Motivation",
+      "ScienceFiction",
+      "Mystery",
+      "Thriller",
+      "History",
+      "PoetryProse",
+      "Spiritual",
+      "Comics",
+      "Fiction",
+      "LoveRomance",
+      "Biography",
+      "YoungAdults",
+    ]
   return (
     <>
             <div className="sidebar-body">
             <ul className="sidebar-ul">
-            {
+            {prodCategory.length>0 ? (
+
               prodCategory?.map((c)=>{
                 return ( <li key={c._id} className={`sidebar-li ${c.name===active?"active":""}`} id={c.name} onClick={(e)=>{
                   handleCategory(e);
                   }} > {c.name} </li>)
               })
+            ): (
+              dummyCategories.map((d)=>{
+                return ( <li key={d} className={`sidebar-li ${d===active?"active":""}`} id={d} onClick={(e)=>{
+                  handleCategory(e);
+                  }} > {d} </li>)
+              })
+            )
             }
          </ul>
         </div>
