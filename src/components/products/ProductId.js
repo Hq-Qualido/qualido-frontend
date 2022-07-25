@@ -6,11 +6,15 @@ import ProductCard from "./ProductCard";
 import Footer from "../footer/Footer";
 import { useParams } from 'react-router-dom';
 import { useLocation } from "react-router";
+import { useCart } from "react-use-cart";
 
 
 export default function ProductId() {
   let { productId } = useParams();
   const location = useLocation();
+
+  const { addItem } = useCart();
+
   const randomNumber = Math.random()*10;
   const [indivProd , setIndivProd] = useState([]);
   const [sameProds , setSameProds] = useState([]);
@@ -86,7 +90,14 @@ export default function ProductId() {
 
             </div>
             <div className="product-buttons my-4">
-              <div className="cart-btn mx-1">  Add to Cart</div>
+              <div className="cart-btn mx-1" 
+               onClick={() => addItem({
+                id:indivProd._id,
+                price:indivProd.price,
+                indivProd,
+                })}>
+                Add to Cart
+              </div>
               <div className="buy-btn mx-1">  <FaRupeeSign /> Buy Now </div>
             </div>
           </div>
