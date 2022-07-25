@@ -13,7 +13,8 @@ export default function ProductSidebar(props) {
 }
   useEffect(()=>{
   fetchCategories();    
-},[])
+  window.scrollTo(0,0);
+},[active])
   
     const handleCategory =(e)=>{
       setActive(e.target.id);
