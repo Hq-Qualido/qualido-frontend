@@ -7,10 +7,13 @@ import Error from "./components/error/Error";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Cart from "./components/cart/Cart";
+import { CartProvider } from "react-use-cart";
 
 function App() {
   return (
     <>
+    <CartProvider >
+
       <Router>
         <Navbar />
         <Routes>
@@ -28,6 +31,7 @@ function App() {
         </Routes>
 
       </Router>
+    </CartProvider>
     </>
   );
 }
