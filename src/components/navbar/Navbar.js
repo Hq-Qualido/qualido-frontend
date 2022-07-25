@@ -3,8 +3,12 @@ import "./Navbar.css";
 import { FaCartPlus, FaUserCircle, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
+import { useCart } from "react-use-cart";
 
 export default function Navbar() {
+  const {
+    totalUniqueItems,
+  } = useCart();
   return (
     <>
       <nav>
@@ -26,7 +30,7 @@ export default function Navbar() {
 
         <div className="text-light nav-menu">
           <Link to="/cart" className="nav-menu-item">
-           <span> <FaCartPlus />   </span> Cart
+           <span> <FaCartPlus />   </span> Cart ({totalUniqueItems})
           </Link>
           <Link to="/login" className="nav-menu-item">
           <span> <FaUserCircle />  </span>   Account
