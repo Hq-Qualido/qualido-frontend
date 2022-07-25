@@ -317,3 +317,30 @@ text-transform: capitalize;
     }
  
 }
+
+
+
+.scroll-top{
+    position: fixed;
+    bottom: 0.5%;
+    right: 0.5%;
+    font-size: 50px;
+    margin: 10px;
+    background-color: #fff;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 100%;
+    padding: 0px;
+    color: #00899B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 10px 0px #FFFFFF80 inset,
+    0px 0px 30px 0px #1f1f1f33;
+
+}
+
+.scroll-top:hover{
+    color: #007484;
+    cursor: pointer;
+}

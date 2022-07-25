@@ -1,5 +1,6 @@
 import React from "react";
 import { useState,useEffect } from "react";
+import { FaArrowAltCircleUp } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
 import Footer from "../footer/Footer";
 import ProductCard from "./ProductCard";
@@ -21,6 +22,12 @@ export default function Products() {
   useEffect(()=>{
     fetchProducts();    
   },[])
+
+  const handleScroll=()=>{
+    window.scrollTo(0,0);
+    }
+
+    
   return (
     <>
       <Outlet />
@@ -58,6 +65,9 @@ export default function Products() {
         </div>
         {/* PRODUCT LIST ENDS */}
       </div>
+
+      <div className="scroll-top" onClick={handleScroll}><FaArrowAltCircleUp color="#00899B" />  </div>
+      
     </>
   );
 }
