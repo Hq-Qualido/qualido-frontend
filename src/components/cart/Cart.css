@@ -238,12 +238,13 @@ color: #00899b;
     border-radius: 10px;
   }
  .cart-image img {
-    width: 90%;
+    width: 100%;
+    height: 200px;
     border-radius: 10px;
   }
   
   .cart-image img:hover {
-    width: 90%;
+    width: 100%;
     transform: scale(1);
   } 
   .cart-details .item-name {
