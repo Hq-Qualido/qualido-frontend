@@ -161,7 +161,7 @@ export default function Register() {
         </div>
     </div>
 { errors.length<=0 &&
-    <OtpPopup trigger={popup} userMail={userData.email} setTrigger={setPopup}/>}
+    <OtpPopup trigger={popup} userData={userData} setTrigger={setPopup}/>}
     {/* <Footer /> */}
     </>
   )

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { FaRedo, FaTimes } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function OtpPopup(props) {
   const [otpValue , steOtpValue] = useState([]);
+  const navigate = useNavigate();
 
     const handleChange=(e)=>{
       steOtpValue(otpValue => [...otpValue, e.target.value]);
@@ -15,7 +17,7 @@ export default function OtpPopup(props) {
      {
        method: "POST",
        body: JSON.stringify({
-       email:props.userMail,
+       email:props.userData.email,
        otp:otpValue.join("")
        }),
        headers: {
@@ -24,6 +26,11 @@ export default function OtpPopup(props) {
      })
      const data =await response.json();
      console.log(data);
+     if(data.token){
+      localStorage.setItem('Name',props.userData.fullname)
+      console.log(localStorage);
+      navigate("/")
+     }
     }
 
   return (
