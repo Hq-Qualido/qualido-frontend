@@ -6,6 +6,9 @@ import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";
 
 export default function Navbar() {
+
+  const name = localStorage.getItem('Name');
+  
   const {
     totalUniqueItems,
   } = useCart();
@@ -30,10 +33,10 @@ export default function Navbar() {
 
         <div className="text-light nav-menu">
           <Link to="/cart" className="nav-menu-item">
-           <span> <FaCartPlus />   </span> Cart ({totalUniqueItems})
+           <span> <FaCartPlus />   </span> Cart({totalUniqueItems})
           </Link>
           <Link to="/login" className="nav-menu-item">
-          <span> <FaUserCircle />  </span>   Account
+          <span> <FaUserCircle />  </span>   {name? name : "Account"}
           </Link>
         </div>
       </nav>
