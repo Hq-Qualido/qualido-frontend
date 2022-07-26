@@ -11,7 +11,7 @@ export default function Cart() {
     isEmpty,
     totalUniqueItems,
     items,
-    // totalItems,
+    totalItems,
     cartTotal,
   } = useCart();
   console.log(items,"items")
@@ -39,7 +39,7 @@ export default function Cart() {
 
             <div className="cart-items">
             <div className="cart-heading my-2">
-                <h1>Products in your cart ( {totalUniqueItems} )</h1>
+                <h1>Products in your cart ({totalUniqueItems})</h1>
                 <Link to="/products" className="add-btn">Add More</Link>
             </div>
             <div className="cart-items-body">
@@ -57,7 +57,7 @@ export default function Cart() {
             </div>
 
             <div className="order-details">
-              Subtotal ({totalUniqueItems} Items) : Rs { cartTotal}
+              Subtotal ({totalItems} Items) : Rs { cartTotal}
             </div>
             <div className="buy-btn">
               Proceed to Pay
