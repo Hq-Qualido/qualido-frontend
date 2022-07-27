@@ -1,8 +1,32 @@
+.dashboard-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: fit-content;
+}
+
+.dashboard-top .logout{
+  padding:5px 10px;
+  border-radius: 5px;
+  border: 2px solid #00A1B6;
+  color: #00A1B6;
+}
+.dashboard-top .logout:hover{
+  cursor: pointer;
+  color: #00899B;
+  border: 2px solid #00899B;
+}
+
 .dashboard-row{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+.dashboard-row a{
+    width: max-content;
+    text-decoration:none;
+     padding:0px;
 }
 .dashCards{
     background-image: url('../../assets/cut.png');
@@ -17,7 +41,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: fit-content;
+  width: 350px;
   border: 5px solid #dddddd33;
   margin: 10px;
   color: #6a6a6a;
@@ -31,3 +55,12 @@
     cursor:pointer;
   }
   
+@media only screen and (max-width:900px){
+  .dashboard-top h1{
+    font-size: 25px;
+    }
+  .dashCards{
+    width: 300px;
+  }
+  
+}

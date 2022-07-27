@@ -9,6 +9,7 @@ import Register from "./components/auth/Register";
 import Cart from "./components/cart/Cart";
 import { CartProvider } from "react-use-cart";
 import Dashboard from "./components/dashboard/Dashboard";
+import Wishlist from "./components/dashboard/Wishlist";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/wishlist" element={<Wishlist />} />
+
           <Route path="/products" >
               <Route index element={<Products /> } />
               <Route path=":productId" element={<ProductId /> } />

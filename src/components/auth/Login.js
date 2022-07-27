@@ -44,6 +44,9 @@ export default function Login() {
             console.log(localStorage);
             navigate("/dashboard");
            }
+           else{
+            navigate("/signup");
+           }
     }
 
   return (
