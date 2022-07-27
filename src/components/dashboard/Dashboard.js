@@ -11,6 +11,7 @@ export default function Dashboard() {
   const handleLogout=()=>{
     window.localStorage.removeItem('Name');
     navigate("/");
+    window.location.reload();
   }
 
   return (

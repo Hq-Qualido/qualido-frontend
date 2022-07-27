@@ -43,6 +43,7 @@ export default function Login() {
             localStorage.setItem('Name',data.user.fullname)
             console.log(localStorage);
             navigate("/dashboard");
+            window.location.reload();
            }
            else{
             navigate("/signup");
