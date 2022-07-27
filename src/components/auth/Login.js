@@ -1,6 +1,7 @@
 import React from 'react'
 import './Login.css'
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import Footer from '../footer/Footer'
 
 import LoginGirl from '../../assets/loginGirl.png'
@@ -12,6 +13,7 @@ export default function Login() {
         email:"",
         password:"",
     })
+    const navigate = useNavigate();
 
     const handleChange =(e)=>{
         const {name,value} = e.target;
@@ -37,6 +39,11 @@ export default function Login() {
            })
            const data =await response.json();
            console.log(data)
+           if(data.token){
+            localStorage.setItem('Name',data.user.fullname)
+            console.log(localStorage);
+            navigate("/dashboard");
+           }
     }
 
   return (

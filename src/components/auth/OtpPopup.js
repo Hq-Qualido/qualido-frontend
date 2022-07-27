@@ -27,8 +27,6 @@ export default function OtpPopup(props) {
      const data =await response.json();
      console.log(data);
      if(data.token){
-      localStorage.setItem('Name',props.userData.fullname)
-      console.log(localStorage);
       navigate("/")
      }
     }
