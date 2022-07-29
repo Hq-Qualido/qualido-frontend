@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import { FaCartPlus, FaUserCircle, FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const [searchResult,setSearchResult]=useState();
 
   const name = localStorage.getItem('Name');
-  
   const {
     totalUniqueItems,
   } = useCart();
+
+  async function handleSearch(e){
+    e.preventDefault()
+    const url = `https://qualido.herokuapp.com/api/products/search?tags=${searchResult}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+  }
+  
   return (
     <>
       <nav>
@@ -21,13 +31,18 @@ export default function Navbar() {
             Qualido
           </div>
         </Link>
-        <form className="d-flex nav-searchBar" role="search">
+        <form className="d-flex nav-searchBar" role="search" onSubmit={handleSearch}>
         <span className="search-icon"> <FaSearch /> </span>
           <input
             className="search-bar me-1"
             type="search"
             placeholder="Search items..."
             aria-label="Search"
+            value={searchResult}
+            onChange={((e)=>{
+              setSearchResult(e.target.value);
+              navigate("/products");
+            })}
           />
         </form>
 
