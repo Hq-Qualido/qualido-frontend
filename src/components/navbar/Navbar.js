@@ -7,7 +7,7 @@ import { useCart } from "react-use-cart";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [searchResult,setSearchResult]=useState();
+  const [searchResult,setSearchResult]=useState('');
 
   const name = localStorage.getItem('Name');
   const {

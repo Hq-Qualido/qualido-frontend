@@ -1,35 +1,46 @@
 import React, { useState } from "react";
 import { FaRedo, FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { FiAlertCircle } from "react-icons/fi";
 
 export default function OtpPopup(props) {
-  const [otpValue , steOtpValue] = useState([]);
   const navigate = useNavigate();
 
-    const handleChange=(e)=>{
-      steOtpValue(otpValue => [...otpValue, e.target.value]);
-    }
+  const [otp, setOtp] = useState(new Array(6).fill(""));
+  const [errorMessage, setErrorMessage] = useState("");
 
-    async function handleSubmit(){
+  const handleChange = (element, index) => {
+    if (isNaN(element.value)) return false;
 
-        const response = await fetch(
-     ` https://qualido.herokuapp.com/api/auth/verifyOtp`,
-     {
-       method: "POST",
-       body: JSON.stringify({
-       email:props.userData.email,
-       otp:otpValue.join("")
-       }),
-       headers: {
-         'Content-Type': 'application/json',
-       }
-     })
-     const data =await response.json();
-     console.log(data);
-     if(data.token){
-      navigate("/")
-     }
+    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
+
+    if (element.nextSibling) {
+      element.nextSibling.focus();
     }
+  };
+
+  async function handleSubmit() {
+    const response = await fetch(
+      ` https://qualido.herokuapp.com/api/auth/verifyOtp`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email: props.userData.email,
+          otp: otp.join(""),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    if (data.token) {
+      navigate("/");
+    } else {
+      setErrorMessage(data.message);
+    }
+  }
 
   return (
     props.trigger && (
@@ -39,67 +50,58 @@ export default function OtpPopup(props) {
             <FaTimes />
           </div>
           <h1 className="user-email my-3">
-            Hi! 👋, <span> {props.userMail}</span>
+            Hi! 👋, <span> {props.userData.email}</span>
           </h1>
           <p>
             We've sent an OTP to the above provided mail , please enter the OTP
             to verify your mail.
           </p>
-       
-          <div id="otp" className="otp inputs d-flex flex-row justify-content-center mt-2"
+
+          <div
+            id="otp"
+            className="otp inputs d-flex flex-row justify-content-center mt-2"
           >
-            <input
-              className="otp-input m-2 text-center form-control rounded"
-              type="text"
-              id="first"
-              maxLength="1"
-              value={otpValue[0]}
-              onChange={handleChange}
-            />
-            <input
-              className="otp-input m-2 text-center form-control rounded"
-              type="text"
-              id="second"
-              maxLength="1"
-              value={otpValue[1]}
-              onChange={handleChange}
-            />
-            <input
-              className="otp-input m-2 text-center form-control rounded"
-              type="text"
-              id="third"
-              maxLength="1"
-              value={otpValue[2]}
-              onChange={handleChange}
-            />
-            <input
-              className="otp-input m-2 text-center form-control rounded"
-              type="text"
-              id="fourth"
-              maxLength="1"
-              value={otpValue[3]}
-              onChange={handleChange}
-            />
-            <input
-              className="otp-input m-2 text-center form-control rounded"
-              type="text"
-              id="fifth"
-              maxLength="1"
-              value={otpValue[4]}
-              onChange={handleChange}
-            />
-            <input
-              className="otp-input m-2 text-center form-control rounded"
-              type="text"
-              id="sixth"
-              maxLength="1"
-              value={otpValue[5]}
-              onChange={handleChange}
-            />
+            {otp.map((data, index) => {
+              return (
+                <input
+                  className="otp-field mx-1"
+                  type="text"
+                  name="otp"
+                  maxLength="1"
+                  key={index}
+                  value={data}
+                  onChange={(e) => handleChange(e.target, index)}
+                  onFocus={(e) => e.target.select()}
+                />
+              );
+            })}
           </div>
 
-          <div className="buy-btn my-4" onClick={handleSubmit}>Validate</div>
-          <div className="resend-otp" onClick={handleSubmit}>Resend OTP  <span className="mx-1"> <FaRedo /> </span>  </div>
+          <div className="otp-buttons  mt-4 ">
+            <div
+              className="clear-btn mx-1"
+              onClick={(e) => setOtp([...otp.map((v) => "")])}
+            >
+              Clear
+            </div>
+            <div
+              className="buy-btn mx-1"
+              onClick={(e) => {
+                handleSubmit(e);
+              }}
+            >
+              Validate
+            </div>
+          </div>
+          <div className="error-message">
+            <FiAlertCircle /> {errorMessage}
+          </div>
+          <div className="resend-otp">
+            Resend OTP
+            <span className="mx-1">
+              <FaRedo />
+            </span>
+          </div>
         </div>
       </div>
     )

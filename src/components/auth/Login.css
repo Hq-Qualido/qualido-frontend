@@ -191,6 +191,26 @@ input[type="text"],
   padding: 5px;
 
 }
+.otp-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.clear-btn{
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+.clear-btn:hover{
+  background-color: grey;
+  color: #fff;
+  cursor: pointer;
+}
+.error-message{
+  color: red;
+  text-transform: capitalize;
+}
 .resend-otp{
   color: #00899b;
   align-items: center;
