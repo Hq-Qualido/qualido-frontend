@@ -5,11 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const navigate = useNavigate();
   const [searchResult,setSearchResult]=useState('');
 
-  const name = localStorage.getItem('Name');
   const {
     totalUniqueItems,
   } = useCart();
@@ -50,8 +49,8 @@ export default function Navbar() {
           <Link to="/cart" className="nav-menu-item">
            <span> <FaCartPlus />   </span> Cart({totalUniqueItems})
           </Link>
-          <Link to={name?"dashboard":"login"} className="nav-menu-item">
-          <span> <FaUserCircle />  </span>   {name? name : "Account"}
+          <Link to="dashboard" className="nav-menu-item">
+          <span> <FaUserCircle />  </span>   {props.name? props.name : "Account"}
           </Link>
         </div>
       </nav>
