@@ -55,6 +55,39 @@
     cursor:pointer;
   }
   
+  /* LOGIN SECURITY PAGE CSS  */
+
+input[type="number"]{
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+
+  .security-page{
+    width: 70%;
+  }
+  .user-info-section{
+display: flex;
+align-items: flex-start;
+justify-content: center;
+flex-direction: column;
+  }
+
+  .users-email,.users-number,.users-fullname{
+    font-size: 1.5rem;
+    color: rgb(57, 57, 57);
+  }
+  
+  .edit-btn{
+    color: rgb(0, 106, 255);
+    font-size:1rem;
+  }
+  .edit-btn:hover{
+    cursor: pointer;
+  }
+  /* LOGIN SECURITY PAGE CSS  */
 @media only screen and (max-width:900px){
   .dashboard-top h1{
     font-size: 25px;
