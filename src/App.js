@@ -11,6 +11,7 @@ import { CartProvider } from "react-use-cart";
 import Dashboard from "./components/dashboard/Dashboard";
 import Wishlist from "./components/dashboard/Wishlist";
 import Orders from "./components/dashboard/Orders";
+import Security from "./components/dashboard/Security";
 
 function App() {
   const name = localStorage.getItem('Name');
@@ -29,6 +30,7 @@ function App() {
           <Route path="/dashboard" element={name ? <Dashboard /> : <Navigate to="/login" replace={true} /> } />
           <Route path="/dashboard/wishlist" element={name ? <Wishlist /> :  <Navigate to="/login" replace={true} /> } />
           <Route path="/dashboard/orders" element={name ? <Orders /> :  <Navigate to="/login" replace={true} /> } />
+          <Route path="/dashboard/security" element={name ? <Security /> :  <Navigate to="/login" replace={true} /> } />
 
           <Route path="/products" >
               <Route index element={<Products /> } />
