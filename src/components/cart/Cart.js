@@ -45,7 +45,7 @@ export default function Cart() {
             <div className="cart-items-body">
             {items?.map((item)=>{
               return (
-                <CartCard {...item} key={item._id} />
+                <CartCard {...item} key={item.id} />
               )
             })}
             </div>
