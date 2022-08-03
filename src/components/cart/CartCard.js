@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useCart } from "react-use-cart";
 
@@ -57,7 +58,7 @@ export default function CartCard(props) {
 
         <div className="buttons">
         <div className="remove-btn mx-1" onClick={()=>removeItem(props.id)}>
-            Remove
+           <FaTrashAlt />
         </div>
         </div>
 

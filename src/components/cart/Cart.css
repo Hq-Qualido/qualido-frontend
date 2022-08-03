@@ -177,9 +177,9 @@ color: #00899b;
   flex-direction: row;
 }
 .remove-btn {
-  background-color: #ff001ea8;
-  /* background-color: #ffd7d7; */
-  color: #fff;
+  /* background-color: #ff001ea8; */
+  background-color: #ffd7d7;
+  color: #ff001f;
   padding: 5px 10px;
   border-radius: 5px;
   width: fit-content;
