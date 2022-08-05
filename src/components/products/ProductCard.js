@@ -13,11 +13,12 @@ export default function ProductCard(props) {
 
   return (
     <>{!props.navigator ?(
-    <Link to={`${props._id} `} style={{textDecoration:"none"}}>
 
       <div className=" product-card ">
         <div className="product-image">
+    <Link to={`${props._id} `} style={{textDecoration:"none"}}>
           <img src={props.url} alt="" />
+              </Link>
           <div className="over-image">
               <span className="save-percentage">
            Save {props.discount}% 
@@ -29,7 +30,11 @@ export default function ProductCard(props) {
         </div>
 
         <div className="product-details">
-          <h3 className="product-title">{props.prodName}</h3>
+          <h3 className="product-title">
+    <Link to={`${props._id} `} style={{textDecoration:"none"}}>
+          {props.prodName}
+              </Link>
+          </h3>
           <div className="price-rating">
             <h3 className="product-price">Rs {props.prodMrp} <span style={{textDecoration:"line-through" , color:"grey" , fontSize:"15px "}}>{props.prodSp}</span> </h3>
             <div className="products-ratings">
@@ -43,7 +48,7 @@ export default function ProductCard(props) {
         </div>
 
       </div>
-    </Link>)
+    )
     
     :
     ( <div className=" product-card " onClick={handleNavigate}>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from "react-use-cart";
 
 export default function CartCard(props) {
-    console.log(props,"CartCardPRops")
+    // console.log(props,"CartCardPRops")
     const {
         removeItem,
         updateItemQuantity,
