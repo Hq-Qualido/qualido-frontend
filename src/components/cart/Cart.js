@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { FaCheckCircle } from 'react-icons/fa'
 import './Cart.css'
 import CartCard from './CartCard'
@@ -14,7 +14,25 @@ export default function Cart() {
     totalItems,
     cartTotal,
   } = useCart();
-  console.log(items,"items")
+
+  const addToCart = async () => {
+    const response = await fetch(` https://qualido.herokuapp.com/api/cart/add`,
+    {
+        method: "PUT",
+        body: JSON.stringify(items),
+        headers: {'Content-Type': 'application/json'}
+    })
+    const data =await response.json();
+         console.log(data,"data") 
+
+  }
+  
+  useEffect(()=>{
+    addToCart();  
+    // eslint-disable-next-line
+  },[totalItems]);
+
+
   if (isEmpty) return (     
     <div className="cart-items-body">
 
