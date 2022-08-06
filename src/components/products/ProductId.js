@@ -45,6 +45,7 @@ export default function ProductId() {
     fetchProductData();  
     fetchSimiliarProducts(); 
     window.scrollTo(0, 0);
+    // eslint-disable-next-line
   },[productId,location]);
 
   return (
@@ -94,7 +95,7 @@ export default function ProductId() {
                onClick={() => addItem({
                 id:indivProd._id,
                 price:indivProd.price,
-                indivProd,
+                ...indivProd,
                 })}>
                 Add to Cart
               </div>

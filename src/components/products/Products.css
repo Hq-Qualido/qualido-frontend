@@ -147,9 +147,8 @@ border: 1px solid rgba(161, 161, 161, 0.174);
 .products-list .products-list-body .product-card .product-image .over-image .wishlist-btn:hover{
     border: 1px solid #00A1B6;
     padding: 2px auto; 
-    background-color: #00A1B6;
     border: none;
-    color: white;
+    cursor: pointer;
 }
 
 .products-list .products-list-body .product-card .product-details .product-title{
@@ -337,7 +336,7 @@ text-transform: capitalize;
     justify-content: center;
     box-shadow: 3px 3px 10px 0px #FFFFFF80 inset,
     0px 0px 30px 0px #1f1f1f33;
-
+    z-index: 2;
 }
 
 .scroll-top:hover{

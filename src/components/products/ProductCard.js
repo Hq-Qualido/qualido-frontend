@@ -1,7 +1,7 @@
 import React from "react";
-import {  FaStar , FaStarHalf } from "react-icons/fa";
-import {MdOutlineFavoriteBorder} from 'react-icons/md';
+import {  FaCartPlus, FaStar , FaStarHalf } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "react-use-cart";
 
 export default function ProductCard(props) {
   // console.log(props,"items");
@@ -10,7 +10,8 @@ export default function ProductCard(props) {
     console.log("navigator")
     navigate(`/products/${props._id}`)
   }
-
+  const { addItem } = useCart();
+  
   return (
     <>{!props.navigator ?(
 
@@ -23,8 +24,17 @@ export default function ProductCard(props) {
               <span className="save-percentage">
            Save {props.discount}% 
            </span>
-              <span className="wishlist-btn my-2">
-              <MdOutlineFavoriteBorder/>
+           <span className="wishlist-btn my-2"
+              onClick={() => {addItem({
+                id:props._id,
+                price:props.price,
+                ...props,
+                })
+                console.log("hemloo productCard");
+              }
+                }
+              >
+              <FaCartPlus />
               </span>
             </div>
         </div>
@@ -58,8 +68,17 @@ export default function ProductCard(props) {
               <span className="save-percentage">
            Save {props.discount}% 
            </span>
-              <span className="wishlist-btn my-2">
-              <MdOutlineFavoriteBorder/>
+              <span className="wishlist-btn my-2"
+              onClick={() => {addItem({
+                id:props._id,
+                price:props.price,
+                ...props,
+                })
+                console.log("hemloo productCard");
+              }
+                }
+              >
+              <FaCartPlus />
               </span>
             </div>
         </div>
