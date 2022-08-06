@@ -14,7 +14,7 @@ export default function Cart() {
     totalItems,
     cartTotal,
   } = useCart();
-
+// console.log(items,"itemd")
   const addToCart = async () => {
     const response = await fetch(` https://qualido.herokuapp.com/api/cart/add`,
     {
