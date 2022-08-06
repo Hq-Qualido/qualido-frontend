@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { FaCartPlus, FaUserCircle, FaSearch } from "react-icons/fa";
+import { FaShoppingCart, FaUserCircle, FaSearch } from "react-icons/fa";
+import { HiShoppingCart } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";
@@ -47,7 +48,7 @@ export default function Navbar(props) {
 
         <div className="text-light nav-menu">
           <Link to="/cart" className="nav-menu-item">
-           <span> <FaCartPlus />   </span> Cart({totalUniqueItems})
+           <span> <FaShoppingCart />   </span> Cart({totalUniqueItems})
           </Link>
           <Link to="dashboard" className="nav-menu-item">
           <span> <FaUserCircle />  </span>   {props.name? props.name : "Account"}
