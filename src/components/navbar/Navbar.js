@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { FaShoppingCart, FaUserCircle, FaSearch } from "react-icons/fa";
-import { HiShoppingCart } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";
