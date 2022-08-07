@@ -4,9 +4,8 @@ import DashCards from './DashCards.js'
 import { Outlet, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from 'react-icons/fa';
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const navigate = useNavigate();
-  const name = localStorage.getItem('Name');
 
   const handleLogout=()=>{
     window.localStorage.removeItem('Name');
@@ -22,7 +21,7 @@ export default function Dashboard() {
         <div className="container my-5">
 
         <div className='dashboard-top my-2'>
-      <h1 className="text-center section-heading ">Hello 👋, {name}</h1>
+      <h1 className="text-center section-heading ">Hello 👋, {props.name}</h1>
       <div className="logout" onClick={handleLogout}> <span> <FaSignOutAlt /> </span> LogOut</div>
         </div>
 

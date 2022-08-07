@@ -27,7 +27,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
-          <Route path="/dashboard" element={name ? <Dashboard /> : <Navigate to="/login" replace={true} /> } />
+          <Route path="/dashboard" element={name ? <Dashboard name={name}/> : <Navigate to="/login" replace={true} /> } />
           <Route path="/dashboard/wishlist" element={name ? <Wishlist /> :  <Navigate to="/login" replace={true} /> } />
           <Route path="/dashboard/orders" element={name ? <Orders /> :  <Navigate to="/login" replace={true} /> } />
           <Route path="/dashboard/security" element={name ? <Security /> :  <Navigate to="/login" replace={true} /> } />
