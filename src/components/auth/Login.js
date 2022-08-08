@@ -9,6 +9,8 @@ import google from '../../assets/google.png'
 import { useState } from 'react';
 
 export default function Login() {
+  const [loading, setLoading] = useState(false);
+
     const [values,setValues] = useState({
         email:"",
         password:"",
@@ -24,7 +26,7 @@ export default function Login() {
     }
     async function handleSubmit(){
         console.log(values)
-      
+        setLoading(true);
               const response = await fetch(
            ` https://qualido.herokuapp.com/api/auth/login`,
            {
@@ -38,6 +40,7 @@ export default function Login() {
              }
            })
            const data =await response.json();
+        setLoading(false);
            console.log(data)
            if(data.token){
             localStorage.setItem('Name',data.user.fullname)
@@ -95,7 +98,11 @@ export default function Login() {
                     </label>
                      
                             <br />
-                        <div onClick={handleSubmit} className="dislodged-border">Login</div>
+                        <div onClick={handleSubmit} className="dislodged-border">
+                       {!loading ? "Login":
+                        "Wait..."
+                        }
+                        </div>
 
 
                         <div className="with-google my-4">
