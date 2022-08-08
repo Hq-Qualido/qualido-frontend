@@ -52,7 +52,7 @@ export default function Security() {
                     setDisable(false)}}>Edit</span>   </label> 
                 <input 
                 name="phone" 
-                type="number" 
+                type="rel" 
                 value={values.phone}
                 onChange={handleChange}
                 placeholder='+91 8989656545' 

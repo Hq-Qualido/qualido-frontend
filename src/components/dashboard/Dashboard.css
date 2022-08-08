@@ -75,18 +75,20 @@
   
   
   /* LOGIN SECURITY PAGE CSS  */
+.user-info-section input{
+  height: 50px;
+}
 
-input[type="number"]{
+input[type="rel"]{
   width: 100%;
   padding: 5px 10px;
   border-radius: 5px;
   border: 1px solid grey;
 }
 
-
-  .security-page{
+.security-page{
     width: 70%;
-  }
+}
   .user-info-section{
 display: flex;
 align-items: flex-start;
@@ -106,6 +108,7 @@ flex-direction: column;
   .edit-btn:hover{
     cursor: pointer;
   }
+
   /* LOGIN SECURITY PAGE CSS  */
 @media only screen and (max-width:900px){
   .dashboard-top h1{
@@ -115,4 +118,13 @@ flex-direction: column;
     width: 300px;
   }
   
+.security-page{
+  width: 90%;
+}
+}
+
+@media only screen and (max-width:400px){
+.security-page{
+  width: 95%;
+}
 }
