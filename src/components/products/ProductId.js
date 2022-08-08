@@ -94,7 +94,7 @@ export default function ProductId() {
               <div className="cart-btn mx-1" 
                onClick={() => addItem({
                 id:indivProd._id,
-                price:indivProd.price,
+                price:indivProd.prodMrp,
                 ...indivProd,
                 })}>
                 Add to Cart

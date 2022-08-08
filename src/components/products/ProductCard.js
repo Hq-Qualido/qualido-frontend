@@ -25,14 +25,11 @@ export default function ProductCard(props) {
            Save {props.discount}% 
            </span>
            <span className="wishlist-btn my-2"
-              onClick={() => {addItem({
+                 onClick={() => addItem({
                 id:props._id,
-                price:props.price,
+                price:props.prodMrp,
                 ...props,
-                })
-                console.log("hemloo productCard");
-              }
-                }
+                })}
               >
               <FaCartPlus />
               </span>
@@ -69,14 +66,12 @@ export default function ProductCard(props) {
            Save {props.discount}% 
            </span>
               <span className="wishlist-btn my-2"
-              onClick={() => {addItem({
+              onClick={() => addItem({
                 id:props._id,
-                price:props.price,
+                price:props.prodMrp,
                 ...props,
-                })
-                console.log("hemloo productCard");
-              }
-                }
+                })}
+                
               >
               <FaCartPlus />
               </span>
