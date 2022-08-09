@@ -75,6 +75,10 @@ text-align: center;
 .categories .categories-body .category-item{
   width: fit-content;
   margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .categories .categories-body .category-item-body{
@@ -243,9 +247,30 @@ text-align: center;
     font-size: 0.8rem;
   }
   
-  .customer-reviews .customerReview-card1,.customerReview-card2{
+  .customer-reviews .customerReview-card1{
      margin-left: 0.5rem;
      margin-right: 0.5rem;
+  }
+  .customer-reviews .customerReview-card2{
+     margin-left: 0.5rem;
+     margin-right: 0.5rem;
+  }
+
+ 
+.customer-reviews .customerReview-card1 {
+padding: 10px 15px;
+  }
+ 
+.customer-reviews .customerReview-card2 {
+  padding: 10px 15px;
+}
+ 
+ .customerReview-card1 .customer-details img{
+    width: 40px;
+  }
+ 
+ .customerReview-card2 .customer-details img{
+    width: 40px;
   }
   .whyUsCard{
     width: 300px;
@@ -266,6 +291,7 @@ text-align: center;
   padding:0.5rem 1rem;
   margin: 0.5rem 0;
   text-transform: capitalize;
+  text-decoration: none;
   color: #ffffff;
   border: 1px solid #fff;
 }

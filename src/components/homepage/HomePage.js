@@ -4,6 +4,7 @@ import "./Homepage.css";
 import Categories from "./Categories";
 import CustomerReview from "./CustomerReview";
 import WhyUS from "./WhyUS";
+import { Link } from "react-router-dom";
 
 
 import s1 from "../../assets/s1.png";
@@ -91,7 +92,7 @@ export default function HomePage() {
               <p className="slider-para">
                 Now get all the books you have always wanted to read at much cheaper prices than anywhere else.
               </p>
-              <button className="button-52">Shop Now</button>
+              <Link to="/products" className="button-52">Shop Now</Link>
             </div>
             <div className="col-lg-6 col-sm-6 slider-right">
               <img className="slider-right-image" src={s1} alt="" />
@@ -111,7 +112,7 @@ export default function HomePage() {
               <p className="slider-para">
               We have brought you the latest most trendy books better and before than anyone else.
               </p>
-              <button className="button-52">Shop Now</button>
+              <Link to="/products" className="button-52">Shop Now</Link>
             </div>
             <div className="col-lg-6 col-sm-6 slider-right">
               <img className="slider-right-image" src={s2} alt="" />
@@ -129,7 +130,7 @@ export default function HomePage() {
               <p className="slider-para">
               No need to leave your comfort , we'll deliver all your books to your home at very minimal prices.
               </p>
-              <button className="button-52">Shop Now</button>
+              <Link to="/products" className="button-52">Shop Now</Link>
             </div>
             <div className="col-lg-6 col-sm-6 slider-right">
               <img className="slider-right-image" src={s3} alt="" />
