@@ -1,7 +1,20 @@
-import React from 'react'
+import React ,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
 export default function Wishlist() {
+  // const [myWishlist,setMyWishlist] = useState([]);
+
+  // const fetchWishllist = async (val) => {
+  //   const url=`https://qualido.herokuapp.com/api/auth/wishlist?${val}`
+  //   const response = await fetch(url)
+  //   const data = await response.json()
+  //   setMyWishlist(data.products)
+  // }
+
+  // useEffect(()=>{
+  //   fetchWishllist();    
+  // },[])
+
   return (
     <>
     <div className="container wishlist-page">
