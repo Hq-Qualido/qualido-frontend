@@ -7,6 +7,7 @@ import Footer from "../footer/Footer";
 import { useParams } from 'react-router-dom';
 import { useLocation } from "react-router";
 import { useCart } from "react-use-cart";
+import Loader from "../loader/Loader";
 
 
 export default function ProductId() {
@@ -61,7 +62,9 @@ export default function ProductId() {
           { indivProd.url?(
             <img src={indivProd.url} alt="BookImage" />
           ):
-         ( <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ctopYC.json"  background="transparent"  speed="1"  style={{width: "300px", height: "300px"}}  loop autoplay></lottie-player>)
+         ( 
+          <Loader />
+         )
           }
           </div>
           <div className="col-lg-6 col-sm-6 productID-right">

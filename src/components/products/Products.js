@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import { FaArrowAltCircleUp } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
 import Footer from "../footer/Footer";
+import Loader from "../loader/Loader";
 import ProductCard from "./ProductCard";
 import "./Products.css";
 import ProductSidebar from "./ProductSidebar";
@@ -56,7 +57,7 @@ export default function Products() {
       )
     })
     : (
-      <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ctopYC.json"  background="transparent"  speed="1"  style={{width: "200px", height: "200px"}}  loop autoplay></lottie-player>
+      <Loader />
 )
     }
 
