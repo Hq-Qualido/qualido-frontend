@@ -63,7 +63,7 @@ export default function ProductId() {
             <img src={indivProd.url} alt="BookImage" />
           ):
          ( 
-          <Loader />
+          <Loader type="dots" />
          )
           }
           </div>

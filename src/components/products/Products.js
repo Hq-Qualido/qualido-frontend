@@ -57,7 +57,7 @@ export default function Products() {
       )
     })
     : (
-      <Loader />
+      <Loader type="dots" />
 )
     }
 

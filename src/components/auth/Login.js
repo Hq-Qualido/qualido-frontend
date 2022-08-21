@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import LoginGirl from '../../assets/loginGirl.png'
 import google from '../../assets/google.png'
 import { useState } from 'react';
+import Loader from '../loader/Loader';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -100,7 +101,7 @@ export default function Login() {
                             <br />
                         <div onClick={handleSubmit} className="dislodged-border">
                        {!loading ? "Login":
-                        "Wait..."
+                        ( <Loader type="text" text="Wait..." /> )
                         }
                         </div>
 

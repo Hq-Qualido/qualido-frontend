@@ -15,6 +15,7 @@ import Privacy from "../../assets/Privacy.png";
 import Service from "../../assets/Service.png";
 import chatSupport from "../../assets/chatSupport.png";
 import Footer from "../footer/Footer";
+import Loader from "../loader/Loader";
 
 
 export default function HomePage() {
@@ -186,7 +187,7 @@ export default function HomePage() {
       }))
       :
       (
-        <h4>Loading...</h4>
+        <Loader type="dots" />
       )
       
       }
