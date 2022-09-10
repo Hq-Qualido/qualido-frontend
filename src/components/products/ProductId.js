@@ -22,7 +22,7 @@ export default function ProductId() {
   const [category , setCategory] = useState('');
 
   const fetchProductData = async () => {
-    const url1="http://api.qualido.in/api"
+    const url1="http://api.qualido.in/api/products"
     const response1 = await fetch(url1)
     const data1 = await response1.json()
 
