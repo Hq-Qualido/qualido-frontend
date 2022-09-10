@@ -16,7 +16,7 @@ export default function Cart() {
   } = useCart();
 // console.log(items,"itemd")
   const addToCart = async () => {
-    const response = await fetch(`api.qualido.in/api/cart/add`,
+    const response = await fetch(`http://api.qualido.in/api/cart/add`,
     {
         method: "PUT",
         body: JSON.stringify(items),

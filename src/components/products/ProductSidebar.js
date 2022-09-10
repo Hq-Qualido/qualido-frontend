@@ -6,7 +6,7 @@ export default function ProductSidebar(props) {
   const [prodCategory , setProdCategory]=useState([]);
   
   const fetchCategories = async () => {
-    const urlCat ="api.qualido.in/api/categories";
+    const urlCat ="http://api.qualido.in/api/categories";
   const catResponse = await fetch(urlCat)
   const catList = await catResponse.json()
   setProdCategory(catList.categories)

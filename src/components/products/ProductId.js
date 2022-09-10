@@ -22,7 +22,7 @@ export default function ProductId() {
   const [category , setCategory] = useState('');
 
   const fetchProductData = async () => {
-    const url1="api.qualido.in/api/products"
+    const url1="http://api.qualido.in/api"
     const response1 = await fetch(url1)
     const data1 = await response1.json()
 
@@ -35,7 +35,7 @@ export default function ProductId() {
   }
 
   const fetchSimiliarProducts = async () => {
-    const url2=`api.qualido.in/api/products?category=${category}`
+    const url2=`http://api.qualido.in/api/products?category=${category}`
     const response2 = await fetch(url2)
     const data2 = await response2.json()
     setSameProds(data2.products)

@@ -23,7 +23,7 @@ export default function HomePage() {
   const [allCategories , setAllCategories]=useState([]);
   
   const fetchCategories = async () => {
-    const categs ="api.qualido.in/api/categories";
+    const categs ="http://api.qualido.in/api/categories";
   const catResponse = await fetch(categs)
   const catList = await catResponse.json()
   setAllCategories(catList.categories)

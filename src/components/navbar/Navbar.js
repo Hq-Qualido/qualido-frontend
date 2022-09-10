@@ -15,7 +15,7 @@ export default function Navbar(props) {
 
   async function handleSearch(e){
     e.preventDefault()
-    const url = `api.qualido.in/api/products/search?tags=${searchResult}`;
+    const url = `http://api.qualido.in/api/products/search?tags=${searchResult}`;
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);

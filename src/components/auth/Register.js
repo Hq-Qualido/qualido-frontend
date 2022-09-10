@@ -43,7 +43,7 @@ export default function Register() {
         else{
             setErrors('')
             console.log(userData.confirmPass)
-        const response = await fetch(`api.qualido.in/api/auth/register`,
+        const response = await fetch(`http://api.qualido.in/api/auth/register`,
             {
                 method: "POST",
                 body: JSON.stringify({
