@@ -6,7 +6,7 @@ export default function ProductSidebar(props) {
   const [prodCategory , setProdCategory]=useState([]);
   
   const fetchCategories = async () => {
-    const urlCat ="https://qualido.herokuapp.com/api/categories";
+    const urlCat ="api.qualido.in/api/categories";
   const catResponse = await fetch(urlCat)
   const catList = await catResponse.json()
   setProdCategory(catList.categories)

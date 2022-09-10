@@ -21,7 +21,7 @@ export default function OtpPopup(props) {
 
   async function handleSubmit() {
     const response = await fetch(
-      ` https://qualido.herokuapp.com/api/auth/verifyOtp`,
+      `api.qualido.in/api/auth/verifyOtp`,
       {
         method: "POST",
         body: JSON.stringify({
