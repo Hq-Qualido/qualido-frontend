@@ -90,6 +90,11 @@ nav .nav-menu .nav-menu-item:hover{
 }
 
 @media (max-width: 600px) {
+  
+nav{
+  padding: 0 0.5rem;
+}
+
   .nav-logo img{
     width: 25px;
  }
