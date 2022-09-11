@@ -206,6 +206,7 @@ text-align: center;
   background-color: #00A1B6;
   border: 5px solid #FFFFFF33;
   cursor:auto;
+  transition: all 0.5s ease-in-out;
 }
 
 
