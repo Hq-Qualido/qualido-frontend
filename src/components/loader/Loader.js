@@ -7,7 +7,7 @@ export default function Loader(props) {
     {/* LOADER WITH DOTS  */}
         {props.type==="dots" ? 
     <div className="spinner">
-        <div className="dot"></div>
+        <div className="loader"></div>
     </div>
         :""
         }
