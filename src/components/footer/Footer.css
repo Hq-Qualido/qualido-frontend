@@ -40,7 +40,11 @@
   background: inherit;
   /* border: 2px solid red; */
 }
-
+.hr{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
 .footer-body {
   width: 100%;
   display: flex;
@@ -67,28 +71,12 @@
 }
 .footer-body .footer-services ul li {
   list-style: none;
-  font-size: 20px;
+  font-size: 18px;
+  margin-top: 5px;
 }
 .footer-body .footer-services ul li:hover {
   cursor: pointer;
   color: #00a1b6;
-}
-
-.footer-body .footer-email {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background: rgba(0, 0, 0, 0.2); */
-  /* border: 2px solid rgb(255, 0, 212); */
-}
-
-.footer-body .footer-email input {
-  border-radius: 5px;
-  height: 35px;
-  background: rgba(0, 0, 0, 0.2);
-  padding-left: 1rem;
-  color: white;
 }
 
 .footer .footer-bottom {
@@ -130,19 +118,95 @@
   margin-left: 10px;
 }
 
+.subscribe_section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.subscribe_section p{
+  color: rgba(255, 255, 255, 0.86);
+
+}
+.subscribe_heading{
+  font-size: 25px;
+  margin: 10px 0px;
+}
+.subscribe_form{
+  background-color: rgba(255, 255, 255, 0.168);
+  border-radius: 50px;
+  padding: 5px 10px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.subscribe_now{
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  border-radius: 50px;
+  font-size: 18px;
+  height: 50px;
+  padding: 12px 20px;
+  color: #fff;
+}
+.subscribe_now::placeholder {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.86);
+}
+.subscribe_now:focus {
+  outline: 0;
+}
+.subscribe_btn{
+  border-radius: 50px;
+  background-color: #00a1b6;
+  color: #fff;
+  padding: 5px 18px;
+  outline: none;
+  border: 0;
+  height: 40px;
+}
+
+.subscribe_btn:hover{
+  background-color: #0098ac;
+}
 
 
 @media only screen and (max-width: 900px) {
   .footer-body .footer-logo img{
     width: 240px;
+    margin: 1rem;
   }
+  
+.subscribe_now{
+  height: 50px;
+  padding: 5px 20px;
+  width: fit-content;
+}
 }
 
 
 @media only screen and (max-width: 700px) {
   .footer-body .footer-logo img{
-    width: 220px;
+    width: 200px;
   }
+  .subscribe_form{
+    padding: 5px 7px;
+  }
+  .subscribe_now{
+    font-size: 15px;
+    height: 50px;
+    padding: 10px 18px;
+  }
+  .subscribe_now::placeholder {
+    font-size: 15px;
+  }
+  .subscribe_btn{
+    padding: 5px 10px;
+    height: 40px;
+  }
+
 }
 
 @media only screen and (max-width: 600px) {
