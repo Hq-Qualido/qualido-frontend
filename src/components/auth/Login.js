@@ -29,7 +29,7 @@ export default function Login() {
         console.log(values)
         setLoading(true);
               const response = await fetch(
-           `http://api.qualido.in/api/auth/login`,
+           `https://api.qualido.in/api/auth/login`,
            {
              method: "POST",
              body: JSON.stringify({

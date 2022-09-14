@@ -12,7 +12,7 @@ export default function Products() {
   const [loading, setLoading] = useState(false);
   const [datas,setDatas] = useState([]);
   const fetchProducts = async (val) => {
-    const url=!val?"http://api.qualido.in/api/products" : `http://api.qualido.in/api/products?category=${val}`
+    const url=!val?"https://api.qualido.in/api/products" : `https://api.qualido.in/api/products?category=${val}`
     setLoading(true);
     const response = await fetch(url)
     const data = await response.json()
