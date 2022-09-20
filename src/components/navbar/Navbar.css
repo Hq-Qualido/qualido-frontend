@@ -96,7 +96,7 @@ nav{
 }
 
   .nav-logo img{
-    width: 25px;
+    width: 21px;
  }
  .nav-logo {
   font-size: 28px;
@@ -113,7 +113,8 @@ nav .nav-searchBar{
     display: none;
   }
   nav .nav-menu .nav-menu-item{
-  font-size: 15px;
+    padding:0px 5px;
+    font-size: 15px;
   }
   
 }

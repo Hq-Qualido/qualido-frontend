@@ -188,6 +188,7 @@
 
 
 @media only screen and (max-width: 700px) {
+
   .footer-body .footer-logo img{
     width: 200px;
   }
@@ -210,15 +211,32 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .footer{
+    padding: 0;
+  }
+  .subscribe_form{
+    padding: 1px 3px;
+  }
   .footer-body {
     flex-direction: column;
   }
   .footer-body .footer-logo img{
     width: 250px;
   }
-  
+
 .footer .footer-bottom .social-icons .footer-icon{
   margin-left: 5px;
 }
 
+}
+
+@media only screen and (max-width: 350px) {
+  .subscribe_now{
+    font-size: 12px;
+    height: 45px;
+    padding: 3px 6px;
+  }
+  .subscribe_now::placeholder {
+    font-size: 12px;
+  }
 }
