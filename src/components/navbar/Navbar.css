@@ -89,7 +89,7 @@ nav .nav-menu .nav-menu-item:hover{
   background-color: rgba(255, 255, 255, 0.125);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   
 nav{
   padding: 0 0.5rem;
