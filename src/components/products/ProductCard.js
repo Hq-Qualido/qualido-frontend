@@ -37,9 +37,9 @@ export default function ProductCard(props) {
         </div>
 
         <div className="product-details">
-          <h3 className="product-title">
+          <h3 className="product-title mt-2">
     <Link to={`${props._id} `} style={{textDecoration:"none"}}>
-          {props.prodName}
+          {props.prodName.length>15? (props.prodName.slice(0,15)+"...") : props.prodName }
               </Link>
           </h3>
           <div className="price-rating">
