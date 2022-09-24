@@ -74,6 +74,9 @@
   font-size: 18px;
   margin-top: 5px;
 }
+.icon_span{
+  margin: 0px 5px;
+}
 .footer-body .footer-services ul li:hover {
   cursor: pointer;
   color: #00a1b6;
@@ -81,34 +84,36 @@
 
 .footer .footer-bottom {
   margin-top: 1rem;
-  margin-bottom: 0.5rem;
+  padding-bottom: 1rem;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
 }
 
-.footer .footer-bottom .footer-tnc{
-  width: 30%;
+.footer .footer-bottom .terms{
+  padding: 0;
+}
+.footer .footer-bottom .terms li{
+  list-style: none;
+  font-size: 18px;
+  margin-top: 5px;
+}
+.footer .footer-bottom .terms li:hover{
+  cursor: pointer;
+  color: #00a1b6;
+}
+
+.footer .footer-bottom .social-icons{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px 0px;
 }
+
 .footer .footer-bottom .footer-tnc,.privacyPolicy,.social-icons:hover{
   cursor: pointer;
-}
-.footer .footer-bottom .privacyPolicy{
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.footer .footer-bottom .social-icons{
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 
@@ -174,6 +179,10 @@
 
 
 @media only screen and (max-width: 900px) {
+  .footer{
+  padding: 1rem;
+
+  }
   .footer-body .footer-logo img{
     width: 240px;
     margin: 1rem;
@@ -188,7 +197,10 @@
 
 
 @media only screen and (max-width: 700px) {
-
+  .footer{
+    padding: 0.5rem;
+  
+    }
   .footer-body .footer-logo img{
     width: 200px;
   }
@@ -214,9 +226,29 @@
   .footer{
     padding: 0;
   }
+
   .subscribe_form{
+    background-color: rgba(255, 255, 255, 0);
     padding: 1px 3px;
+    flex-direction: column;
+    border-radius: 0px;
+    width: 95%;
+
   }
+  .subscribe_now{
+    width: 95%;
+    background-color: rgba(255, 255, 255, 0.186);
+    border: 0;
+    border-radius: 50px;
+    padding: 7px 10px;
+    margin: 2px 0px;
+  }
+  .subscribe_now::placeholder {
+    padding: 1rem;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.86);
+  }
+
   .footer-body {
     flex-direction: column;
   }
@@ -224,6 +256,9 @@
     width: 250px;
   }
 
+  .footer .footer-bottom {
+    flex-direction: column;
+  }
 .footer .footer-bottom .social-icons .footer-icon{
   margin-left: 5px;
 }
