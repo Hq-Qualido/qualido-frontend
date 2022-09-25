@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./Footer.css";
 import footerLogo from "../../assets/footerLogo.png";
 import {
-  FaFacebookSquare,
-  FaInstagramSquare,
+  FaInstagram,
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa";
@@ -21,6 +20,9 @@ export default function Footer() {
     e.preventDefault();
     console.log(email);
   };
+  const handleScroll=()=>{
+    window.scrollTo(0,0);
+    }
 
   return (
     <>
@@ -51,8 +53,8 @@ export default function Footer() {
 
         <div className="footer-body">
           <div className="footer-logo">
-            <Link to="/">
-              <img src={footerLogo} alt="footerLogo" />
+            <Link to="/" onClick={handleScroll}>
+              <img src={footerLogo} alt="footerLogo"  />
             </Link>
           </div>
           <div className="footer-services">
@@ -79,7 +81,7 @@ export default function Footer() {
                    
                   <FiPhoneCall /> 
                 </span> 
-                +91 8989898989
+                +91 70425 23617
               </li>
               <li>
                  
@@ -89,24 +91,39 @@ export default function Footer() {
                 </span> 
                 Location
               </li>
+              <li>
+               
+               <span className="icon_span" >
+                 
+                <RiFilePaper2Line /> 
+              </span> 
+              Terms & Conditions
+            </li>
+            <li>
+               <span className="icon_span" >
+                <MdOutlinePrivacyTip /> 
+              </span> 
+              Privacy Policy
+            </li>
             </ul>
           </div>
         </div>
         <hr />
 
         <div className="footer-bottom">
-          {/* <div className="footer-tnc">Terms & Conditions</div> */}
-          {/* <div className="privacyPolicy">Privacy Policy</div> */}
+          
+        <ul className="terms">
+            <li>
+              <span className="icon_span" >
+
+              <MdOutlineCopyright /> 
+             </span>
+              Qualido.in - 2022
+            </li>
+          </ul>
+          
           <div className="social-icons">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://facebook.com"
-              className="footer-icon"
-            >
-               
-              <FaFacebookSquare />
-            </a>
+
             <a
               target="_blank"
               rel="noreferrer"
@@ -114,7 +131,7 @@ export default function Footer() {
               className="footer-icon"
             >
                
-              <FaInstagramSquare />
+              <FaInstagram />
             </a>
             <a
               target="_blank"
@@ -136,29 +153,6 @@ export default function Footer() {
             </a>
           </div>
 
-          <ul className="terms">
-            <li>
-               
-               <span className="icon_span" >
-                 
-                <RiFilePaper2Line /> 
-              </span> 
-              Terms & Conditions
-            </li>
-            <li>
-               <span className="icon_span" >
-                <MdOutlinePrivacyTip /> 
-              </span> 
-              Privacy Policy
-            </li>
-            <li>
-              <span className="icon_span" >
-
-              <MdOutlineCopyright /> 
-             </span>
-              Qualido.in - 2022
-            </li>
-          </ul>
         </div>
       </div>
     </>
