@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaRedo, FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { FiAlertCircle } from "react-icons/fi";
+import { baseUrl } from "../../BaseUrl";
 
 export default function OtpPopup(props) {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function OtpPopup(props) {
 
   async function handleSubmit() {
     const response = await fetch(
-      `https://api.qualido.in/api/auth/verifyOtp`,
+      `${baseUrl}/auth/verifyOtp`,
       {
         method: "POST",
         body: JSON.stringify({

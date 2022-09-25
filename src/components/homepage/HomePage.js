@@ -16,6 +16,7 @@ import Service from "../../assets/Service.png";
 import chatSupport from "../../assets/chatSupport.png";
 import Footer from "../footer/Footer";
 import Loader from "../loader/Loader";
+import { baseUrl } from "../../BaseUrl";
 
 
 export default function HomePage() {
@@ -23,7 +24,7 @@ export default function HomePage() {
   const [allCategories , setAllCategories]=useState([]);
   
   const fetchCategories = async () => {
-    const categs ="https://api.qualido.in/api/categories";
+    const categs =`${baseUrl}/categories`;
   const catResponse = await fetch(categs)
   const catList = await catResponse.json()
   setAllCategories(catList.categories)

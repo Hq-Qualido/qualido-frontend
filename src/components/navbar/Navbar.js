@@ -4,6 +4,7 @@ import { FaShoppingCart, FaUserCircle, FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";
+import { baseUrl } from "../../BaseUrl";
 
 export default function Navbar(props) {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function Navbar(props) {
 
   async function handleSearch(e){
     e.preventDefault()
-    const url = `https://api.qualido.in/api/products/search?tags=${searchResult}`;
+    const url = `${baseUrl}/products/search?tags=${searchResult}`;
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);

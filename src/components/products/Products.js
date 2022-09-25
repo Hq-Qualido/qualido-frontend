@@ -7,12 +7,13 @@ import Loader from "../loader/Loader";
 import ProductCard from "./ProductCard";
 import "./Products.css";
 import ProductSidebar from "./ProductSidebar";
+import { baseUrl } from "../../BaseUrl";
 
 export default function Products() {
   const [loading, setLoading] = useState(false);
   const [datas,setDatas] = useState([]);
   const fetchProducts = async (val) => {
-    const url=!val?"https://api.qualido.in/api/products" : `https://api.qualido.in/api/products?category=${val}`
+    const url=!val?`${baseUrl}/products` : `${baseUrl}/products?category=${val}`
     setLoading(true);
     const response = await fetch(url)
     const data = await response.json()

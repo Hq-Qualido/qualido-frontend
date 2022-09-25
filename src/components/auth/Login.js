@@ -2,7 +2,7 @@ import React from 'react'
 import './Login.css'
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import Footer from '../footer/Footer'
+import { baseUrl } from "../../BaseUrl";
 
 import LoginGirl from '../../assets/loginGirl.png'
 import google from '../../assets/google.png'
@@ -29,7 +29,7 @@ export default function Login() {
         console.log(values)
         setLoading(true);
               const response = await fetch(
-           `https://api.qualido.in/api/auth/login`,
+           `${baseUrl}/auth/login`,
            {
              method: "POST",
              body: JSON.stringify({
@@ -116,7 +116,6 @@ export default function Login() {
             </div>
         </div>
     </div>
-    {/* <Footer /> */}
     </>
   )
 }

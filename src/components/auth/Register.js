@@ -2,8 +2,8 @@ import React from 'react'
 import './Login.css'
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-// import Footer from '../footer/Footer'
 import {FaRegFrown} from 'react-icons/fa'
+import { baseUrl } from "../../BaseUrl";
 
 import LoginGirl from '../../assets/loginGirl.png'
 import google from '../../assets/google.png'
@@ -43,7 +43,7 @@ export default function Register() {
         else{
             setErrors('')
             console.log(userData.confirmPass)
-        const response = await fetch(`https://api.qualido.in/api/auth/register`,
+        const response = await fetch(`${baseUrl}/auth/register`,
             {
                 method: "POST",
                 body: JSON.stringify({
@@ -162,7 +162,6 @@ export default function Register() {
     </div>
 { errors.length<=0 &&
     <OtpPopup trigger={popup} userData={userData} setTrigger={setPopup}/>}
-    {/* <Footer /> */}
     </>
   )
 }

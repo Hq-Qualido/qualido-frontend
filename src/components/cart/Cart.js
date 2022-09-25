@@ -5,6 +5,7 @@ import CartCard from './CartCard'
 import { Link } from "react-router-dom";
 import Footer from '../footer/Footer';
 import { useCart } from "react-use-cart";
+import { baseUrl } from '../../BaseUrl';
 
 export default function Cart() {
   const {
@@ -16,7 +17,7 @@ export default function Cart() {
   } = useCart();
 // console.log(items,"itemd")
   const addToCart = async () => {
-    const response = await fetch(`https://api.qualido.in/api/cart/add`,
+    const response = await fetch(`${baseUrl}/cart/add`,
     {
         method: "PUT",
         body: JSON.stringify(items),
