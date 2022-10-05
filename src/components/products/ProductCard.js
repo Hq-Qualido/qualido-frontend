@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
 
 export default function ProductCard(props) {
-  // console.log(props,"items");
   const navigate = useNavigate();
   const handleNavigate =()=>{
     console.log("navigator")
@@ -79,8 +78,11 @@ export default function ProductCard(props) {
         </div>
 
         <div className="product-details">
-          <h3 className="product-title">{props.prodName}</h3>
-          <div className="price-rating">
+        <h3 className="product-title mt-2">
+    <Link to={`${props._id} `} style={{textDecoration:"none"}}>
+          {props.prodName.length>15? (props.prodName.slice(0,15)+"...") : props.prodName }
+              </Link>
+          </h3>          <div className="price-rating">
             <h3 className="product-price">Rs {props.prodMrp} <span style={{textDecoration:"line-through" , color:"grey" , fontSize:"15px "}}>{props.prodSp}</span> </h3>
             <div className="products-ratings">
             <FaStar color="orange"/>
