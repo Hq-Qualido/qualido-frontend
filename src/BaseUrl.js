@@ -1,3 +1,3 @@
-const baseUrl = "http://api.qualido.in/api"
+const baseUrl = "https://api.qualido.in/api"
 
 export {baseUrl}
