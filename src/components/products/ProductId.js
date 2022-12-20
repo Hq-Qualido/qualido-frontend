@@ -1,10 +1,10 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaStar, FaStarHalf, FaArrowLeft, FaRupeeSign } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import Footer from "../footer/Footer";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useCart } from "react-use-cart";
 import Loader from "../loader/Loader";
@@ -16,38 +16,37 @@ export default function ProductId() {
 
   const { addItem } = useCart();
 
-  const randomNumber = Math.random()*10;
-  const [indivProd , setIndivProd] = useState([]);
-  const [sameProds , setSameProds] = useState([]);
-  const [category , setCategory] = useState('');
+  const randomNumber = Math.random() * 10;
+  const [indivProd, setIndivProd] = useState([]);
+  const [sameProds, setSameProds] = useState([]);
+  const [category, setCategory] = useState("");
 
   const fetchProductData = async () => {
-    const url1=`${baseUrl}/products`
-    const response1 = await fetch(url1)
-    const data1 = await response1.json()
+    const url1 = `${baseUrl}/products`;
+    const response1 = await fetch(url1);
+    const data1 = await response1.json();
 
-    data1.products.forEach((prodData)=>{
-      if(prodData._id === productId){
-        setIndivProd(prodData)
-        setCategory(prodData.category)
+    data1.products.forEach((prodData) => {
+      if (prodData._id === productId) {
+        setIndivProd(prodData);
+        setCategory(prodData.category);
       }
-    })
-  }
+    });
+  };
 
   const fetchSimiliarProducts = async () => {
-    const url2=`${baseUrl}/products?category=${category}`
-    const response2 = await fetch(url2)
-    const data2 = await response2.json()
-    setSameProds(data2.products)
-    
-  }
+    const url2 = `${baseUrl}/products?category=${category}`;
+    const response2 = await fetch(url2);
+    const data2 = await response2.json();
+    setSameProds(data2.products);
+  };
 
-  useEffect(()=>{
-    fetchProductData();  
-    fetchSimiliarProducts(); 
+  useEffect(() => {
+    fetchProductData();
+    fetchSimiliarProducts();
     window.scrollTo(0, 0);
     // eslint-disable-next-line
-  },[productId,location]);
+  }, [productId, location]);
 
   return (
     <>
@@ -59,26 +58,30 @@ export default function ProductId() {
         </div>
         <div className="row">
           <div className="col-lg-6 col-sm-6 productID-left">
-          { indivProd.url?(
-            <img src={indivProd.url} alt="BookImage" />
-          ):
-         ( 
-          <Loader type="dots" />
-         )
-          }
+            {indivProd.url ? (
+              <img src={indivProd.url} alt="BookImage" />
+            ) : (
+              <Loader type="dots" />
+            )}
           </div>
           <div className="col-lg-6 col-sm-6 productID-right">
             <h1 className="my-2">
-              {indivProd.prodName} <span style={{fontSize:"25px" , color:"grey"}}> by </span> {indivProd.authorName}
+              {indivProd.prodName}{" "}
+              <span style={{ fontSize: "25px", color: "grey" }}> by </span>{" "}
+              {indivProd.authorName}
             </h1>
 
+            <div className="tags">
+              {indivProd.tags?.map((t) => {
+                return (
+                  <p key={t} className="mx-1">
+                    {" "}
+                    #{t}{" "}
+                  </p>
+                );
+              })}
+            </div>
 
-        <div className="tags">
-        {indivProd.tags?.map((t)=>{
-            return (<p key={t} className="mx-1"> #{ t } </p>)
-          })}
-        </div>  
-            
             <div className="ratings-reviews mb-3">
               <FaStar color="orange" />
               <FaStar color="orange" />
@@ -87,31 +90,50 @@ export default function ProductId() {
               <FaStarHalf color="orange" />
               <span>145 ratings</span>
             </div>
-            <div className={indivProd.inStock?"In-Stock":"Currently-Unavailable"}>{indivProd.inStock?"In Stock":"Currently Unavailable"}</div>
-            <h4 className="product-price my-3">Rs {indivProd.prodMrp} <span style={{textDecoration:"line-through" , color:"grey" , fontSize:"18px "}}>{indivProd.prodSp}</span></h4> 
-            <div  className="save-percentage">
-                Save {indivProd.discount}% 
-
+            <div
+              className={
+                indivProd.inStock ? "In-Stock" : "Currently-Unavailable"
+              }
+            >
+              {indivProd.inStock ? "In Stock" : "Currently Unavailable"}
             </div>
+            <h4 className="product-price my-3">
+              Rs {indivProd.prodSp}{" "}
+              <span
+                style={{
+                  textDecoration: "line-through",
+                  color: "grey",
+                  fontSize: "18px ",
+                }}
+              >
+                {indivProd.prodMrp}
+              </span>
+            </h4>
+            <div className="save-percentage">Save {indivProd.discount}%</div>
             <div className="product-buttons my-4">
-              <div className="cart-btn mx-1" 
-               onClick={() => addItem({
-                id:indivProd._id,
-                price:indivProd.prodMrp,
-                ...indivProd,
-                })}>
+              <div
+                className="cart-btn mx-1"
+                onClick={() =>
+                  addItem({
+                    id: indivProd._id,
+                    price: indivProd.prodSp,
+                    ...indivProd,
+                  })
+                }
+              >
                 Add to Cart
               </div>
-              <div className="buy-btn mx-1">  <FaRupeeSign /> Buy Now </div>
+              <div className="buy-btn mx-1">
+                {" "}
+                <FaRupeeSign /> Buy Now{" "}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div className="container">
-        <p className="book-lines text-center">
-          {indivProd.description}
-        </p>
+        <p className="book-lines text-center">{indivProd.description}</p>
       </div>
 
       <div className="container my-5">
@@ -131,18 +153,16 @@ export default function ProductId() {
       <div className="products-list container-fluid">
         <h3 className="text-center">View Similiar products...</h3>
         <div className="products-list-body">
-
-        {sameProds.slice(randomNumber,randomNumber+4)?.map((p)=>{
-          return (
-            <ProductCard
-              key={p._id}
-              {...p}
-              id="62c6e23f7bf811b8bbc1a309"
-              navigator={true}
-          />
-          )
-        })}
-        
+          {sameProds.slice(randomNumber, randomNumber + 4)?.map((p) => {
+            return (
+              <ProductCard
+                key={p._id}
+                {...p}
+                id="62c6e23f7bf811b8bbc1a309"
+                navigator={true}
+              />
+            );
+          })}
         </div>
       </div>
       {/* SIMILIAR PRODUCT LIST ENDS */}
@@ -150,4 +170,3 @@ export default function ProductId() {
     </>
   );
 }
-
