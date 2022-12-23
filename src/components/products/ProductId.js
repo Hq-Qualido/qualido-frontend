@@ -103,7 +103,7 @@ export default function ProductId() {
                 style={{
                   textDecoration: "line-through",
                   color: "grey",
-                  fontSize: "18px ",
+                  fontSize: "15px ",
                 }}
               >
                 {indivProd.prodMrp}
