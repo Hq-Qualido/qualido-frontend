@@ -190,9 +190,13 @@
 }
 
 .product-price {
-  font-size: 25px;
+  font-size: 20px;
   color: #00a1b6;
   margin: 0;
+}
+.saving{
+  color: #07a945;
+  margin: 2px;
 }
 
 /* PRODUCTID PAGE CSS STARTS  */
@@ -201,27 +205,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 .productID-left img {
   width: 250px;
   margin: 1rem 0rem;
+
 }
 .productID-right {
   padding-top: auto;
   padding-bottom: auto;
 }
-.productID-right h1 {
-  color: #00a1b6;
+.productID-right .prod_heading {
+  /* color: #00a1b6; */
+  font-size: 2rem;
 }
-.productID-right .product-buttons {
+.product-buttons {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   flex-direction: row;
-  width: 100%;
+  width: fit-content;
 }
 
-.productID-right .product-buttons .cart-btn {
+.product-buttons .cart-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -232,13 +243,13 @@
   text-transform: capitalize;
 }
 
-.productID-right .product-buttons .cart-btn:hover {
+.product-buttons .cart-btn:hover {
   cursor: pointer;
   color: #00899b;
   border: 1px solid #00899b;
 }
 
-.productID-right .product-buttons .buy-btn {
+ .product-buttons .buy-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -249,18 +260,30 @@
   text-transform: capitalize;
 }
 
-.productID-right .product-buttons .buy-btn:hover {
+.product-buttons .buy-btn:hover {
   cursor: pointer;
   background-color: #00899b;
 }
 
-.product-description {
-  padding: 0;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+.about_product {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.about_product_table tbody tr td{
+  padding: 5px 10px;
 }
 
+.light_text{
+  color: rgb(165, 165, 165);
+}
+.read_more{
+  color: #289aff;
+}
+.read_more:hover{
+cursor: pointer;
+}
 /* PRODUCTID PAGE CSS ENDS */
 
 @media only screen and (max-width: 500px) {
@@ -272,7 +295,18 @@
       "products-sidebar products-sidebar"
       "products-list products-list";
   }
+  .productID-left{
 
+    position: static;
+    top: 0;
+    left: 0;
+  }
+  .productID-right .prod_heading {
+    font-size: 1.5rem;
+  }
+  .product_description {
+    width: 100vw;
+  }
   .product-card {
     width: 150px;
     padding: 0.3rem;

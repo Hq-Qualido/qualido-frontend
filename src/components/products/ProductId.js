@@ -13,7 +13,7 @@ import { baseUrl } from "../../BaseUrl";
 export default function ProductId() {
   let { productId } = useParams();
   const location = useLocation();
-
+  const [descLength, setDescLength] = useState(200);
   const { addItem } = useCart();
 
   const randomNumber = Math.random() * 10;
@@ -59,57 +59,12 @@ export default function ProductId() {
         <div className="row">
           <div className="col-lg-6 col-sm-6 productID-left">
             {indivProd.url ? (
-              <img src={indivProd.url} alt="BookImage" />
+              <div>
+                <img src={indivProd.url} alt="BookImage" />
+              </div>
             ) : (
               <Loader type="dots" />
             )}
-          </div>
-          <div className="col-lg-6 col-sm-6 productID-right">
-            <h1 className="my-2">
-              {indivProd.prodName}{" "}
-              <span style={{ fontSize: "25px", color: "grey" }}> by </span>{" "}
-              {indivProd.authorName}
-            </h1>
-
-            <div className="tags">
-              {indivProd.tags?.map((t) => {
-                return (
-                  <p key={t} className="mx-1">
-                    {" "}
-                    #{t}{" "}
-                  </p>
-                );
-              })}
-            </div>
-
-            <div className="ratings-reviews mb-3">
-              <FaStar color="orange" />
-              <FaStar color="orange" />
-              <FaStar color="orange" />
-              <FaStar color="orange" />
-              <FaStarHalf color="orange" />
-              <span>145 ratings</span>
-            </div>
-            <div
-              className={
-                indivProd.inStock ? "In-Stock" : "Currently-Unavailable"
-              }
-            >
-              {indivProd.inStock ? "In Stock" : "Currently Unavailable"}
-            </div>
-            <h4 className="product-price my-3">
-              Rs {indivProd.prodSp}{" "}
-              <span
-                style={{
-                  textDecoration: "line-through",
-                  color: "grey",
-                  fontSize: "15px ",
-                }}
-              >
-                {indivProd.prodMrp}
-              </span>
-            </h4>
-            <div className="save-percentage">Save {indivProd.discount}%</div>
             <div className="product-buttons my-4">
               <div
                 className="cart-btn mx-1"
@@ -124,48 +79,149 @@ export default function ProductId() {
                 Add to Cart
               </div>
               <div className="buy-btn mx-1">
-                {" "}
-                <FaRupeeSign /> Buy Now{" "}
+                <FaRupeeSign /> Buy Now
               </div>
             </div>
+          </div>
+          <div className="col-lg-6 col-sm-6 productID-right">
+            <div className="prod_heading my-2">
+              {indivProd.prodName}{" "}
+              <span style={{ fontSize: "20px", color: "grey" }}> by </span>{" "}
+              {indivProd.authorName}
+            </div>
+
+            <div className="tags">
+              {indivProd.tags?.map((t) => {
+                return (
+                  <p key={t} className="mx-1">
+                    #{t}{" "}
+                  </p>
+                );
+              })}
+            </div>
+
+            <div className="ratings-reviews mb-3">
+              <FaStar color="orange" />
+              <FaStar color="orange" />
+              <FaStar color="orange" />
+              <FaStar color="orange" />
+              <FaStarHalf color="orange" />
+              <span>145 ratings</span>
+            </div>
+            <h4 className="product-price my-3">
+              Rs {indivProd.prodSp}{" "}
+              <span
+                style={{
+                  textDecoration: "line-through",
+                  color: "grey",
+                  fontSize: "15px ",
+                }}
+              >
+                {indivProd.prodMrp}
+              </span>
+              <span className="saving"> {indivProd.discount}% Off</span>
+            </h4>
+
+            {/* _______________ */}
+            <div className=" my-4">
+              <h5 className="">About the product </h5>
+              <div className="about_product">
+                <table className="about_product_table">
+                  <tbody>
+                    <tr> 
+                      <td className="col-lg-6 col-sm-6 light_text">Publisher</td>
+                      <td className="col-lg-6 col-sm-6">{indivProd.publisher?indivProd.publisher:"NA"}</td>
+                    </tr>
+                    <tr> 
+                      <td className="col-lg-6 col-sm-6 light_text">Language Availability</td>
+                      <td className="col-lg-6 col-sm-6">{indivProd.language?indivProd.language:"NA"}</td>
+                    </tr>
+                    <tr> 
+                      <td className="col-lg-6 col-sm-6 light_text">Book type </td>
+                      <td className="col-lg-6 col-sm-6">{indivProd.bookType?indivProd.bookType:"NA"}</td>
+                    </tr>
+                    <tr> 
+                      <td className="col-lg-6 col-sm-6 light_text">Number of pages </td>
+                      <td className="col-lg-6 col-sm-6">{indivProd.numOfPages?indivProd.numOfPages:"NA"}</td>
+                    </tr>
+                    <tr> 
+                      <td className="col-lg-6 col-sm-6 light_text">Height </td>
+                      <td className="col-lg-6 col-sm-6">{indivProd.height?indivProd.height:"NA"}</td>
+                    </tr>
+                    <tr> 
+                      <td className="col-lg-6 col-sm-6 light_text">Width </td>
+                      <td className="col-lg-6 col-sm-6">{indivProd.width?indivProd.width:"NA"}</td>
+                    </tr>
+                    <tr> 
+                      <td className="col-lg-6 col-sm-6 light_text">Length </td>
+                      <td className="col-lg-6 col-sm-6">{indivProd.length?indivProd.length:"NA"}</td>
+                    </tr>
+                    <tr> 
+                      <td className="col-lg-6 col-sm-6 light_text">Weight </td>
+                      <td className="col-lg-6 col-sm-6">{indivProd.weight?indivProd.weight:"NA"}</td>
+                    </tr>
+                  </tbody>
+                </table>
+           </div>
+           </div>
+
+            {/* _______________ */}
+            {indivProd.description ? (
+              <div className="container">
+                <h5 className="">Description </h5>
+                <p className="book-lines ">
+                  {indivProd.description.slice(0, descLength)}
+                  {descLength === 200 ? (
+                    <span
+                      className="read_more"
+                      onClick={(e) => {
+                        setDescLength(indivProd.description.length);
+                      }}
+                    >
+                      ...Read more
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                  {descLength === indivProd.description.length ? (
+                    <span
+                      className="read_more"
+                      onClick={(e) => {
+                        setDescLength(200);
+                      }}
+                    >
+                      ...Read less
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </p>
+              </div>
+            ) : (
+              ""
+            )}
+            {/* SIMILIAR PRODUCT LIST STARTS */}
+
+            {/* <div className="products-list container-fluid">
+              <h3 className="text-center">View Similiar products...</h3>
+              <div className="products-list-body">
+                {sameProds.slice(randomNumber, randomNumber + 4)?.map((p) => {
+                  return (
+                    <ProductCard
+                      key={p._id}
+                      {...p}
+                      id="62c6e23f7bf811b8bbc1a309"
+                      navigator={true}
+                    />
+                  );
+                })}
+              </div>
+            </div> */}
+            {/* SIMILIAR PRODUCT LIST ENDS */}
           </div>
         </div>
       </div>
 
-      <div className="container">
-        <p className="book-lines text-center">{indivProd.description}</p>
-      </div>
-
-      <div className="container my-5">
-        <h3 className="text-center">About the product </h3>
-        <ul className="product-description my-4">
-          <li>Publishers Data</li>
-          <li>Language Availability</li>
-          <li>Item Weight </li>
-          <li>Dimensions </li>
-          <li>Dimensions </li>
-          <li>Dimensions </li>
-        </ul>
-      </div>
-
-      {/* SIMILIAR PRODUCT LIST STARTS */}
-
-      <div className="products-list container-fluid">
-        <h3 className="text-center">View Similiar products...</h3>
-        <div className="products-list-body">
-          {sameProds.slice(randomNumber, randomNumber + 4)?.map((p) => {
-            return (
-              <ProductCard
-                key={p._id}
-                {...p}
-                id="62c6e23f7bf811b8bbc1a309"
-                navigator={true}
-              />
-            );
-          })}
-        </div>
-      </div>
-      {/* SIMILIAR PRODUCT LIST ENDS */}
       <Footer />
     </>
   );
