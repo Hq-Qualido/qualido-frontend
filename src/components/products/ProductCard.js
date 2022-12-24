@@ -45,18 +45,12 @@ export default function ProductCard(props) {
               </Link>
             </h3>
             <div className="price-rating">
-              <h3 className="product-price">
+              <div className="product-price">
                 Rs {props.prodSp}{" "}
-                <span
-                  style={{
-                    textDecoration: "line-through",
-                    color: "grey",
-                    fontSize: "15px ",
-                  }}
-                >
+                <span className="line_through_text">
                   {props.prodMrp}
-                </span>{" "}
-              </h3>
+                </span>
+              </div>
               <div className="products-ratings">
                 <FaStar color="orange" />
                 <FaStar color="orange" />

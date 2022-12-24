@@ -191,12 +191,19 @@
 
 .product-price {
   font-size: 20px;
-  color: #00a1b6;
+  font-weight: 500;
   margin: 0;
+}
+.product-price .line_through_text{
+  color: grey;
+  font-size: 15px;
+  text-decoration: line-through;
 }
 .saving{
   color: #07a945;
-  margin: 2px;
+  margin: 2px 5px;
+  font-weight: 300;
+
 }
 
 /* PRODUCTID PAGE CSS STARTS  */
@@ -264,7 +271,9 @@
   cursor: pointer;
   background-color: #00899b;
 }
-
+.about_author_table tr td{
+  padding: 5px 0px;
+}
 .about_product {
   display: flex;
   align-items: flex-start;
@@ -277,6 +286,12 @@
 
 .light_text{
   color: rgb(165, 165, 165);
+}
+.product_description{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: fit-content;
 }
 .read_more{
   color: #289aff;
@@ -304,9 +319,9 @@ cursor: pointer;
   .productID-right .prod_heading {
     font-size: 1.5rem;
   }
-  .product_description {
+  /* .product_description {
     width: 100vw;
-  }
+  } */
   .product-card {
     width: 150px;
     padding: 0.3rem;
@@ -328,7 +343,12 @@ cursor: pointer;
   .product-title {
     font-size: 1rem;
   }
-
+  .product-price {
+    font-size: 15px;
+  }
+  .product-price .line_through_text{
+    font-size: 12px;
+  }
   .products-ratings {
     font-size: 10px;
   }
