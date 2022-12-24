@@ -119,7 +119,7 @@ export default function ProductId() {
               <tbody>
                 <tr>
                   <td className="col-lg-4 col-sm-6 light_text">Author</td>
-                  <td className="col-lg-8 col-sm-6 read_more">
+                  <td className="col-lg-8 col-sm-6">
                     {indivProd.authorName ? indivProd.authorName : "NA"}
                   </td>
                 </tr>
@@ -230,7 +230,6 @@ export default function ProductId() {
 
             {/* _______________ */}
             {indivProd.description ? (
-              <div className="container">
                 <table className="">
                   <tbody>
                     <tr>
@@ -267,7 +266,6 @@ export default function ProductId() {
                     </tr>
                   </tbody>
                 </table>
-              </div>
             ) : (
               ""
             )}
