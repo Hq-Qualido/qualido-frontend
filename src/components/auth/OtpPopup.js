@@ -95,7 +95,11 @@ export default function OtpPopup(props) {
             </div>
           </div>
           <div className="error-message">
-            <FiAlertCircle /> {errorMessage}
+             {errorMessage?<>
+              <FiAlertCircle />
+              {errorMessage}
+            </>
+               :""}
           </div>
           <div className="resend-otp">
             Resend OTP

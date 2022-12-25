@@ -27,7 +27,7 @@ export default function Register() {
         })
     }
     async function handleSubmit(){
-        console.log(userData);
+        // console.log(userData);
         if (!userData.email) {
             setErrors('Email required!');
           } else if (!/\S+@\S+\.\S+/.test(userData.email)) {
@@ -42,7 +42,7 @@ export default function Register() {
         }
         else{
             setErrors('')
-            console.log(userData.confirmPass)
+            // console.log(userData.confirmPass)
         const response = await fetch(`${baseUrl}/auth/register`,
             {
                 method: "POST",
