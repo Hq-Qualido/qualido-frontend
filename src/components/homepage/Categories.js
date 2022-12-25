@@ -12,7 +12,7 @@ export default function Categories(props) {
             </div>
           </div>
         </Link>
-        <h4 className="text-center category-type">{props.name}</h4>
+        <div className="text-center category-type fs-5">{props.name}</div>
       </div>
     </>
   );

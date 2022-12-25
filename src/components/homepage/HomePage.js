@@ -89,8 +89,8 @@ export default function HomePage() {
         <div className="container-fluid slider">
           <div className="row slider-row">
             <div className="col-lg-6 col-sm-6 slider-left">
-              <h1 className="slider-heading slideLeft-text">Grab The Best </h1>
-              <h1 className="slider-heading slideRight-text">Deals Here! </h1>
+              <div className="slider-heading slideLeft-text fs-0">Grab The Best </div>
+              <div className="slider-heading slideRight-text fs-0 ms-5">Deals Here! </div>
               <p className="slider-para">
                 Now get all the books you have always wanted to read at much cheaper prices than anywhere else.
               </p>
@@ -107,10 +107,10 @@ export default function HomePage() {
         <div className="container-fluid slider">
           <div className="row slider-row">
             <div className="col-lg-6 col-sm-6 slider-left">
-              <h1 className="slider-heading slideLeft-text">
+              <div className="slider-heading slideLeft-text fs-0">
                  Latest arrivals
-              </h1>
-              <h1 className="slider-heading slideRight-text">Are Now Here! </h1>
+              </div>
+              <div className="slider-heading slideRight-text fs-0 ms-5">Are Now Here! </div>
               <p className="slider-para">
               We have brought you the latest most trendy books better and before than anyone else.
               </p>
@@ -127,8 +127,8 @@ export default function HomePage() {
         <div className="container-fluid slider">
           <div className="row slider-row">
             <div className="col-lg-6 col-sm-6 slider-left">
-              <h1 className="slider-heading slideLeft-text">Now Library at </h1>
-              <h1 className="slider-heading slideRight-text">your home! </h1>
+              <div className="slider-heading slideLeft-text fs-0">Now Library at </div>
+              <div className="slider-heading slideRight-text fs-0 ms-5">your home! </div>
               <p className="slider-para">
               No need to leave your comfort , we'll deliver all your books to your home at very minimal prices.
               </p>
@@ -142,44 +142,9 @@ export default function HomePage() {
         {/* ENDS HERE 3rd */}
       </Slider>
 
-      {/* THE TOP PICKS STARTS HERE  */}
-      {/* <div className="container-fluid top-picks my-5">
-        <h1 className="text-center section-heading my-5 ">The Top Picks</h1>
-        <div className="row top-picks-row">
-          <div className="col-lg-2 col-sm-3 mx-1 best-products">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis
-            error accusantium labore. Recusandae delectus quidem rerum.
-            Dignissimos aliquam deleniti quae.
-          </div>
-          <div className="col-lg-2 col-sm-3 mx-1 best-products">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis
-            error accusantium labore. Recusandae delectus quidem rerum.
-            Dignissimos aliquam deleniti quae.
-          </div>
-          <div className="col-lg-2 col-sm-3 mx-1 best-products">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis
-            error accusantium labore. Recusandae delectus quidem rerum.
-            Dignissimos aliquam deleniti quae.
-          </div>
-          <div className="col-lg-2 col-sm-3 mx-1 best-products">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis
-            error accusantium labore. Recusandae delectus quidem rerum.
-            Dignissimos aliquam deleniti quae.
-          </div>
-          <div className="col-lg-2 col-sm-3 mx-1 best-products">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis
-            error accusantium labore. Recusandae delectus quidem rerum.
-            Dignissimos aliquam deleniti quae.
-          </div>
-        </div>
-      </div> */}
-      {/* THE TOP PICKS ENDS HERE  */}
-
-
-
       {/* ALL CATEGORIES LIST STARTS  */}
       <div className="container-fluid categories my-5">
-      <h1 className="text-center section-heading mb-5 ">Categories</h1>
+      <div className="text-center section-heading mb-5 fs-2">Categories</div>
     <div className="row categories-body">
       {allCategories.length>0 ?( allCategories?.map((item)=>{
         return (
@@ -201,7 +166,7 @@ export default function HomePage() {
       {/* CUSTOMER REVIEWS STARTS */}
       <div className="container-fluid customer-reviews">
         <div className="row customer-reviews-row">
-      <h1 className="text-center section-heading mb-5 ">Customer Reviews</h1>
+      <div className="text-center section-heading mb-5 fs-2">Customer Reviews</div>
 
         <Slider {...customers}>
 
@@ -220,7 +185,7 @@ export default function HomePage() {
 
       {/* WHY CHOOSE US StARTS */}
       <div className="container my-5">
-      <h1 className="text-center section-heading mb-5 ">Why Choose US?</h1>
+      <div className="text-center section-heading mb-5 fs-2">Why Choose US?</div>
         <div className="row">
         <WhyUS image={Service} title="Service" description="Door to door fast delivery service is available with us to give you the best of your experience." />
         <WhyUS image={Privacy} title="Privacy" description="All transactions are 100% secure and as fast as super jet. Pay with card , Upi or any way you want." />
