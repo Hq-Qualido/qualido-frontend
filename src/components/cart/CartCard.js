@@ -1,5 +1,4 @@
 import React from "react";
-import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 
@@ -12,22 +11,22 @@ export default function CartCard(props) {
       <div className="cart-card">
         <div className="cart-image">
           <Link to={`/products/${props._id}`}>
-            <img src={props.thumbnailUrl} alt="" />
+            <img src={props.url} alt="" />
           </Link>
         </div>
         <div className="cart-details">
           <Link to={`/products/${props._id}`}>
-            <h5 className="item-name">{props.prodName}</h5>
+            <div className="item-name">{props.prodName?( props.prodName.length>30? props.prodName.slice(0,30)+"..." :props.prodName ): ""}</div>
           </Link>
           <div className="author-name">Author : {props.authorName}</div>
           {props.inStock ? (
-            <div className="In-Stock">In Stock</div>
+            <div className="in_stock">In Stock</div>
           ) : (
-            <div className="Currently-Unavailable">Currently-Unavailable</div>
+            <div className="unavailable">Currently-Unavailable</div>
           )}
 
           <div className="set-quantity mt-1">
-            <span className="mx-1">Quantity: </span>
+            <span className="me-2">Quantity :  </span>
             <button
               onClick={() => updateItemQuantity(props.id, props.quantity - 1)}
               className="set-count-btn "
@@ -42,14 +41,17 @@ export default function CartCard(props) {
               +
             </button>
           </div>
-          <div className="price">Rs.{props.prodSp}</div>
-        </div>
-
-        <div className="buttons">
-          <div className="remove-btn mx-1" onClick={() => removeItem(props.id)}>
-            <FaTrashAlt />
+          <div className="product-price my-1">
+              Rs {props.prodSp}{" "}
+              <span className="line_through_text">{props.prodMrp}</span>
+              <span className="saving"> {props.discount}% Off</span>
+            </div>
+          <div className="d-flex flex-row justify-content-center align-items-center">
+            <div className="add_wishlist mx-2">  Add to wishlist</div>
+            <div className="remove-btn mx-2" type="button"  onClick={() => removeItem(props.id)}> Remove </div>
           </div>
         </div>
+
       </div>
     </>
   );

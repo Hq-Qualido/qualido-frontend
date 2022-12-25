@@ -58,7 +58,7 @@ export default function Cart() {
 
             <div className="cart-items">
             <div className="cart-heading my-2">
-                <h1>Products in your cart ({totalUniqueItems})</h1>
+                <div className="fs-3">Products in your cart ({totalUniqueItems})</div>
                 <Link to="/products" className="add-btn">Add More</Link>
             </div>
             <div className="cart-items-body">
@@ -75,8 +75,8 @@ export default function Cart() {
                 <p> Your order is eligible for FREE Delivery, you can select this option at checkout. Details</p>
             </div>
 
-            <div className="order-details">
-              Subtotal ({totalItems} Items) : Rs { cartTotal}
+            <div className="order-details fs-5">
+              Subtotal ({totalItems} Items) : <span className='fw-semibold'> Rs { cartTotal} </span> 
             </div>
             <div className="buy-btn">
               Proceed to Pay
