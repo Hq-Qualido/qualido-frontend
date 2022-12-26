@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCartPlus, FaStar, FaStarHalf } from "react-icons/fa";
+import { FaCartPlus, FaStar } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
 
@@ -37,26 +37,23 @@ export default function ProductCard(props) {
           </div>
 
           <div className="product-details">
-            <h3 className="product-title mt-2">
+            <div className="product-title mt-2 fs-5">
               <Link to={`${props._id} `} style={{ textDecoration: "none" }}>
                 {props.prodName.length > 15
                   ? props.prodName.slice(0, 15) + "..."
                   : props.prodName}
               </Link>
-            </h3>
+            </div>
             <div className="price-rating">
               <div className="product-price">
                 Rs {props.prodSp}{" "}
-                <span className="line_through_text">
-                  {props.prodMrp}
-                </span>
+                <span className="line_through_text">{props.prodMrp}</span>
               </div>
-              <div className="products-ratings">
-                <FaStar color="orange" />
-                <FaStar color="orange" />
-                <FaStar color="orange" />
-                <FaStar color="orange" />
-                <FaStarHalf color="orange" />
+              <div style={{ color: "orange" }} className="d-flex flex-row ">
+                <span className="me-1"> 4.5 </span>{" "}
+                <span className="d-flex justify-content-center align-items-center">
+                  <FaStar />
+                </span>
               </div>
             </div>
           </div>
@@ -66,7 +63,9 @@ export default function ProductCard(props) {
           <div className="product-image">
             <img src={props.url} alt="" />
             <div className="over-image">
-              <span className="save-percentage">Save {props.discount}%</span>
+              <span className="save-percentage">
+                {props.discount ? "Save" + props.discount + "%" : ""}
+              </span>
               <span
                 className="wishlist-btn my-2"
                 onClick={() =>
@@ -83,15 +82,15 @@ export default function ProductCard(props) {
           </div>
 
           <div className="product-details">
-            <h3 className="product-title mt-2">
+            <div className="product-title mt-2 fs-5">
               <Link to={`${props._id} `} style={{ textDecoration: "none" }}>
                 {props.prodName.length > 15
                   ? props.prodName.slice(0, 15) + "..."
                   : props.prodName}
               </Link>
-            </h3>{" "}
+            </div>{" "}
             <div className="price-rating">
-              <h3 className="product-price">
+              <div className="product-price">
                 Rs {props.prodMrp}{" "}
                 <span
                   style={{
@@ -102,13 +101,12 @@ export default function ProductCard(props) {
                 >
                   {props.prodSp}
                 </span>{" "}
-              </h3>
-              <div className="products-ratings">
-                <FaStar color="orange" />
-                <FaStar color="orange" />
-                <FaStar color="orange" />
-                <FaStar color="orange" />
-                <FaStar color="orange" />
+              </div>
+              <div style={{ color: "orange" }}>
+                <span className="me-1"> 4.5 </span>{" "}
+                <span className="d-flex justify-content-center align-items-center">
+                  <FaStar />
+                </span>
               </div>
             </div>
           </div>

@@ -167,13 +167,13 @@
   cursor: pointer;
 }
 
-.product-title {
+.product-title a{
   width: fit-content;
   font-size: 20px;
-  color: #00a1b6;
+  color: #000;
 }
 
-.product-title:hover {
+.product-title a:hover {
   color: #00a1b6;
 }
 
@@ -199,7 +199,6 @@
   font-size: 20px;
   font-weight: 500;
   margin: 0;
-  padding: 5px;
 }
 .product-price .line_through_text{
   color: grey;
