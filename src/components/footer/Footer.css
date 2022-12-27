@@ -71,9 +71,6 @@
   font-size: 15px;
   margin-top: 5px;
 }
-.icon_span{
-  margin: 0px 5px;
-}
 .footer-body .footer-services ul li:hover {
   cursor: pointer;
   color: #00a1b6;
@@ -90,6 +87,8 @@
 
 .footer .footer-bottom .terms{
   padding: 0;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .footer .footer-bottom .terms li{
   list-style: none;
@@ -102,10 +101,7 @@
 }
 
 .footer .footer-bottom .social-icons{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5px 0px;
+  margin: 0px;
 }
 
 .footer .footer-bottom .footer-tnc,.privacyPolicy,.social-icons:hover{
@@ -116,7 +112,7 @@
 .footer .footer-bottom .social-icons .footer-icon{
   color: white;
   font-size: 1.2rem;
-  margin-left: 10px;
+  margin: 5px;
 }
 
 .subscribe_section{

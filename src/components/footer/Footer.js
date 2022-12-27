@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import "./Footer.css";
 import footerLogo from "../../assets/footerLogo.png";
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
+import {FaInstagram,FaLinkedin,FaTwitter} from "react-icons/fa";
 import { FiMail, FiPhoneCall } from "react-icons/fi";
 import { RiFilePaper2Line } from "react-icons/ri";
 import { BsQuestionCircle } from "react-icons/bs";
@@ -61,7 +57,7 @@ export default function Footer() {
             <ul>
               <li>
                  
-                 <span className="icon_span" >
+                 <span className="mx-2" >
                    
                   <FiMail />   
                 </span> 
@@ -69,7 +65,7 @@ export default function Footer() {
               </li>
               <li>
                  
-                 <span className="icon_span" >
+                 <span className="mx-2" >
                    
                   <BsQuestionCircle />  
                 </span>  
@@ -77,7 +73,7 @@ export default function Footer() {
               </li>
               <li>
                  
-                 <span className="icon_span" >
+                 <span className="mx-2" >
                    
                   <FiPhoneCall /> 
                 </span> 
@@ -85,7 +81,7 @@ export default function Footer() {
               </li>
               <li>
                  
-                 <span className="icon_span" >
+                 <span className="mx-2" >
                    
                   <HiOutlineLocationMarker /> 
                 </span> 
@@ -93,14 +89,14 @@ export default function Footer() {
               </li>
               <li>
                
-               <span className="icon_span" >
+               <span className="mx-2" >
                  
                 <RiFilePaper2Line /> 
               </span> 
               Terms & Conditions
             </li>
             <li>
-               <span className="icon_span" >
+               <span className="mx-2" >
                 <MdOutlinePrivacyTip /> 
               </span> 
               Privacy Policy
@@ -114,8 +110,7 @@ export default function Footer() {
           
         <ul className="terms">
             <li>
-              <span className="icon_span" >
-
+              <span className="mx-2" >
               <MdOutlineCopyright /> 
              </span>
               Qualido.in - 2022
@@ -123,14 +118,12 @@ export default function Footer() {
           </ul>
           
           <div className="social-icons">
-
             <a
               target="_blank"
               rel="noreferrer"
               href="https://instagram.com/qualido.in?igshid=YmMyMTA2M2Y="
               className="footer-icon"
             >
-               
               <FaInstagram />
             </a>
             <a
