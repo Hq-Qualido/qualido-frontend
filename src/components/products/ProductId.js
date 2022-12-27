@@ -1,6 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { FaStar, FaArrowLeft, FaRupeeSign } from "react-icons/fa";
+import { MdOutlineHighQuality } from "react-icons/md";
+import { RiSecurePaymentFill } from "react-icons/ri";
+import { TbTruckDelivery } from "react-icons/tb";
 import { Link } from "react-router-dom";
 // import ProductCard from "./ProductCard";
 import Footer from "../footer/Footer";
@@ -253,6 +256,28 @@ export default function ProductId() {
             ) : (
               ""
             )}
+
+            <div className="d-flex flex-row p-2 my-5 border-top p-2">
+              <div className=" mx-auto text-secondary d-flex flex-column text-center w-auto">
+                <span className="fs-4">
+                  <MdOutlineHighQuality />
+                </span>
+                <span> Quality Product </span>
+              </div>
+              <div className="mx-auto text-secondary d-flex flex-column text-center w-auto">
+                <span className="fs-4">
+                  <RiSecurePaymentFill />
+                </span>
+                <span> Secure Payment </span>
+              </div>
+              <div className="mx-auto text-secondary d-flex flex-column text-center w-auto">
+                <span className="fs-4">
+                  <TbTruckDelivery />
+                </span>
+                <span> COD Available</span>
+              </div>
+            </div>
+
             {/* SIMILIAR PRODUCT LIST STARTS */}
 
             {/* <div className="products-list container-fluid">
