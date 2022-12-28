@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { baseUrl } from "../../BaseUrl";
 import { FaSearch } from "react-icons/fa";
 import SearchResult from "./SearchResult";
@@ -14,7 +14,12 @@ export default function SearchBar() {
     const response = await fetch(url);
     const data = await response.json();
     setsearchedData(data);
+    console.log(data)
   }
+  useEffect(() => {
+    handleSearch();
+    // eslint-disable-next-line
+  }, [searchBox])
 
   return (
     <>

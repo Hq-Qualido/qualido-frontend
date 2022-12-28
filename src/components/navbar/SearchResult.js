@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { MdClose ,MdNavigateNext ,MdOutlineScreenSearchDesktop } from "react-icons/md";
+import { MdClose ,MdNavigateNext } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 function SearchResult(props) {
@@ -68,9 +68,11 @@ function SearchResult(props) {
             })}
           </>
         ) : (
-        <span className="my-1 text-center">
-          Nothing to show here! <MdOutlineScreenSearchDesktop />
-        </span>
+        <div className="my-2 d-flex flex-column align-items-center justify-content-center">
+          <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_cgfdhxgx.json"  background="transparent"  speed="1"  style={{width: "150px", height: "150px"}}  loop  autoplay></lottie-player>
+          <br />
+            Nothing to show here!
+        </div>
         )}
       </div>
     </>
