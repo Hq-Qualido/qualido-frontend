@@ -17,7 +17,8 @@ nav {
 .search_result {
   position: absolute;
   top: 90px;
-  left: calc(50vw-100px);
+  margin-left: auto;
+  margin-right: auto;
   padding: 0.5rem 1rem;
   width: 40vw;
   height: fit-content;
