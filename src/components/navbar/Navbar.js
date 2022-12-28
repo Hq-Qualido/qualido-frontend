@@ -1,27 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Navbar.css";
-import { FaShoppingCart, FaUserCircle, FaSearch } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { FaShoppingCart, FaUserCircle} from "react-icons/fa";
+import { Link } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";
-import { baseUrl } from "../../BaseUrl";
+import SearchBar from "./SearchBar";
 
 export default function Navbar(props) {
-  const navigate = useNavigate();
-  const [searchResult,setSearchResult]=useState('');
-
   const {
     totalUniqueItems,
   } = useCart();
 
-  async function handleSearch(e){
-    e.preventDefault()
-    const url = `${baseUrl}/products/search?tags=${searchResult}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-  }
-  
   return (
     <>
       <nav>
@@ -31,21 +20,8 @@ export default function Navbar(props) {
             Qualido
           </div>
         </Link>
-        <form className="d-flex nav-searchBar" role="search" onSubmit={handleSearch}>
-        <span className="search-icon"> <FaSearch /> </span>
-          <input
-            className="search-bar me-1"
-            type="search"
-            placeholder="Search items..."
-            aria-label="Search"
-            value={searchResult}
-            onChange={((e)=>{
-              setSearchResult(e.target.value);
-              navigate("/products");
-            })}
-          />
-        </form>
 
+        <SearchBar />
         <div className="text-light nav-menu">
           <Link to="/cart" className="nav-menu-item">
            <span> <FaShoppingCart />   </span> Cart({totalUniqueItems})
