@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { MdClose ,MdOutlineOpenInNew } from "react-icons/md";
+import { MdClose ,MdNavigateNext ,MdOutlineScreenSearchDesktop } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 function SearchResult(props) {
@@ -8,7 +8,6 @@ function SearchResult(props) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          console.log(props);
           props.searchResult(false);
         }
       }
@@ -60,7 +59,7 @@ function SearchResult(props) {
                         </div>
                       </div>
                       <div className="text-secondary my-auto ms-auto me-1">
-                        <MdOutlineOpenInNew />
+                        <MdNavigateNext />
                       </div>
                     </div>
                   </Link>
@@ -69,7 +68,9 @@ function SearchResult(props) {
             })}
           </>
         ) : (
-          "Nothing to show here!"
+        <span className="my-1 text-center">
+          Nothing to show here! <MdOutlineScreenSearchDesktop />
+        </span>
         )}
       </div>
     </>
