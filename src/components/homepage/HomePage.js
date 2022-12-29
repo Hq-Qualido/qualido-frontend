@@ -17,6 +17,7 @@ import Footer from "../footer/Footer";
 import Loader from "../loader/Loader";
 import { baseUrl } from "../../BaseUrl";
 import { FaWhatsapp } from "react-icons/fa";
+import UpcomingProducts from "./UpcomingProducts";
 
 export default function HomePage() {
   const [allCategories, setAllCategories] = useState([]);
@@ -86,10 +87,10 @@ export default function HomePage() {
           <div className="row slider-row">
             <div className="col-lg-6 col-sm-6 slider-left">
               <div className="slider-heading slideLeft-text fs-0">
-                Grab The Best 
+                Grab The Best
               </div>
               <div className="slider-heading slideRight-text fs-0 ms-5">
-                Deals Here! 
+                Deals Here!
               </div>
               <p className="slider-para">
                 Now get all the books you have always wanted to read at much
@@ -114,7 +115,7 @@ export default function HomePage() {
                 Latest arrivals
               </div>
               <div className="slider-heading slideRight-text fs-0 ms-5">
-                Are Now Here! 
+                Are Now Here!
               </div>
               <p className="slider-para">
                 We have brought you the latest most trendy books better and
@@ -136,10 +137,10 @@ export default function HomePage() {
           <div className="row slider-row">
             <div className="col-lg-6 col-sm-6 slider-left">
               <div className="slider-heading slideLeft-text fs-0">
-                Now Library at 
+                Now Library at
               </div>
               <div className="slider-heading slideRight-text fs-0 ms-5">
-                your home! 
+                your home!
               </div>
               <p className="slider-para">
                 No need to leave your comfort , we'll deliver all your books to
@@ -159,7 +160,7 @@ export default function HomePage() {
 
       {/* ALL CATEGORIES LIST STARTS  */}
       <div className="container-fluid categories my-5">
-        <div className="text-center section-heading mb-5 fs-2">Categories</div>
+        <div className="text-center mb-5 fs-2">Categories</div>
         <div className="row categories-body">
           {allCategories.length > 0 ? (
             allCategories?.map((item) => {
@@ -173,10 +174,17 @@ export default function HomePage() {
 
       {/* ALL CATEGORIES LIST ENDS  */}
 
+      <div className="container" style={{width:"80%"}}>
+          <div className="text-center mb-5 fs-2">
+             Upcoming Products 
+          </div>
+           <UpcomingProducts />
+      </div>
+
       {/* CUSTOMER REVIEWS STARTS */}
       <div className="container-fluid customer-reviews">
         <div className="row customer-reviews-row">
-          <div className="text-center section-heading mb-5 fs-2">
+          <div className="text-center mb-5 fs-2">
             Customer Reviews
           </div>
 
@@ -224,7 +232,7 @@ export default function HomePage() {
 
       {/* WHY CHOOSE US StARTS */}
       <div className="container my-5">
-        <div className="text-center section-heading mb-5 fs-2">
+        <div className="text-center mb-5 fs-2">
           Why Choose Us?
         </div>
         <div className="row">
