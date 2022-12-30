@@ -17,8 +17,8 @@ export default function SearchBar() {
     console.log(data)
   }
   useEffect(() => {
-    handleSearch();
-    // eslint-disable-next-line
+    if(searchBox.length>3)
+      handleSearch();
   }, [searchBox])
 
   return (
