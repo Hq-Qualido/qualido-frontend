@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { baseUrl } from "../../BaseUrl";
 import { FaSearch } from "react-icons/fa";
 import SearchResult from "./SearchResult";
@@ -6,20 +6,19 @@ import SearchResult from "./SearchResult";
 export default function SearchBar() {
   const [searchBox, setSearchBox] = useState("");
   const [searchResult, setSearchResult] = useState(false);
-  const [searchedData, setsearchedData] = useState('')
+  const [searchedData, setsearchedData] = useState("");
 
   async function handleSearch(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const url = `${baseUrl}/products/search?tags=${searchBox}`;
     const response = await fetch(url);
     const data = await response.json();
     setsearchedData(data);
-    console.log(data)
   }
   useEffect(() => {
-    if(searchBox.length>3)
-      handleSearch();
-  }, [searchBox])
+    if (searchBox.length > 2) handleSearch();
+    else if (searchBox.length === 0) setsearchedData([]);
+  }, [searchBox]);
 
   return (
     <>
@@ -46,7 +45,14 @@ export default function SearchBar() {
           }}
         />
 
-        {searchResult ? <SearchResult searchResult={setSearchResult} searchData={searchedData} /> : ""}
+        {searchResult ? (
+          <SearchResult
+            searchResult={setSearchResult}
+            searchData={searchedData}
+          />
+        ) : (
+          ""
+        )}
       </form>
     </>
   );
