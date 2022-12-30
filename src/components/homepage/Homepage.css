@@ -141,7 +141,10 @@ justify-content: center;
   color: #fff;
 }
 .future_prods_1:hover,.future_prods_2:hover , .future_prods_3:hover , .future_prods_4:hover{
-  background-color:rgba(0, 0, 0, 0.144);
+  background-color:rgba(0, 0, 0, 0.05);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
 }
 
 .future_prods_2{
