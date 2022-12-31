@@ -23,7 +23,7 @@ function SearchResult(props) {
   return (
     <>
       <div ref={wrapperRef} className="search_result text-dark shadow">
-        <div className="d-flex justify-content-between border-bottom py-2">
+        <div className="d-flex justify-content-between border-bottom border-secondary py-2">
             <span className="mx-1">Search Result</span>
           <span
             onClick={() => {
@@ -46,9 +46,9 @@ function SearchResult(props) {
                     }}
                     style={{ textDecoration: "none" }}
                   >
-                    <div className=" d-flex flex-row searched_product_details">
+                    <div className="border-bottom p-2 d-flex flex-row searched_product_details">
                       <img
-                        className="searched_image mx-2 my-2"
+                        className="searched_image mx-2 my-2 my-auto"
                         src={item.url}
                         alt={item.prodName}
                       />
