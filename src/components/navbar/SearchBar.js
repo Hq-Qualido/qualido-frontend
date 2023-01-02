@@ -7,16 +7,17 @@ export default function SearchBar() {
   const [searchBox, setSearchBox] = useState("");
   const [searchResult, setSearchResult] = useState(false);
   const [searchedData, setsearchedData] = useState("");
+  const [event, setEvent] = useState();
 
   async function handleSearch(e) {
-    // e.preventDefault();
+    e.preventDefault();
     const url = `${baseUrl}/products/search?tags=${searchBox}`;
     const response = await fetch(url);
     const data = await response.json();
     setsearchedData(data);
   }
   useEffect(() => {
-    if (searchBox.length > 2) handleSearch();
+    if (searchBox.length > 2) handleSearch(event);
     else if (searchBox.length === 0) setsearchedData([]);
   }, [searchBox]);
 
@@ -40,6 +41,7 @@ export default function SearchBar() {
             setSearchResult(true);
           }}
           onChange={(e) => {
+            setEvent(e);
             setSearchBox(e.target.value);
             setSearchResult(true);
           }}
