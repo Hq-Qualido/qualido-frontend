@@ -12,6 +12,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Wishlist from "./components/dashboard/Wishlist";
 import Orders from "./components/dashboard/Orders";
 import Security from "./components/dashboard/Security";
+import Feedback from "./components/feedback/Feedback";
 
 function App() {
   const name = localStorage.getItem('Name');
@@ -27,6 +28,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
+          <Route path="/feedback" element={<Feedback />} />
           <Route path="/dashboard" element={name ? <Dashboard name={name}/> : <Navigate to="/login" replace={true} /> } />
           <Route path="/dashboard/wishlist" element={name ? <Wishlist /> :  <Navigate to="/login" replace={true} /> } />
           <Route path="/dashboard/orders" element={name ? <Orders /> :  <Navigate to="/login" replace={true} /> } />
