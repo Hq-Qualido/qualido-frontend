@@ -1,17 +1,19 @@
-import React from "react";
+import React,{useState} from "react";
 import "./Navbar.css";
 import { FaShoppingCart, FaUserCircle} from "react-icons/fa";
+import { HiMenuAlt3 , HiX} from "react-icons/hi";
 import { Link } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";
 import SearchBar from "./SearchBar";
 
 export default function Navbar(props) {
+  const [isExpanded, setIsExpanded] = useState(false)
   const {
     totalUniqueItems,
   } = useCart();
 
-  return (
+return(
     <>
       <nav>
         <Link to="/" style={{ textDecoration: "none" }}>
@@ -22,13 +24,18 @@ export default function Navbar(props) {
         </Link>
 
         <SearchBar />
-        <div className="text-light nav-menu">
-          <Link to="/cart" className="nav-menu-item">
+        <div className={
+          isExpanded ? "nav-menu expanded" : "nav-menu"
+        }>
+          <Link to="/cart" className="nav-menu-item" onClick={()=>{setIsExpanded(!isExpanded)}}>
            <span> <FaShoppingCart />   </span> Cart({totalUniqueItems})
           </Link>
-          <Link to="dashboard" className="nav-menu-item">
+          <Link to="dashboard" className="nav-menu-item" onClick={()=>{setIsExpanded(!isExpanded)}}>
           <span> <FaUserCircle />  </span>   {props.name? props.name : "Account"}
           </Link>
+        </div>
+        <div className="nav-btns fs-3" onClick={()=>{setIsExpanded(!isExpanded)}}>
+          {!isExpanded? <HiMenuAlt3 />:<HiX />}
         </div>
       </nav>
     </>
