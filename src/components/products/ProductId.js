@@ -1,10 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { FaStar, FaArrowLeft, FaRupeeSign } from "react-icons/fa";
+import { FaStar, FaRupeeSign } from "react-icons/fa";
 import { MdOutlineHighQuality } from "react-icons/md";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { TbTruckDelivery } from "react-icons/tb";
-import { Link } from "react-router-dom";
 // import ProductCard from "./ProductCard";
 import Footer from "../footer/Footer";
 import { useParams } from "react-router-dom";
@@ -55,11 +54,6 @@ export default function ProductId() {
   return (
     <>
       <div className="container my-5">
-        <div className="back-btn mb-4">
-          <Link to="/products">
-            <FaArrowLeft /> All Products{" "}
-          </Link>
-        </div>
         <div className="row">
           <div className="col-lg-4 col-sm-6 productID-left">
             {indivProd.url ? (

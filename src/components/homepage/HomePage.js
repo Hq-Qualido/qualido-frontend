@@ -89,7 +89,7 @@ export default function HomePage() {
               <div className="slider-heading slideLeft-text fs-0">
                 Grab The Best
               </div>
-              <div className="slider-heading slideRight-text fs-0 ms-5">
+              <div className="slider-heading slideRight-text fs-0 ">
                 Deals Here!
               </div>
               <p className="slider-para">
@@ -114,7 +114,7 @@ export default function HomePage() {
               <div className="slider-heading slideLeft-text fs-0">
                 Latest arrivals
               </div>
-              <div className="slider-heading slideRight-text fs-0 ms-5">
+              <div className="slider-heading slideRight-text fs-0 ">
                 Are Now Here!
               </div>
               <p className="slider-para">
@@ -139,7 +139,7 @@ export default function HomePage() {
               <div className="slider-heading slideLeft-text fs-0">
                 Now Library at
               </div>
-              <div className="slider-heading slideRight-text fs-0 ms-5">
+              <div className="slider-heading slideRight-text fs-0 ">
                 your home!
               </div>
               <p className="slider-para">

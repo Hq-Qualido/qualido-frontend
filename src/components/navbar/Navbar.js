@@ -19,7 +19,6 @@ return(
         <Link to="/" style={{ textDecoration: "none" }}>
           <div className="nav-logo">
             <img src={logobagLIGHT} alt="qualidoLogo" className="mx-1" />{" "}
-            Qualido
           </div>
         </Link>
 
