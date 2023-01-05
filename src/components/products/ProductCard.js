@@ -1,16 +1,18 @@
 import React from "react";
-import { FaCartPlus, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import { BsCartPlus , BsFillCartCheckFill} from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
 
 export default function ProductCard(props) {
   const navigate = useNavigate();
   const handleNavigate = () => {
-    console.log("navigator");
+    // console.log("navigator");
     navigate(`/products/${props._id}`);
   };
-  const { addItem } = useCart();
-
+  const { addItem ,getItem } = useCart();
+  const checkItemInCart = getItem(props._id);
+  
   return (
     <>
       {!props.navigator ? (
@@ -31,8 +33,8 @@ export default function ProductCard(props) {
                   })
                 }
               >
-                <FaCartPlus />
-              </span>
+               {checkItemInCart ?<BsFillCartCheckFill /> 
+              :   <BsCartPlus />}</span>
             </div>
           </div>
 
@@ -76,7 +78,8 @@ export default function ProductCard(props) {
                   })
                 }
               >
-                <FaCartPlus />
+               {checkItemInCart ?<BsFillCartCheckFill /> 
+              :   <BsCartPlus />}
               </span>
             </div>
           </div>

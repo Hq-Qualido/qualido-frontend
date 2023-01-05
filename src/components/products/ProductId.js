@@ -6,7 +6,7 @@ import { RiSecurePaymentFill } from "react-icons/ri";
 import { TbTruckDelivery } from "react-icons/tb";
 // import ProductCard from "./ProductCard";
 import Footer from "../footer/Footer";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useCart } from "react-use-cart";
 import Loader from "../loader/Loader";
@@ -17,7 +17,6 @@ export default function ProductId() {
   const location = useLocation();
   const [aboutAuthorDesc, setAboutAuthorDesc] = useState(150);
   const [descLength, setDescLength] = useState(200);
-  const { addItem } = useCart();
 
   // const randomNumber = Math.random() * 10;
   const [indivProd, setIndivProd] = useState([]);
@@ -51,6 +50,9 @@ export default function ProductId() {
     // eslint-disable-next-line
   }, [productId, location]);
 
+  const { addItem, getItem } = useCart();
+  const checkItemInCart = getItem(indivProd._id);
+
   return (
     <>
       <div className="container my-5">
@@ -64,18 +66,24 @@ export default function ProductId() {
               <Loader type="dots" />
             )}
             <div className="product-buttons my-4">
-              <div
-                className="cart-btn mx-1"
-                onClick={() =>
-                  addItem({
-                    id: indivProd._id,
-                    price: indivProd.prodSp,
-                    ...indivProd,
-                  })
-                }
-              >
-                Add to Cart
-              </div>
+              {checkItemInCart ? (
+                <Link to="/cart" style={{ textDecoration: "none" }}>
+                  <div className="cart-btn mx-1">Go to Cart</div>
+                </Link>
+              ) : (
+                <div
+                  className="cart-btn mx-1"
+                  onClick={() =>
+                    addItem({
+                      id: indivProd._id,
+                      price: indivProd.prodSp,
+                      ...indivProd,
+                    })
+                  }
+                >
+                  Add to Cart
+                </div>
+              )}
               <div className="buy-btn mx-1">
                 <FaRupeeSign /> Buy Now
               </div>
