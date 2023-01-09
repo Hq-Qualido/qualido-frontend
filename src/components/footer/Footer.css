@@ -70,9 +70,16 @@
   list-style: none;
   font-size: 15px;
   margin-top: 5px;
+  color: #fff;
+}
+.footer-body .footer-services ul li a{
+  color: #fff;
 }
 .footer-body .footer-services ul li:hover {
   cursor: pointer;
+  color: #00a1b6;
+}
+.footer-body .footer-services ul li a:hover {
   color: #00a1b6;
 }
 
