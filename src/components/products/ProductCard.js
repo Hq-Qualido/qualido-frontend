@@ -1,16 +1,18 @@
 import React from "react";
-import { FaCartPlus, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import { BsCartPlus , BsFillCartCheckFill} from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
 
 export default function ProductCard(props) {
   const navigate = useNavigate();
   const handleNavigate = () => {
-    console.log("navigator");
+    // console.log("navigator");
     navigate(`/products/${props._id}`);
   };
-  const { addItem } = useCart();
-
+  const { addItem ,getItem } = useCart();
+  const checkItemInCart = getItem(props._id);
+  
   return (
     <>
       {!props.navigator ? (
@@ -31,13 +33,13 @@ export default function ProductCard(props) {
                   })
                 }
               >
-                <FaCartPlus />
-              </span>
+               {checkItemInCart ?<BsFillCartCheckFill /> 
+              :   <BsCartPlus />}</span>
             </div>
           </div>
 
           <div className="product-details">
-            <div className="product-title mt-2 fs-5">
+            <div className="product-title mt-2">
               <Link to={`${props._id} `} style={{ textDecoration: "none" }}>
                 {props.prodName.length > 15
                   ? props.prodName.slice(0, 15) + "..."
@@ -45,12 +47,12 @@ export default function ProductCard(props) {
               </Link>
             </div>
             <div className="price-rating">
-              <div className="product-price">
-                Rs {props.prodSp}{" "}
-                <span className="line_through_text">{props.prodMrp}</span>
+              <div className="product_price_card">
+                Rs {props.prodSp}
+                <span className="line_through_text ms-1">{props.prodMrp}</span>
               </div>
               <div style={{ color: "orange" }} className="d-flex flex-row ">
-                <span className="me-1"> 4.5 </span>{" "}
+                <span className="me-1"> 4.5 </span>
                 <span className="d-flex justify-content-center align-items-center">
                   <FaStar />
                 </span>
@@ -76,7 +78,8 @@ export default function ProductCard(props) {
                   })
                 }
               >
-                <FaCartPlus />
+               {checkItemInCart ?<BsFillCartCheckFill /> 
+              :   <BsCartPlus />}
               </span>
             </div>
           </div>

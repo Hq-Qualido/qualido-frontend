@@ -18,6 +18,7 @@ import Wishlist from "./components/dashboard/Wishlist";
 import Orders from "./components/dashboard/Orders";
 import Security from "./components/dashboard/Security";
 import PrivacyPolicy from "./components/documents/PrivacyPolicy";
+import Feedback from "./components/feedback/Feedback";
 
 function App() {
   const name = localStorage.getItem("Name");
@@ -61,7 +62,23 @@ function App() {
               }
             />
 
+<<<<<<< HEAD
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+=======
+      <Router>
+        <Navbar name={name}/>
+        <Routes>
+        <Route index element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/feedback" element={<Feedback />} />
+          <Route path="/dashboard" element={name ? <Dashboard name={name}/> : <Navigate to="/login" replace={true} /> } />
+          <Route path="/dashboard/wishlist" element={name ? <Wishlist /> :  <Navigate to="/login" replace={true} /> } />
+          <Route path="/dashboard/orders" element={name ? <Orders /> :  <Navigate to="/login" replace={true} /> } />
+          <Route path="/dashboard/security" element={name ? <Security /> :  <Navigate to="/login" replace={true} /> } />
+>>>>>>> de4d8e6f03bcb054f431e3f5f0e423f2379b85e4
 
             <Route path="/products">
               <Route index element={<Products />} />
