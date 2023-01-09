@@ -174,19 +174,15 @@ export default function HomePage() {
 
       {/* ALL CATEGORIES LIST ENDS  */}
 
-      <div className="container" style={{width:"80%"}}>
-          <div className="text-center mb-5 fs-2">
-             Upcoming Products 
-          </div>
-           <UpcomingProducts />
+      <div className="container" style={{ width: "80%" }}>
+        <div className="text-center mb-5 fs-2">Upcoming Products</div>
+        <UpcomingProducts />
       </div>
 
       {/* CUSTOMER REVIEWS STARTS */}
       <div className="container-fluid customer-reviews">
         <div className="row customer-reviews-row">
-          <div className="text-center mb-5 fs-2">
-            Customer Reviews
-          </div>
+          <div className="text-center mb-5 fs-2">Customer Reviews</div>
 
           <Slider {...customers}>
             <CustomerReview
@@ -232,9 +228,7 @@ export default function HomePage() {
 
       {/* WHY CHOOSE US StARTS */}
       <div className="container my-5">
-        <div className="text-center mb-5 fs-2">
-          Why Choose Us?
-        </div>
+        <div className="text-center mb-5 fs-2">Why Choose Us?</div>
         <div className="row">
           <WhyUS
             image={Service}
@@ -255,7 +249,7 @@ export default function HomePage() {
       </div>
       {/* WHY CHOOSE US ENDS */}
       <a
-        href="https://wa.me/7042523617?text=I%20want%20to%20buy%20a%20book."
+        href="https://wa.me/+917042523617?text=I%20want%20to%20buy%20a%20book."
         target="_blank"
         rel="noreferrer"
         className="whatsapp_link fs-3"
