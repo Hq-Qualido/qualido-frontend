@@ -22,6 +22,7 @@ export default function ProductId() {
   const [indivProd, setIndivProd] = useState([]);
   const [sameProds, setSameProds] = useState([]);
   const [category, setCategory] = useState("");
+  const [prodImage, setProdImage] = useState("");
 
   const fetchProductData = async () => {
     const url1 = `${baseUrl}/products`;
@@ -31,6 +32,7 @@ export default function ProductId() {
     data1.products.forEach((prodData) => {
       if (prodData._id === productId) {
         setIndivProd(prodData);
+        setProdImage(prodData.urls[0]);
         setCategory(prodData.category);
       }
     });
@@ -58,13 +60,55 @@ export default function ProductId() {
       <div className="container my-5">
         <div className="row">
           <div className="col-lg-4 col-sm-6 productID-left">
-            {indivProd.url ? (
-              <div>
-                <img src={indivProd.url} alt="BookImage" />
+            {indivProd.urls ? (
+              <div
+                className="col-md-auto d-flex align-items-center justify-content-center rounded rounded-lg"
+                style={{ height: "50vh", width: "100%" }}
+              >
+                <img
+                  style={{ height: "45vh", width: "auto" }}
+                  src={prodImage}
+                  alt="BookImage"
+                />
               </div>
             ) : (
               <Loader type="dots" />
             )}
+
+            <div
+              className="d-flex flex-row p-1 d-flex align-items-center justify-content-center"
+              style={{ width: "100%", overflowX: "auto" }}
+            >
+              {indivProd.urls &&
+                indivProd.urls.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => {
+                        setProdImage(item);
+                      }}
+                      style={{
+                        width: "50px",
+                        height: "55px",
+                        backgroundColor: "rgb(250, 250, 250)",
+                        overflow: "hidden",
+                      }}
+                      className={`${
+                        item === prodImage
+                          ? " shadow-sm border border-2 border-warning rounded mx-1 d-flex align-items-center justify-content-center p-1"
+                          : "rounded mx-1 d-flex align-items-center justify-content-center p-1"
+                      }`}
+                    >
+                      <img
+                        src={item}
+                        alt="img"
+                        style={{ height: "45px", width: "auto" }}
+                      />
+                    </div>
+                  );
+                })}
+            </div>
+
             <div className="product-buttons my-4">
               {checkItemInCart ? (
                 <Link to="/cart" style={{ textDecoration: "none" }}>
@@ -90,9 +134,9 @@ export default function ProductId() {
             </div>
           </div>
           <div className="col-lg-8 col-sm-6 productID-right">
-            <div className="prod_heading my-2">
-              {indivProd.prodName}{" "}
-              <span style={{ fontSize: "20px", color: "grey" }}> by </span>{" "}
+            <div className="prod_heading my-2 fs-4 px-2">
+              {indivProd.prodName}
+              <span className="fs-6 text-secondary"> by </span>
               {indivProd.authorName}
             </div>
 
@@ -102,13 +146,13 @@ export default function ProductId() {
               </span>
               <span>145 ratings</span>
             </div>
-            <div className="product-price my-3">
+            <div className="product-price my-3 px-2">
               Rs {indivProd.prodSp}{" "}
               <span className="line_through_text">{indivProd.prodMrp}</span>
               <span className="saving"> {indivProd.discount}% Off</span>
             </div>
 
-            <table className="about_author_table">
+            <table className=" container">
               <tbody>
                 <tr>
                   <td className="col-lg-4 col-sm-6 light_text">Author</td>
@@ -116,10 +160,8 @@ export default function ProductId() {
                     {indivProd.authorName ? indivProd.authorName : "NA"}
                   </td>
                 </tr>
-                </tbody>
+              </tbody>
             </table>
-
-
 
             {/* _______________ */}
             <h5 className="mt-4">Specifications </h5>
@@ -154,106 +196,83 @@ export default function ProductId() {
                   </td>
                 </tr>
                 <tr>
-                  <td className="col-lg-4 col-sm-6 light_text">Height </td>
+                  <td className="col-lg-4 col-sm-6 light_text">Dimensions </td>
                   <td className="col-lg-8 col-sm-6">
-                    {indivProd.height ? indivProd.height : "NA"}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="col-lg-4 col-sm-6 light_text">Width </td>
-                  <td className="col-lg-8 col-sm-6">
-                    {indivProd.width ? indivProd.width : "NA"}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="col-lg-4 col-sm-6 light_text">Length </td>
-                  <td className="col-lg-8 col-sm-6">
-                    {indivProd.length ? indivProd.length : "NA"}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="col-lg-4 col-sm-6 light_text">Weight </td>
-                  <td className="col-lg-8 col-sm-6">
-                    {indivProd.weight ? indivProd.weight : "NA"}
+                    {indivProd.dimensions ? indivProd.dimensions : "NA"}
                   </td>
                 </tr>
               </tbody>
             </table>
 
-
             {indivProd.aboutAuthor ? (
-                  <div>
-                    <div className="light_text ps-2">
-                      About Author
-                    </div>
-                    <div className="ps-2">
-                      {indivProd.aboutAuthor
-                        ? indivProd.aboutAuthor.slice(0, aboutAuthorDesc)
-                        : ""}
-                      {aboutAuthorDesc === 150 ? (
-                        <span
-                          className="read_more"
-                          onClick={() => {
-                            setAboutAuthorDesc(indivProd.aboutAuthor.length);
-                          }}
-                        >
-                          ...Read more
-                        </span>
-                      ) : (
-                        ""
-                      )}
-                      {aboutAuthorDesc === indivProd.aboutAuthor.length ? (
-                        <span
-                          className="read_more"
-                          onClick={() => {
-                            setAboutAuthorDesc(150);
-                          }}
-                        >
-                          ...Read less
-                        </span>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
+              <div>
+                <div className="light_text ps-2">About Author</div>
+                <div className="ps-2">
+                  {indivProd.aboutAuthor
+                    ? indivProd.aboutAuthor.slice(0, aboutAuthorDesc)
+                    : ""}
+                  {aboutAuthorDesc === 150 ? (
+                    <span
+                      className="read_more"
+                      onClick={() => {
+                        setAboutAuthorDesc(indivProd.aboutAuthor.length);
+                      }}
+                    >
+                      ...Read more
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                  {aboutAuthorDesc === indivProd.aboutAuthor.length ? (
+                    <span
+                      className="read_more"
+                      onClick={() => {
+                        setAboutAuthorDesc(150);
+                      }}
+                    >
+                      ...Read less
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
 
             {/* _______________ */}
             {indivProd.description ? (
-                  <div>
-                    <div className="light_text ps-2 mt-2">
-                      Description
-                    </div>
-                    <div className=" book-lines ps-2">
-                      {indivProd.description.slice(0, descLength)}
-                      {descLength === 200 ? (
-                        <span
-                          className="read_more"
-                          onClick={() => {
-                            setDescLength(indivProd.description.length);
-                          }}
-                        >
-                          ...Read more
-                        </span>
-                      ) : (
-                        ""
-                      )}
-                      {descLength === indivProd.description.length ? (
-                        <span
-                          className="read_more"
-                          onClick={() => {
-                            setDescLength(200);
-                          }}
-                        >
-                          ...Read less
-                        </span>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  </div>
+              <div>
+                <div className="light_text ps-2 mt-2">Description</div>
+                <div className=" book-lines ps-2">
+                  {indivProd.description.slice(0, descLength)}
+                  {descLength === 200 ? (
+                    <span
+                      className="read_more"
+                      onClick={() => {
+                        setDescLength(indivProd.description.length);
+                      }}
+                    >
+                      ...Read more
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                  {descLength === indivProd.description.length ? (
+                    <span
+                      className="read_more"
+                      onClick={() => {
+                        setDescLength(200);
+                      }}
+                    >
+                      ...Read less
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
             ) : (
               ""
             )}

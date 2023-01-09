@@ -7,7 +7,6 @@ import { useCart } from "react-use-cart";
 export default function ProductCard(props) {
   const navigate = useNavigate();
   const handleNavigate = () => {
-    // console.log("navigator");
     navigate(`/products/${props._id}`);
   };
   const { addItem ,getItem } = useCart();
@@ -19,7 +18,7 @@ export default function ProductCard(props) {
         <div className=" product-card ">
           <div className="product-image">
             <Link to={`${props._id} `} style={{ textDecoration: "none" }}>
-              <img src={props.url} alt="" />
+              <img src={props.urls[0]} alt="img" />
             </Link>
             <div className="over-image">
               <span className="save-percentage">Save {props.discount}%</span>
@@ -63,7 +62,7 @@ export default function ProductCard(props) {
       ) : (
         <div className=" product-card " onClick={handleNavigate}>
           <div className="product-image">
-            <img src={props.url} alt="" />
+            <img src={props.urls[0]} alt="" />
             <div className="over-image">
               <span className="save-percentage">
                 {props.discount ? "Save" + props.discount + "%" : ""}
