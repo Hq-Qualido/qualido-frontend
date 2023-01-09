@@ -29,13 +29,13 @@ export default function Login() {
       [name]: value,
     });
   };
+
   async function handleSubmit() {
     if (values.email.length < 3) {
       setError({ ...error, emailError: "Please Enter Valid Email!" });
     } else setError({ ...error, emailError: "" });
 
-    if (error.emailError.length > 0 ) {
-    //   console.log(values);
+    if (error.emailError.length === 0) {
       setLoading(true);
       const response = await fetch(`${baseUrl}/auth/login`, {
         method: "POST",
@@ -49,7 +49,7 @@ export default function Login() {
       });
       const data = await response.json();
       setLoading(false);
-    //   console.log(data);
+      //   console.log(data);
       if (data.token) {
         localStorage.setItem("Name", data.user.fullname);
         // console.log(localStorage);

@@ -193,9 +193,12 @@ export default function Register() {
                 </div>
 
                 <div className="with-google my-4">
-                  <Link to="/" style={{ textDecoration: "none" }}>
+                  <div
+                    style={{ textDecoration: "none" }}
+                    onClick={handleGoogleLogin}
+                  >
                     Continue with <img src={google} className="mx-1" alt="" />
-                  </Link>
+                  </div>
                 </div>
               </form>
             </div>
