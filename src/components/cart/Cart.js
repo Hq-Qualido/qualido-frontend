@@ -69,20 +69,20 @@ export default function Cart() {
 
         <div className="cart-action">
           <div className="order-summary">
-            {" "}
             <FaCheckCircle color="#03CD0B" fontSize={30} />
             <p>
-              {" "}
               Your order is eligible for FREE Delivery, you can select this
               option at checkout. Details
             </p>
           </div>
 
           <div className="order-details fs-5">
-            Subtotal ({totalItems} Items) :{" "}
-            <span className="fw-semibold"> Rs {cartTotal} </span>
+            Subtotal ({totalItems} Items) :
+            <span style={{fontWeight:"500"}}> Rs {cartTotal} </span>
           </div>
-          <div className="buy-btn">Proceed to Pay</div>
+         <Link to="/payment" style={{textDecoration:"none"}}>
+          <div className="buy-btn">Proceed to Buy</div>
+         </Link>
         </div>
       </div>
       <Footer />
