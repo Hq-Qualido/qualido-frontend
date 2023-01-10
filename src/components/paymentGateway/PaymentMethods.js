@@ -12,7 +12,7 @@ export default function PaymentMethods() {
             paymentMethod === "cod"
               ? "border border-2 border-primary text-primary "
               : ""
-          } container p-2 my-1 border border-2 rounded me-1`}
+          } text-center container p-2 my-1 border border-2 rounded me-1`}
           onClick={() => {
             setPaymentMethod("cod");
           }}
@@ -24,7 +24,7 @@ export default function PaymentMethods() {
             paymentMethod === "online"
               ? "border border-2 border-primary text-primary"
               : ""
-          } container p-2 my-1 border border-2 rounded ms-1`}
+          } text-center container p-2 my-1 border border-2 rounded ms-1`}
           onClick={() => {
             setPaymentMethod("online");
           }}

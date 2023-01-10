@@ -36,28 +36,27 @@ export default function OrderSummary() {
         <div className="fs-5 text-center" style={{ fontWeight: "500" }}>
           Price Details
         </div>
-        <table className="container">
-          <tbody>
-            <tr>
-              <td>Price(2 items) </td>
-              <td>Rs 45</td>
-            </tr>
-            <tr>
-              <td>Discount</td>
-              <td>-Rs 15</td>
-            </tr>
-            <tr>
-              <td>Delivery Charge</td>
-              <td>Rs 5</td>
-            </tr>
-            <tr className="border-top">
-              <td> Subtotal (3 Items) :</td>
-              <td className="fs-5" style={{ fontWeight: "500" }}>
-                 Rs {456} 
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="container">
+          <div className="d-flex flex-row justify-content-between my-1 p-1">
+            <div>Price(2 items)</div>
+            <div>Rs 45</div>
+          </div>
+
+          <div className="d-flex flex-row justify-content-between my-1 p-1">
+            <div>Discount</div>
+            <div>-Rs 5</div>
+          </div>
+
+          <div className="d-flex flex-row justify-content-between my-1 p-1">
+            <div>Delivery Charge</div>
+            <div>Rs 10</div>
+          </div>
+
+          <div className="border-top d-flex flex-row justify-content-between my-2 p-2 fs-5">
+            <div> Subtotal (3 Items) : </div>
+            <div style={{ fontWeight: "500" }}>Rs {456} </div>
+          </div>
+        </div>
       </div>
     </>
   );
