@@ -49,7 +49,7 @@ function SearchResult(props) {
                     <div className="border-bottom p-2 d-flex flex-row searched_product_details">
                       <img
                         className="searched_image mx-2 my-2 my-auto"
-                        src={item.url}
+                        src={item.urls[0]}
                         alt={item.prodName}
                       />
                       <div className="my-auto mx-1">

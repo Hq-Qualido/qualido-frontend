@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 
 export default function CartCard(props) {
-  // console.log(props,"CartCardPRops")
   const { removeItem, updateItemQuantity } = useCart();
 
   return (
@@ -11,7 +10,7 @@ export default function CartCard(props) {
       <div className="cart-card">
         <div className="cart-image">
           <Link to={`/products/${props._id}`}>
-            <img src={props.url} alt="" />
+            <img src={props.urls && props.urls[0]} alt="" />
           </Link>
         </div>
         <div className="cart-details">
