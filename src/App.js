@@ -19,6 +19,7 @@ import Orders from "./components/dashboard/Orders";
 import Security from "./components/dashboard/Security";
 import PrivacyPolicy from "./components/documents/PrivacyPolicy";
 import Feedback from "./components/feedback/Feedback";
+import Payment from "./components/paymentGateway/Payment";
 
 function App() {
   const name = localStorage.getItem("Name");
@@ -33,6 +34,8 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Register />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/feedback" element={<Feedback />} />
             <Route
               path="/dashboard"
               element={
