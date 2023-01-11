@@ -11,8 +11,8 @@ export default function Navbar(props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { totalUniqueItems } = useCart();
 
-  const space = props.name.indexOf(" ");
-  const firstName = props.name.substring(0, space);
+  const space = props.name && props.name.indexOf(" ");
+  const firstName =  props.name && props.name.substring(0, space);
   return (
     <>
       <nav>
