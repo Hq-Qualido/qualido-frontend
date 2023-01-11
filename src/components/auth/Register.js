@@ -1,8 +1,7 @@
 import React from "react";
 import "./Login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { FaRegFrown } from "react-icons/fa";
 import { baseUrl } from "../../BaseUrl";
 
 import LoginGirl from "../../assets/loginGirl.png";
