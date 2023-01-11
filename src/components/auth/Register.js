@@ -42,7 +42,7 @@ export default function Register() {
     if (userData.createPass.length <= 6) setCreatePassError("Weak password!");
     else setCreatePassError("");
 
-    if (userData.confirmPass.length <= 6)
+    if (userData.confirmPass.length === 0)
       setConfirmPassError("Re-enter your password!");
     else if (userData.createPass !== userData.confirmPass)
       setConfirmPassError("Passwords did not match!");
@@ -66,18 +66,15 @@ export default function Register() {
         },
       });
       const data = await response.json();
-      console.log(data, "data");
-      if (data.token) setPopup(true);
-      //console.log(data,"data")
+      // console.log(data,"data")
+      // if (data.token) setPopup(true);
     }
   }
 
   const handleGoogleLogin = async () => {
     const response = await fetch(`${baseUrl}/auth/google/url`);
-
     const data = await response.json();
-
-    console.log(data);
+    // console.log(data);
     window.location.replace(data.url);
   };
 
@@ -184,7 +181,7 @@ export default function Register() {
                 <div
                   className="dislodged-border"
                   onClick={(e) => {
-                    setPopup(true);
+                    setPopup(true)
                     handleSubmit(e);
                   }}
                 >
@@ -204,7 +201,10 @@ export default function Register() {
           </div>
         </div>
       </div>
-      {popup && (
+      {popup && !emailError &&
+      !fullnameError &&
+      !createPassError &&
+      !confirmPassError && (
         <OtpPopup trigger={popup} userData={userData} setTrigger={setPopup} />
       )}
     </>
