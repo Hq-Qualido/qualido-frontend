@@ -15,10 +15,8 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [error, setError] = useState({
-    emailError: "",
-    passwordError: "",
-  });
+  const [emailError, setEmailError] = useState("");
+  const [passError, setPassError] = useState("");
 
   const navigate = useNavigate();
 
@@ -31,11 +29,16 @@ export default function Login() {
   };
 
   async function handleSubmit() {
-    if (values.email.length < 3) {
-      setError({ ...error, emailError: "Please Enter Valid Email!" });
-    } else setError({ ...error, emailError: "" });
+    if (!values.email) setEmailError("Email required!");
+    else if (!/\S+@\S+\.\S+/.test(values.email)) setEmailError("Email address is invalid!");
+    else setEmailError("");
 
-    if (error.emailError.length === 0) {
+    if(!values.password) setPassError("Enter Password");
+    else if(values.password.length<6) setPassError("Wrong Password")
+    else setPassError("")
+
+    if (emailError.length <=0 && passError.length <=0 && values.email.length>0 && values.password.length>0) {
+      console.log("Inside If")
       setLoading(true);
       const response = await fetch(`${baseUrl}/auth/login`, {
         method: "POST",
@@ -49,7 +52,7 @@ export default function Login() {
       });
       const data = await response.json();
       setLoading(false);
-      //   console.log(data);
+        // console.log(data);
       if (data.token) {
         localStorage.setItem("Name", data.user.fullname);
         // console.log(localStorage);
@@ -96,8 +99,8 @@ export default function Login() {
                     autoComplete="off"
                     required
                   />
-                  {error.emailError.length > 0 ? (
-                    <div className="error_message">{error.emailError}</div>
+                  {emailError ? (
+                    <div className="error_message">{emailError}</div>
                   ) : (
                     ""
                   )}
@@ -114,8 +117,8 @@ export default function Login() {
                     autoComplete="off"
                     required
                   />
-                  {error.passwordError.length > 0 ? (
-                    <div className="error_message">{error.passwordError}</div>
+                  {passError.length > 0 ? (
+                    <div className="error_message">{passError}</div>
                   ) : (
                     ""
                   )}
