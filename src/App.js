@@ -17,6 +17,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Wishlist from "./components/dashboard/Wishlist";
 import Orders from "./components/dashboard/Orders";
 import Security from "./components/dashboard/Security";
+import MyAddresses from "./components/dashboard/MyAddresses";
 import PrivacyPolicy from "./components/documents/PrivacyPolicy";
 import Feedback from "./components/feedback/Feedback";
 import Payment from "./components/paymentGateway/Payment";
@@ -62,6 +63,12 @@ function App() {
               path="/dashboard/security"
               element={
                 name ? <Security /> : <Navigate to="/login" replace={true} />
+              }
+            />
+            <Route
+              path="/dashboard/my-addresses"
+              element={
+                name ? <MyAddresses /> : <Navigate to="/login" replace={true} />
               }
             />
 

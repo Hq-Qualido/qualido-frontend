@@ -54,7 +54,7 @@ export default function Dashboard(props) {
                 description="Edit login, , name , mobile number , address."
               />
               <DashCards
-                url="addresses"
+                url="my-addresses"
                 image="TiLocation"
                 title="My Addresses"
                 description="Edit addresses for your orders and gifts."
