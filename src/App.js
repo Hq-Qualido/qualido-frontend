@@ -21,6 +21,7 @@ import MyAddresses from "./components/dashboard/MyAddresses";
 import PrivacyPolicy from "./components/documents/PrivacyPolicy";
 import Feedback from "./components/feedback/Feedback";
 import Payment from "./components/paymentGateway/Payment";
+import './index.css'
 
 function App() {
   const name = localStorage.getItem("Name");

@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
 
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -14,8 +14,8 @@
   padding: 10px;
   width: fit-content;
   height: fit-content;
-  background-color: #25d366;
-  color: #fff;
+  background-color: var(--green-whatsapp);
+  color: var(--white-color);
   border-radius: 100%;
   display: flex;
   align-items: center;
@@ -24,8 +24,8 @@
   box-shadow: 0px 0px 30px 0px #1f1f1f33;
 }
 .whatsapp_link:hover {
-  background-color: #20cc5f;
-  color: #fff;
+  background-color: var(--green-whatsapp-hover);
+  color: var(--white-color);
   cursor: pointer;
 }
 
@@ -36,18 +36,18 @@
 .slider-left {
   min-height: 60vh;
   padding: 3rem;
-  background-color: #00899b;
+  background-color: var(--main-theme-color);
 }
 .slider-left .slider-heading {
-  color: #ffffff;
+  color: var(--white-color);
   font-size: 50px;
 }
 .slider-left .slider-para {
   width: 70%;
-  color: #ffffff;
+  color: var(--white-color);
 }
 .slider-right {
-  background-color: #698f94;
+  background-color: var(--bluish-grey-color);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -58,7 +58,7 @@
 }
 
 .categories {
-  background-color: #f9f9f9;
+  background-color: var(--secondary-bg-color);
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@
 
 .categories .categories-body .category-item-body {
   width: fit-content;
-  background-color: #fff;
+  background-color: var(--white-color);
   border-radius: 50%;
   padding: 0.1rem;
   margin-bottom: 1rem;
@@ -108,12 +108,8 @@
   transform: scale(1.1);
 }
 
-.categories .categories-body .category-item-body .item-image:nth-child(n) {
-  background-color: #d6f7f7;
-}
-
 .categories .categories-body .category-item .category-type {
-  color: #00899b;
+  color: var(--main-theme-color);
   text-transform: capitalize;
 }
 
@@ -137,7 +133,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--white-color);
 }
 .future_prods_1:hover,
 .future_prods_2:hover,
@@ -187,26 +183,23 @@
   position: relative;
   padding: 2rem;
   height: auto;
-  color: rgb(0, 0, 0);
 }
 
 .customer-reviews .customerReview-card1 {
   padding: 1.5rem;
   border-radius: 15px;
-  border-top: 5px solid #bebebe;
-  border-bottom: 1px solid #d5d5d5;
+  border-top: 5px solid var(--bluish-grey-color);
   box-shadow: 0px 6px 47px 0px #264e761a;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
 .customer-reviews .customerReview-card2 {
-  background-color: #d6f7f7;
-  color: #00899b;
+  background-color: var(--light-bg-blue);
+  color: var(--main-theme-color);
   padding: 1.5rem;
   border-radius: 15px;
-  border-top: 5px solid #00a1b6;
-  border-bottom: 1px solid #51ebff;
+  border-top: 5px solid var(--ternary-theme-color);
   box-shadow: 0px 6px 47px 0px #264e761a;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -234,7 +227,7 @@
   height: 250px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px;  
+  border-radius: 10px;
   perspective: 500px;
   margin-top: 1rem;
 }
@@ -264,7 +257,7 @@
   border: 2px solid #dddddd1f;
   border-radius: 10px;
   place-items: center;
-  background-color: #fff;
+  background-color: var(--white-color);
   box-shadow: 0px 6px 47px 0px #264e761a;
 }
 
@@ -273,8 +266,13 @@
   height: 250px;
   width: 300px;
   border-radius: 10px;
-  background: linear-gradient(132.05deg, #00AAC0 1.25%, #0093A7 48.43%, #00AAC0 99.05%);
-  color: white;
+  background: linear-gradient(
+    132.05deg,
+    #00aac0 1.25%,
+    #0093a7 48.43%,
+    #00aac0 99.05%
+  );
+  color: var(--white-color);
   backface-visibility: hidden;
   transform: rotateY(180deg);
   display: flex;
@@ -334,7 +332,7 @@
     width: 95%;
   }
   .slider-left .slider-heading {
-    color: #ffffff;
+    color: var(--white-color);
     font-size: 35px;
   }
   .slider-right {
@@ -378,15 +376,15 @@
 
 /* CSS */
 .button-52 {
-  background-color: #00899b;
+  background-color: var(--main-theme-color);
   padding: 0.5rem 1rem;
   margin: 0.5rem 0;
   text-transform: capitalize;
   text-decoration: none;
-  color: #ffffff;
-  border: 1px solid #fff;
+  color: var(--white-color);
+  border: 1px solid var(--white-color);
 }
 .button-52:hover {
-  background-color: #fff;
-  color: #00899b;
+  background-color: var(--white-color);
+  color: var(--main-theme-color);
 }
