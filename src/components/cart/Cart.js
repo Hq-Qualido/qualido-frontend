@@ -7,7 +7,7 @@ import Footer from "../footer/Footer";
 import { useCart } from "react-use-cart";
 import { baseUrl } from "../../BaseUrl";
 
-export default function Cart() {
+export default function Cart(props) {
   const { isEmpty, totalUniqueItems, items, totalItems, cartTotal } = useCart();
   // console.log(items,"itemd")
   const addToCart = async () => {
@@ -17,7 +17,7 @@ export default function Cart() {
       headers: { "Content-Type": "application/json" },
     });
     const data = await response.json();
-    console.log(data, "data");
+    // console.log(data, "data");
   };
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export default function Cart() {
             Subtotal ({totalItems} Items) :
             <span style={{fontWeight:"500"}}> Rs {cartTotal} </span>
           </div>
-         <Link to="/payment" style={{textDecoration:"none"}}>
+         <Link to={props.name && props.name.length>0 ? "/payment" : "/login" } style={{textDecoration:"none"}}>
           <div className="buy-btn">Proceed to Buy</div>
          </Link>
         </div>
