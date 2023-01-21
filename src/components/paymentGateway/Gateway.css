@@ -12,35 +12,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
-  border: 1px solid #00a1b6;
+  background-color: var(--white-color);
+  border: 1px solid var(--ternary-theme-color);
   border-radius: 5px;
-  color: #00a1b6;
+  color: var(--ternary-theme-color);
   padding: 0.5rem 1.3rem;
   text-transform: capitalize;
   margin: 10px 0px;
 }
 .cancel-btn:hover {
   cursor: pointer;
-  border: 1px solid #00899b;
-  color: #00899b;
+  border: 1px solid var(--main-theme-color);
+  color: var(--main-theme-color);
 }
 .next-btn {
   width: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00a1b6;
-  border: 1px solid #00a1b6;
+  background-color: var(--ternary-theme-color);
+  border: 1px solid var(--ternary-theme-color);
   border-radius: 5px;
-  color: #ffffff;
+  color: var(--white-color);
   padding: 0.5rem 1.3rem;
   text-transform: capitalize;
   margin: 10px 0px;
 }
 .next-btn:hover {
   cursor: pointer;
-  background-color: #00899b;
+  background-color: var(--main-theme-color);
 }
 @media only screen and (max-width: 1000px) {
   .payment_container {
