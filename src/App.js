@@ -69,7 +69,7 @@ function App() {
               <Route path=":productId" element={<ProductId />} />
               <Route path="*" element={<Products />} />
             </Route>
-            <Route path="*" element={<Error />} />
+            {/* <Route path="*" element={<Error />} /> */}
           </Routes>
         </Router>
       </CartProvider>

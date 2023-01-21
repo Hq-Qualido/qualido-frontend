@@ -79,7 +79,7 @@ export default function Register() {
     const data = await response.json();
 
     console.log(data);
-    window.location.replace(data.url);
+    window.location.replace(data);
   };
 
   return (
