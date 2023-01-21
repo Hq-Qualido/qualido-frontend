@@ -68,6 +68,7 @@ export default function Login() {
         })
         .then((user) => {
           localStorage.setItem("Name", user.user.fullname);
+          localStorage.setItem("Token", user.token);
         })
         .catch((error) => {
           console.log(error, "catch error hai bhai");
