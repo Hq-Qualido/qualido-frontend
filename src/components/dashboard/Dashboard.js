@@ -1,14 +1,19 @@
 import React from "react";
-import "./Dashboard.css";
-import DashCards from "./DashCards.js";
 import { Outlet, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
+
+import "./Dashboard.css";
+import DashCards from "./DashCards.js";
+import useToken from "../../hooks/useToken";
 
 export default function Dashboard(props) {
   const navigate = useNavigate();
 
+  const { removeToken } = useToken();
+
   const handleLogout = () => {
     window.localStorage.removeItem("Name");
+    removeToken();
     navigate("/");
     window.location.reload();
   };

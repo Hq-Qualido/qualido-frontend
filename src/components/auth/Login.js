@@ -1,15 +1,17 @@
-import React from "react";
-import "./Login.css";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { baseUrl } from "../../BaseUrl";
 
+import "./Login.css";
+import { baseUrl } from "../../BaseUrl";
 import LoginGirl from "../../assets/loginGirl.png";
 import google from "../../assets/google.png";
-import { useState } from "react";
+import authApi from "../../api/auth";
+import useApi from "../../hooks/useApi";
+import useToken from "../../hooks/useToken";
 
 export default function Login() {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const [values, setValues] = useState({
     email: "",
@@ -20,6 +22,24 @@ export default function Login() {
   const [finalError, setFinalError] = useState("");
 
   const navigate = useNavigate();
+
+  const {
+    data: loginData,
+    request: login,
+    loading,
+    error,
+    networkError,
+  } = useApi(authApi.login);
+
+  const {
+    data: googleUrlData,
+    request: googleLogin,
+    // loading,
+    error: googleLoginError,
+    networkError: googleNetworkError,
+  } = useApi(authApi.googleLogin);
+
+  const { token, setToken } = useToken();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,36 +65,35 @@ export default function Login() {
       values.email.length > 0 &&
       values.password.length > 0
     ) {
-      setLoading(true);
-      await fetch(`${baseUrl}/auth/login`, {
-        method: "POST",
-        body: JSON.stringify({
-          email: values.email,
-          password: values.password,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          setLoading(false);
-          if (response.status === 200) {
-            navigate("/dashboard");
-            window.location.reload();
-          } else if (response.status === 404)
-            setFinalError("User not registered!");
-          else if (response.status === 400) setFinalError("Wrong password!");
-          return response.json();
-        })
-        .then((user) => {
-          localStorage.setItem("Name", user.user.fullname);
-          localStorage.setItem("Token", user.token);
-        })
-        .catch((error) => {
-          console.log(error, "catch error hai bhai");
-        });
+      login({
+        email: values.email,
+        password: values.password,
+      });
     }
   }
+
+  useEffect(() => {
+    if (loginData && !error && !loading) {
+      localStorage.setItem("Name", loginData.user.fullname);
+      setToken(loginData.token);
+      navigate("/dashboard");
+    } else if (error) {
+      setFinalError(loginData);
+      console.log(error);
+    } else if (networkError) {
+      console.log(networkError);
+      setFinalError("Network Error");
+    }
+  }, [loginData, networkError]);
+
+  useEffect(() => {
+    console.log(googleUrlData);
+    if (googleUrlData) {
+      window.location.replace(googleUrlData.url);
+    }
+  }, [googleUrlData]);
+
+  // if (token) return navigate("/dashboard", { replace: true });
 
   return (
     <>
@@ -136,19 +155,15 @@ export default function Login() {
                   )}
                 </label>
                 <br />
-                {finalError.length > 0 ? (
+                {(error || networkError) && (
                   <div className="error_message mx-auto mb-2">{finalError}</div>
-                ) : (
-                  ""
                 )}
                 <div onClick={handleSubmit} className="dislodged-border">
                   {!loading ? "Login" : "Wait..."}
                 </div>
 
-                <div className="with-google my-4">
-                  <Link to="/" style={{ textDecoration: "none" }}>
-                    Continue with <img src={google} className="mx-1" alt="" />
-                  </Link>
+                <div className="with-google my-4" onClick={googleLogin}>
+                  Continue with <img src={google} className="mx-1" alt="" />
                 </div>
               </form>
             </div>

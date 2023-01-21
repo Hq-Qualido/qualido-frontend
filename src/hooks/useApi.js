@@ -16,8 +16,8 @@ function useApi(apiFunc) {
       console.log(response, "res !ok");
       if (response.problem === "NETWORK_ERROR") {
         setLoading(false);
-        setNetworkError(true);
-        return alert("Please check your internet connection.");
+        return setNetworkError(true);
+        // return alert("Please check your internet connection.");
       } else if (response.data.code === "token_not_valid") {
         setLoading(false);
         setData(response.data);

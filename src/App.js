@@ -21,10 +21,14 @@ import MyAddresses from "./components/dashboard/MyAddresses";
 import PrivacyPolicy from "./components/documents/PrivacyPolicy";
 import Feedback from "./components/feedback/Feedback";
 import Payment from "./components/paymentGateway/Payment";
-import './index.css'
+import "./index.css";
+import useToken from "./hooks/useToken";
 
 function App() {
   const name = localStorage.getItem("Name");
+
+  const { token } = useToken();
+
   return (
     <>
       <CartProvider>
@@ -33,9 +37,14 @@ function App() {
           <Routes>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/cart" element={<Cart name={name}/>} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/cart" element={<Cart name={name} />} />
+
+            <Route
+              path="/login"
+              element={token ? <Navigate to="/dashboard" replace /> : <Login />}
+            />
             <Route path="/signup" element={<Register />} />
+
             <Route path="/payment" element={<Payment />} />
             <Route path="/feedback" element={<Feedback />} />
             <Route
