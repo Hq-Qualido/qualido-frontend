@@ -15,10 +15,9 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [error, setError] = useState({
-    emailError: "",
-    passwordError: "",
-  });
+  const [emailError, setEmailError] = useState("");
+  const [passError, setPassError] = useState("");
+  const [finalError, setFinalError] = useState("");
 
   const navigate = useNavigate();
 
@@ -31,13 +30,23 @@ export default function Login() {
   };
 
   async function handleSubmit() {
-    if (values.email.length < 3) {
-      setError({ ...error, emailError: "Please Enter Valid Email!" });
-    } else setError({ ...error, emailError: "" });
+    if (!values.email) setEmailError("Email required!");
+    else if (!/\S+@\S+\.\S+/.test(values.email))
+      setEmailError("Email address is invalid!");
+    else setEmailError("");
 
-    if (error.emailError.length === 0) {
+    if (!values.password) setPassError("Enter Password");
+    else if (values.password.length < 6) setPassError("Wrong Password");
+    else setPassError("");
+
+    if (
+      emailError.length <= 0 &&
+      passError.length <= 0 &&
+      values.email.length > 0 &&
+      values.password.length > 0
+    ) {
       setLoading(true);
-      const response = await fetch(`${baseUrl}/auth/login`, {
+      await fetch(`${baseUrl}/auth/login`, {
         method: "POST",
         body: JSON.stringify({
           email: values.email,
@@ -46,18 +55,23 @@ export default function Login() {
         headers: {
           "Content-Type": "application/json",
         },
-      });
-      const data = await response.json();
-      setLoading(false);
-      //   console.log(data);
-      if (data.token) {
-        localStorage.setItem("Name", data.user.fullname);
-        // console.log(localStorage);
-        navigate("/dashboard");
-        window.location.reload();
-      } else {
-        navigate("/signup");
-      }
+      })
+        .then((response) => {
+          setLoading(false);
+          if (response.status === 200) {
+            navigate("/dashboard");
+            window.location.reload();
+          } else if (response.status === 404)
+            setFinalError("User not registered!");
+          else if (response.status === 400) setFinalError("Wrong password!");
+          return response.json();
+        })
+        .then((user) => {
+          localStorage.setItem("Name", user.user.fullname);
+        })
+        .catch((error) => {
+          console.log(error, "catch error hai bhai");
+        });
     }
   }
 
@@ -96,8 +110,8 @@ export default function Login() {
                     autoComplete="off"
                     required
                   />
-                  {error.emailError.length > 0 ? (
-                    <div className="error_message">{error.emailError}</div>
+                  {emailError ? (
+                    <div className="error_message">{emailError}</div>
                   ) : (
                     ""
                   )}
@@ -114,13 +128,18 @@ export default function Login() {
                     autoComplete="off"
                     required
                   />
-                  {error.passwordError.length > 0 ? (
-                    <div className="error_message">{error.passwordError}</div>
+                  {passError.length > 0 ? (
+                    <div className="error_message">{passError}</div>
                   ) : (
                     ""
                   )}
                 </label>
                 <br />
+                {finalError.length > 0 ? (
+                  <div className="error_message mx-auto mb-2">{finalError}</div>
+                ) : (
+                  ""
+                )}
                 <div onClick={handleSubmit} className="dislodged-border">
                   {!loading ? "Login" : "Wait..."}
                 </div>

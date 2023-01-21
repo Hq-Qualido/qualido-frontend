@@ -99,7 +99,9 @@ export default function Footer() {
                <span className="mx-2" >
                 <MdOutlinePrivacyTip /> 
               </span> 
-              Privacy Policy
+              <a href="/privacy-policy" target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+                Privacy Policy
+              </a>
             </li>
             </ul>
           </div>

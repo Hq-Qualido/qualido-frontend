@@ -19,15 +19,13 @@ export default function Dashboard(props) {
         <div className="row">
           <div className="container my-5">
             <div className="dashboard-top my-2">
-              <h1 className="text-center section-heading ">
+              <div className="p-2 fs-2 section-heading ">
                 Hello 👋, {props.name}
-              </h1>
-              <div className="logout" onClick={handleLogout}>
-                {" "}
-                <span>
-                  {" "}
-                  <FaSignOutAlt />{" "}
-                </span>{" "}
+              </div>
+              <div className="logout text-center " onClick={handleLogout}>
+                <span className="me-1">
+                  <FaSignOutAlt />
+                </span>
                 LogOut
               </div>
             </div>
@@ -54,7 +52,7 @@ export default function Dashboard(props) {
                 description="Edit login, , name , mobile number , address."
               />
               <DashCards
-                url="addresses"
+                url="my-addresses"
                 image="TiLocation"
                 title="My Addresses"
                 description="Edit addresses for your orders and gifts."

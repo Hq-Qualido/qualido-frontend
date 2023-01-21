@@ -17,8 +17,11 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Wishlist from "./components/dashboard/Wishlist";
 import Orders from "./components/dashboard/Orders";
 import Security from "./components/dashboard/Security";
+import MyAddresses from "./components/dashboard/MyAddresses";
 import PrivacyPolicy from "./components/documents/PrivacyPolicy";
 import Feedback from "./components/feedback/Feedback";
+import Payment from "./components/paymentGateway/Payment";
+import './index.css'
 
 function App() {
   const name = localStorage.getItem("Name");
@@ -30,9 +33,11 @@ function App() {
           <Routes>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/cart" element={<Cart name={name}/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Register />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/feedback" element={<Feedback />} />
             <Route
               path="/dashboard"
               element={
@@ -59,6 +64,12 @@ function App() {
               path="/dashboard/security"
               element={
                 name ? <Security /> : <Navigate to="/login" replace={true} />
+              }
+            />
+            <Route
+              path="/dashboard/my-addresses"
+              element={
+                name ? <MyAddresses /> : <Navigate to="/login" replace={true} />
               }
             />
 

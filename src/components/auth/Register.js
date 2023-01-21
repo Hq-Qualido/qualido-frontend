@@ -1,8 +1,7 @@
 import React from "react";
 import "./Login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { FaRegFrown } from "react-icons/fa";
 import { baseUrl } from "../../BaseUrl";
 
 import LoginGirl from "../../assets/loginGirl.png";
@@ -43,7 +42,7 @@ export default function Register() {
     if (userData.createPass.length <= 6) setCreatePassError("Weak password!");
     else setCreatePassError("");
 
-    if (userData.confirmPass.length <= 6)
+    if (userData.confirmPass.length === 0)
       setConfirmPassError("Re-enter your password!");
     else if (userData.createPass !== userData.confirmPass)
       setConfirmPassError("Passwords did not match!");
@@ -67,19 +66,16 @@ export default function Register() {
         },
       });
       const data = await response.json();
-      console.log(data, "data");
-      if (data.token) setPopup(true);
-      //console.log(data,"data")
+      // console.log(data,"data")
+      // if (data.token) setPopup(true);
     }
   }
 
   const handleGoogleLogin = async () => {
     const response = await fetch(`${baseUrl}/auth/google/url`);
-
     const data = await response.json();
-
-    console.log(data);
-    window.location.replace(data);
+    // console.log(data);
+    window.location.replace(data.url);
   };
 
   return (
@@ -205,9 +201,13 @@ export default function Register() {
           </div>
         </div>
       </div>
-      {popup && (
-        <OtpPopup trigger={popup} userData={userData} setTrigger={setPopup} />
-      )}
+      {popup &&
+        !emailError &&
+        !fullnameError &&
+        !createPassError &&
+        !confirmPassError && (
+          <OtpPopup trigger={popup} userData={userData} setTrigger={setPopup} />
+        )}
     </>
   );
 }
