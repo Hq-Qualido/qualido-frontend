@@ -181,7 +181,7 @@ export default function Register() {
                 <div
                   className="dislodged-border"
                   onClick={(e) => {
-                    setPopup(true)
+                    setPopup(true);
                     handleSubmit(e);
                   }}
                 >
@@ -201,12 +201,13 @@ export default function Register() {
           </div>
         </div>
       </div>
-      {popup && !emailError &&
-      !fullnameError &&
-      !createPassError &&
-      !confirmPassError && (
-        <OtpPopup trigger={popup} userData={userData} setTrigger={setPopup} />
-      )}
+      {popup &&
+        !emailError &&
+        !fullnameError &&
+        !createPassError &&
+        !confirmPassError && (
+          <OtpPopup trigger={popup} userData={userData} setTrigger={setPopup} />
+        )}
     </>
   );
 }
