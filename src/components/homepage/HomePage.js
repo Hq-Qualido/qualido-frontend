@@ -16,7 +16,7 @@ import chatSupport from "../../assets/chatSupport.png";
 import Footer from "../footer/Footer";
 import Loader from "../loader/Loader";
 import { baseUrl } from "../../BaseUrl";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaInfo, FaWhatsapp } from "react-icons/fa";
 import UpcomingProducts from "./UpcomingProducts";
 
 export default function HomePage() {
@@ -253,9 +253,9 @@ export default function HomePage() {
        href="https://forms.gle/v3AzAVY2Wx4Spdr26"
        target="_blank"
        rel="noreferrer"
-       className="apply_form fs-5 shadow"
+       className="apply_form fs-6 shadow"
        >
-        Join Us &rarr;
+       <FaInfo /> We're hiring 
       </a>
 
       <a

@@ -9,11 +9,9 @@
 .apply_form{
   position: fixed;
   bottom: 0.50%;
-  /* right: -25px; */
   left: 0%;
-  background-color: #0b3f7b;
+  background-color: #0000009f;
   color: #fff;
-  /* transform: rotate(-90deg); */
   margin: 10px;
   padding:5px 10px;
   width: fit-content;
@@ -23,6 +21,7 @@
   text-decoration: none;
 }
 .apply_form:hover {
+  background-color: #000000b3;
   color: var(--white-color);
   cursor: pointer;
 }
