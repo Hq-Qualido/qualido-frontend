@@ -18,6 +18,7 @@ import Loader from "../loader/Loader";
 import { baseUrl } from "../../BaseUrl";
 import { FaInfo, FaWhatsapp } from "react-icons/fa";
 import UpcomingProducts from "./UpcomingProducts";
+import reviews from "./Reviews";
 
 export default function HomePage() {
   const [allCategories, setAllCategories] = useState([]);
@@ -185,42 +186,20 @@ export default function HomePage() {
           <div className="text-center mb-5 fs-2">Customer Reviews</div>
 
           <Slider {...customers}>
-            <CustomerReview
-              review="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusamus dignissimos nostrum possimus, omnis, officiis ullam repellendus dolorem temporibus, illum in modi accusantium"
-              image={customerPic}
-              name="Elon Musk"
-              classOfCard="customerReview-card1"
-            />
-            <CustomerReview
-              review="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusamus dignissimos nostrum possimus, omnis, officiis ullam repellendus dolorem temporibus, illum in modi accusantium"
-              image={customerPic}
-              name="Elon Musk"
-              classOfCard="customerReview-card2"
-            />
-            <CustomerReview
-              review="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusamus dignissimos nostrum possimus, omnis, officiis ullam repellendus dolorem temporibus, illum in modi accusantium"
-              image={customerPic}
-              name="Elon Musk"
-              classOfCard="customerReview-card1"
-            />
-            <CustomerReview
-              review="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusamus dignissimos nostrum possimus, omnis, officiis ullam repellendus dolorem temporibus, illum in modi accusantium"
-              image={customerPic}
-              name="Elon Musk"
-              classOfCard="customerReview-card2"
-            />
-            <CustomerReview
-              review="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusamus dignissimos nostrum possimus, omnis, officiis ullam repellendus dolorem temporibus, illum in modi accusantium"
-              image={customerPic}
-              name="Elon Musk"
-              classOfCard="customerReview-card1"
-            />
-            <CustomerReview
-              review="Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus accusamus dignissimos nostrum possimus, omnis, officiis ullam repellendus dolorem temporibus, illum in modi accusantium"
-              image={customerPic}
-              name="Elon Musk"
-              classOfCard="customerReview-card2"
-            />
+            {reviews.map((item,index)=>{
+              return (
+                <div key={index}>
+                <CustomerReview 
+                  review={item.review}
+                  image={item.image}
+                  name={item.name}
+                  location={item.location}
+                  rating={item.rating}
+                  classOfCard={(index+1)%2===0? "customerReview-card1":"customerReview-card2"}
+                />
+                </div>
+              )
+            })}
           </Slider>
         </div>
       </div>
