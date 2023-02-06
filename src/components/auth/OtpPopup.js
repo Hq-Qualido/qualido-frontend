@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import { FaRedo, FaTimes } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import { FiAlertCircle } from "react-icons/fi";
-import { baseUrl } from "../../BaseUrl";
+import useApi from "../../hooks/useApi";
+import authApi from "../../api/auth";
+import useToken from "../../hooks/useToken";
 
 export default function OtpPopup(props) {
-  const navigate = useNavigate();
 
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [errorMessage, setErrorMessage] = useState("");
+
+  const {
+    data: verifyOtpData,
+    request: verifyOtp,
+    loading,
+    error,
+    networkError,
+  } = useApi(authApi.verifyOtp);
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return false;
@@ -19,29 +28,28 @@ export default function OtpPopup(props) {
       element.nextSibling.focus();
     }
   };
+  const { setToken, setName } = useToken();
 
   async function handleSubmit() {
-    const response = await fetch(
-      `${baseUrl}/auth/verifyOtp`,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email: props.userData.email,
-          otp: otp.join(""),
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await response.json();
-    console.log(data);
-    if (data.token) {
-      navigate("/");
-    } else {
-      setErrorMessage(data.message);
-    }
+    verifyOtp({
+        email: props.userData.email,
+        otp: otp.join(""),
+    })
   }
+
+  useEffect(() => {
+    if (verifyOtpData && !error && !loading) {
+      console.log(verifyOtpData , "verfotpdata")
+      setName(verifyOtpData.user.fullname);
+      setToken(verifyOtpData.token);
+      window.location.replace("/dashboard")
+    } else if (error) {
+      setErrorMessage(error);
+      console.log(error);
+    } else if (networkError) {
+      console.log(networkError);
+    }
+  }, [verifyOtpData, networkError]);
 
   return (
     props.trigger && (

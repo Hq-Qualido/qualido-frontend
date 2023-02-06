@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 import "./Login.css";
 import LoginGirl from "../../assets/loginGirl.png";
@@ -10,7 +9,6 @@ import useApi from "../../hooks/useApi";
 import useToken from "../../hooks/useToken";
 
 export default function Login() {
-  const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -35,7 +33,7 @@ export default function Login() {
     networkError: googleNetworkError,
   } = useApi(authApi.googleLogin);
 
-  const { token, setToken, setName } = useToken();
+  const { setToken, setName } = useToken();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,10 +68,9 @@ export default function Login() {
 
   useEffect(() => {
     if (loginData && !error && !loading) {
-      console.log(loginData, "logindata");
       setName(loginData.user.fullname);
       setToken(loginData.token);
-      navigate("/dashboard");
+      window.location.replace("/dashboard")
     } else if (error) {
       setFinalError(error);
       console.log(error);

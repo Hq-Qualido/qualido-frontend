@@ -1,12 +1,13 @@
-import React from "react";
-import "./Login.css";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { baseUrl } from "../../BaseUrl";
 
+import { baseUrl } from "../../BaseUrl";
+import useApi from "../../hooks/useApi";
+import authApi from "../../api/auth";
 import LoginGirl from "../../assets/loginGirl.png";
 import google from "../../assets/google.png";
 import OtpPopup from "./OtpPopup";
+import "./Login.css";
 
 export default function Register() {
   const [popup, setPopup] = useState(false);
@@ -22,6 +23,14 @@ export default function Register() {
     createPass: "",
     confirmPass: "",
   });
+
+  const {
+    data: signupData,
+    request: signup,
+    loading,
+    error,
+    networkError,
+  } = useApi(authApi.signup);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,22 +63,24 @@ export default function Register() {
       !createPassError &&
       !confirmPassError
     ) {
-      const response = await fetch(`${baseUrl}/auth/register`, {
-        method: "POST",
-        body: JSON.stringify({
+      signup({
           email: userData.email,
           fullname: userData.fullname,
           password: userData.confirmPass,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      // console.log(data,"data")
-      // if (data.token) setPopup(true);
+      })
     }
   }
+  useEffect(() => {
+    if (signupData && !error && !loading) {
+      console.log(signupData, "signupData");
+      // setName(signupData.userData.fullname);
+      // setToken(signupData.token);
+    } else if (error) {
+      console.log(error);
+    } else if (networkError) {
+      console.log(networkError);
+    }
+  }, [signupData, networkError]);
 
   const handleGoogleLogin = async () => {
     const response = await fetch(`${baseUrl}/auth/google/url`);
@@ -201,7 +212,7 @@ export default function Register() {
           </div>
         </div>
       </div>
-      {popup &&
+      {popup && signupData &&
         !emailError &&
         !fullnameError &&
         !createPassError &&

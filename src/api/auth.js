@@ -1,10 +1,8 @@
 import client from "./client";
 
-// const sendOtp = (phoneNumber) => client.post("/auth/sendOTP", { phoneNumber });
+const verifyOtp = (data) => client.post("/auth/verifyOTP", data);
 
-// const verifyOtp = (data) => client.post("/auth/verifyOTP", data);
-
-// const signup = (data) => client.post("/auth/register", data);
+const signup = (data) => client.post("/auth/register", data);
 
 const login = (data) => client.post("/auth/login", data);
 
@@ -13,9 +11,8 @@ const googleLogin = () => client.get("/auth/google/url");
 // const getUser = () => client.get("/auth/user");
 
 export default {
-  // sendOtp,
-  // verifyOtp,
-  // signup,
+  verifyOtp,
+  signup,
   login,
   googleLogin,
   // getUser,

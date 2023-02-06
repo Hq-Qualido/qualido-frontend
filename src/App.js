@@ -1,18 +1,21 @@
-import HomePage from "./components/homepage/HomePage";
-import Navbar from "./components/navbar/Navbar";
-import Products from "./components/products/Products";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
+import { CartProvider } from "react-use-cart";
+
+
+import HomePage from "./components/homepage/HomePage";
+import Navbar from "./components/navbar/Navbar";
+import Products from "./components/products/Products";
 import ProductId from "./components/products/ProductId";
 import Error from "./components/error/Error";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Cart from "./components/cart/Cart";
-import { CartProvider } from "react-use-cart";
 import Dashboard from "./components/dashboard/Dashboard";
 import Wishlist from "./components/dashboard/Wishlist";
 import Orders from "./components/dashboard/Orders";
