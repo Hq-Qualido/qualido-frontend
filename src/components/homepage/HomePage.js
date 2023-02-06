@@ -248,6 +248,16 @@ export default function HomePage() {
         </div>
       </div>
       {/* WHY CHOOSE US ENDS */}
+
+      <a
+       href="https://forms.gle/v3AzAVY2Wx4Spdr26"
+       target="_blank"
+       rel="noreferrer"
+       className="apply_form fs-5 shadow"
+       >
+        Join Us &rarr;
+      </a>
+
       <a
         href="https://wa.me/+917042523617?text=I%20want%20to%20buy%20a%20book."
         target="_blank"

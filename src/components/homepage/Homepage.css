@@ -6,6 +6,27 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+.apply_form{
+  position: fixed;
+  bottom: 0.50%;
+  /* right: -25px; */
+  left: 0%;
+  background-color: #0b3f7b;
+  color: #fff;
+  /* transform: rotate(-90deg); */
+  margin: 10px;
+  padding:5px 10px;
+  width: fit-content;
+  height: fit-content;
+  z-index: 2;
+  border-radius: 10px 5px;
+  text-decoration: none;
+}
+.apply_form:hover {
+  color: var(--white-color);
+  cursor: pointer;
+}
+
 .whatsapp_link {
   position: fixed;
   bottom: 0.5%;
