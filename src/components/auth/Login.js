@@ -10,8 +10,7 @@ import useApi from "../../hooks/useApi";
 import useToken from "../../hooks/useToken";
 
 export default function Login() {
-  // const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -19,8 +18,6 @@ export default function Login() {
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
   const [finalError, setFinalError] = useState("");
-
-  const navigate = useNavigate();
 
   const {
     data: loginData,
@@ -38,7 +35,7 @@ export default function Login() {
     networkError: googleNetworkError,
   } = useApi(authApi.googleLogin);
 
-  const { token, setToken } = useToken();
+  const { token, setToken, setName } = useToken();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,11 +70,12 @@ export default function Login() {
 
   useEffect(() => {
     if (loginData && !error && !loading) {
-      localStorage.setItem("Name", loginData.user.fullname);
+      console.log(loginData, "logindata");
+      setName(loginData.user.fullname);
       setToken(loginData.token);
       navigate("/dashboard");
     } else if (error) {
-      setFinalError(loginData);
+      setFinalError(error);
       console.log(error);
     } else if (networkError) {
       console.log(networkError);
@@ -91,8 +89,6 @@ export default function Login() {
       window.location.replace(googleUrlData.url);
     }
   }, [googleUrlData]);
-
-  // if (token) return navigate("/dashboard", { replace: true });
 
   return (
     <>

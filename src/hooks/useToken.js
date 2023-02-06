@@ -7,7 +7,6 @@ export default function useToken() {
     const userToken = JSON.parse(tokenString);
     return userToken;
   };
-
   const [token, setToken] = useState(getToken());
 
   const saveToken = (userToken) => {
@@ -20,9 +19,28 @@ export default function useToken() {
     setToken();
   };
 
+  const getName = () => {
+    const fullname = localStorage.getItem("name");
+    if (fullname === "undefined") return null;
+    return fullname;
+  };
+  const [name, setName] = useState(getName());
+
+  const saveName = (fullname) => {
+    localStorage.setItem("name", fullname);
+    setName(fullname);
+  };
+
+  const removeName = () => {
+    localStorage.removeItem("name");
+    setName();
+  };
+
   return {
     setToken: saveToken,
+    setName: saveName,
     removeToken,
-    token,
+    removeName,
+    token,name,
   };
 }

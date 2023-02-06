@@ -6,13 +6,17 @@ import { Link } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";
 import SearchBar from "./SearchBar";
+import useToken from "../../hooks/useToken";
 
-export default function Navbar(props) {
+export default function Navbar() {
   const [isExpanded, setIsExpanded] = useState(false);
   const { totalUniqueItems } = useCart();
 
-  const space = props.name && props.name.indexOf(" ");
-  const firstName =  props.name && props.name.substring(0, space);
+  const { name } = useToken();
+
+  const space = name && name.indexOf(" ");
+  const firstName =  name && name.substring(0, space);
+  
   return (
     <>
       <nav>
@@ -32,9 +36,8 @@ export default function Navbar(props) {
             }}
           >
             <span>
-              {" "}
-              <FaShoppingCart />{" "}
-            </span>{" "}
+              <FaShoppingCart />
+            </span>
             Cart({totalUniqueItems})
           </Link>
           <Link
@@ -45,10 +48,9 @@ export default function Navbar(props) {
             }}
           >
             <span>
-              {" "}
-              <FaUserCircle />{" "}
-            </span>{" "}
-            {props.name ? firstName : "Account"}
+              <FaUserCircle />
+            </span>
+            {name ? firstName : "Account"}
           </Link>
         </div>
         <div

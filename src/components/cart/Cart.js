@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 import Footer from "../footer/Footer";
 import { useCart } from "react-use-cart";
 import { baseUrl } from "../../BaseUrl";
+import useToken from "../../hooks/useToken";
 
-export default function Cart(props) {
+export default function Cart() {
+  const { name } = useToken();
+
   const { isEmpty, totalUniqueItems, items, totalItems, cartTotal } = useCart();
-  // console.log(items,"itemd")
   const addToCart = async () => {
     const response = await fetch(`${baseUrl}/cart/add`, {
       method: "PUT",
@@ -17,7 +19,6 @@ export default function Cart(props) {
       headers: { "Content-Type": "application/json" },
     });
     const data = await response.json();
-    // console.log(data, "data");
   };
 
   useEffect(() => {
@@ -80,7 +81,7 @@ export default function Cart(props) {
             Subtotal ({totalItems} Items) :
             <span style={{fontWeight:"500"}}> Rs {cartTotal} </span>
           </div>
-         <Link to={props.name && props.name.length>0 ? "/payment" : "/login" } style={{textDecoration:"none"}}>
+         <Link to={name && name.length>0 ? "/payment" : "/login" } style={{textDecoration:"none"}}>
           <div className="buy-btn">Proceed to Buy</div>
          </Link>
         </div>

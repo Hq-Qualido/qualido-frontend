@@ -25,19 +25,17 @@ import "./index.css";
 import useToken from "./hooks/useToken";
 
 function App() {
-  const name = localStorage.getItem("Name");
-
   const { token } = useToken();
 
   return (
     <>
       <CartProvider>
         <Router>
-          <Navbar name={name} />
+          <Navbar />
           <Routes>
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/cart" element={<Cart name={name} />} />
+            <Route path="/cart" element={<Cart />} />
 
             <Route
               path="/login"
@@ -50,8 +48,8 @@ function App() {
             <Route
               path="/dashboard"
               element={
-                name ? (
-                  <Dashboard name={name} />
+                token ? (
+                  <Dashboard  />
                 ) : (
                   <Navigate to="/login" replace={true} />
                 )
@@ -60,25 +58,25 @@ function App() {
             <Route
               path="/dashboard/wishlist"
               element={
-                name ? <Wishlist /> : <Navigate to="/login" replace={true} />
+                token ? <Wishlist /> : <Navigate to="/login" replace={true} />
               }
             />
             <Route
               path="/dashboard/orders"
               element={
-                name ? <Orders /> : <Navigate to="/login" replace={true} />
+                token ? <Orders /> : <Navigate to="/login" replace={true} />
               }
             />
             <Route
               path="/dashboard/security"
               element={
-                name ? <Security /> : <Navigate to="/login" replace={true} />
+                token ? <Security /> : <Navigate to="/login" replace={true} />
               }
             />
             <Route
               path="/dashboard/my-addresses"
               element={
-                name ? <MyAddresses /> : <Navigate to="/login" replace={true} />
+                token ? <MyAddresses /> : <Navigate to="/login" replace={true} />
               }
             />
 

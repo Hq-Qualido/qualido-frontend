@@ -6,13 +6,12 @@ import "./Dashboard.css";
 import DashCards from "./DashCards.js";
 import useToken from "../../hooks/useToken";
 
-export default function Dashboard(props) {
+export default function Dashboard() {
   const navigate = useNavigate();
-
-  const { removeToken } = useToken();
+  const {name, removeToken ,removeName} = useToken();
 
   const handleLogout = () => {
-    window.localStorage.removeItem("Name");
+    removeName();
     removeToken();
     navigate("/");
     window.location.reload();
@@ -25,7 +24,7 @@ export default function Dashboard(props) {
           <div className="container my-5">
             <div className="dashboard-top my-2">
               <div className="p-2 fs-2 section-heading ">
-                Hello 👋, {props.name}
+                Hello 👋, {name}
               </div>
               <div className="logout text-center " onClick={handleLogout}>
                 <span className="me-1">
