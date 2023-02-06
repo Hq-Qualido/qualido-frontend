@@ -63,7 +63,7 @@ export default function ProductId() {
             {indivProd.urls ? (
               <div
                 className="col-md-auto d-flex align-items-center justify-content-center rounded rounded-lg"
-                style={{ height: "50vh", width: "100%" }}
+                style={{ height: "50vh", width: "100%",overflow:"auto" }}
               >
                 <img
                   style={{ height: "45vh", width: "auto" }}
