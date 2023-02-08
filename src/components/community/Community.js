@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
+import { FaUserAlt } from "react-icons/fa";
 import "./Community.css";
 
 export default function Community() {
@@ -21,8 +22,15 @@ export default function Community() {
             {sentMessage &&
               sentMessage.map((message, index) => {
                 return (
-                  <div className="message shadow-sm my-1" key={index}>
-                    {message}
+                  <div
+                    key={index}
+                    className="d-flex flex-row justify-content-center align-items-center"
+                  >
+                    <div className="message shadow-sm my-1">{message}</div>
+                    <span className="mx-1 bg-secondary text-light px-1 rounded rounded-5">
+                      {" "}
+                      <FaUserAlt />{" "}
+                    </span>
                   </div>
                 );
               })}
@@ -53,4 +61,3 @@ export default function Community() {
     </>
   );
 }
- 
