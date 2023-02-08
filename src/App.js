@@ -26,6 +26,7 @@ import Feedback from "./components/feedback/Feedback";
 import Payment from "./components/paymentGateway/Payment";
 import "./index.css";
 import useToken from "./hooks/useToken";
+import Community from "./components/community/Community";
 
 function App() {
   const { token } = useToken();
@@ -39,6 +40,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/community" element={<Community />} />
 
             <Route
               path="/login"
