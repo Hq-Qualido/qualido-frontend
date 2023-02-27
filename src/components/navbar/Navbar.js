@@ -41,7 +41,7 @@ export default function Navbar() {
             </span>
             Cart({totalUniqueItems})
           </Link>
-          <Link
+          {/* <Link
             to="community"
             className="nav-menu-item"
             onClick={() => {
@@ -52,7 +52,7 @@ export default function Navbar() {
               <RiChatSmile3Fill />
             </span>
             Chat
-          </Link>
+          </Link> */}
           <Link
             to="dashboard"
             className="nav-menu-item"
