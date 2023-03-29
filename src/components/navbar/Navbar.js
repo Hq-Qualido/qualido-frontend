@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { RiChatSmile3Fill } from "react-icons/ri";
+// import { RiChatSmile3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import logobagLIGHT from "../../assets/logobagLIGHT.png";
 import { useCart } from "react-use-cart";

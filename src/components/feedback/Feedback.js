@@ -1,21 +1,43 @@
 import React, { useState } from "react";
+
 import Footer from "../footer/Footer";
 import "./Feedback.css";
+import authApi from "../../api/auth";
+import useApi from "../../hooks/useApi";
 
 export default function Feedback() {
   const [prodFeedback, setProdFeedback] = useState("");
   const [suggestions, setSuggestions] = useState("");
   const [rating, setRating] = useState("");
 
-  const [feedbackError, setFeedbackError] = useState('');
-  const [ratingError, setRatingError] = useState('');
-  
+  const [feedbackError, setFeedbackError] = useState("");
+  const [ratingError, setRatingError] = useState("");
+
+  const {
+    data: feedbackData,
+    request: feedback,
+    loading,
+    error,
+    networkError,
+  } = useApi(authApi.feedback);
+
   const handleSubmit = () => {
-    if(prodFeedback.length<=0) setFeedbackError('Please type your feedback!');
-    else setFeedbackError('')
-    if(rating.length<=0) setRatingError('Please provide rating!');
-    else if(rating > 5 || rating <=0) setRatingError('Rate us on a scale of (1-5)!')
-    else setRatingError('')
+    if (prodFeedback.length <= 0)
+      setFeedbackError("Please type your feedback!");
+    else setFeedbackError("");
+    if (rating.length <= 0) setRatingError("Please provide rating!");
+    else if (rating > 5 || rating <= 0)
+      setRatingError("Rate us on a scale of (1-5)!");
+    else setRatingError("");
+
+    if (feedbackError.length && ratingError.length) {
+      feedback({
+        prodFeedback: prodFeedback,
+        suggestions: suggestions,
+        rating: rating,
+      });
+    }
+    console.log(feedbackData, "feedback data");
   };
   return (
     <>
@@ -43,7 +65,11 @@ export default function Feedback() {
             placeholder="Please give us your feedback about the product"
           ></textarea>
         </div>
-        {feedbackError.length>0?<span className="error_message">{feedbackError}</span> :""}
+        {feedbackError.length > 0 ? (
+          <span className="error_message">{feedbackError}</span>
+        ) : (
+          ""
+        )}
         <div className="mt-3">
           <label htmlFor="exampleFormControlTextarea1" className="form-label">
             Your Suggestions
@@ -78,13 +104,17 @@ export default function Feedback() {
             placeholder="Rate us on a scale of 5"
           ></input>
         </div>
-        {ratingError.length>0?<span className="error_message">{ratingError}</span> :""}
+        {ratingError.length > 0 ? (
+          <span className="error_message">{ratingError}</span>
+        ) : (
+          ""
+        )}
 
         <div onClick={handleSubmit} className="dislodged-border mt-3 mb-2">
           Submit
         </div>
       </form>
-      
+
       <Footer />
     </>
   );

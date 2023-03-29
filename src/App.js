@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { CartProvider } from "react-use-cart";
 
-
 import HomePage from "./components/homepage/HomePage";
 import Navbar from "./components/navbar/Navbar";
 import Products from "./components/products/Products";
@@ -29,8 +28,8 @@ import useToken from "./hooks/useToken";
 import Community from "./components/community/Community";
 
 function App() {
-  const { token } = useToken();
-
+  const { name, token } = useToken();
+  console.log(token)
   return (
     <>
       <CartProvider>
@@ -49,15 +48,16 @@ function App() {
             <Route path="/signup" element={<Register />} />
 
             <Route path="/payment" element={<Payment />} />
-            <Route path="/feedback" element={<Feedback />} />
+            <Route
+              path="/feedback"
+              element={
+                name ? <Feedback /> : <Navigate to="/login" replace={true} />
+              }
+            />
             <Route
               path="/dashboard"
               element={
-                token ? (
-                  <Dashboard  />
-                ) : (
-                  <Navigate to="/login" replace={true} />
-                )
+                token ? <Dashboard /> : <Navigate to="/login" replace={true} />
               }
             />
             <Route
@@ -81,7 +81,11 @@ function App() {
             <Route
               path="/dashboard/my-addresses"
               element={
-                token ? <MyAddresses /> : <Navigate to="/login" replace={true} />
+                token ? (
+                  <MyAddresses />
+                ) : (
+                  <Navigate to="/login" replace={true} />
+                )
               }
             />
 
