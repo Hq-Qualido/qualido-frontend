@@ -5,6 +5,7 @@ import Categories from "./Categories";
 import CustomerReview from "./CustomerReview";
 import WhyUS from "./WhyUS";
 import { Link } from "react-router-dom";
+import Marquee from "react-fast-marquee";
 
 import s1 from "../../assets/s1.png";
 import s2 from "../../assets/s2.png";
@@ -45,41 +46,12 @@ export default function HomePage() {
   };
 
   const customers = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    slidesToShow: 3,
+    pauseOnHover:true,
     autoplay: true,
-    speed: 2500,
+    speed: 100,
     autoplaySpeed: 2000,
-    cssEase: "linear",
-    arrows: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-      {
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
+
   return (
     <>
       <Slider {...settings}>
@@ -183,15 +155,15 @@ export default function HomePage() {
       {/* CUSTOMER REVIEWS STARTS */}
       <div className="container-fluid customer-reviews">
         <div className="row customer-reviews-row">
-          <div className="text-center mb-5 fs-2">Customer Reviews</div>
+          <div className="text-center fs-2">Customer Reviews</div>
 
-          <Slider {...customers}>
+          <Marquee {...customers}>
             {reviews.map((item,index)=>{
               return (
                 <div key={index}>
                 <CustomerReview 
                   review={item.review}
-                  image={item.image}
+                  image={customerPic}
                   name={item.name}
                   location={item.location}
                   rating={item.rating}
@@ -200,7 +172,7 @@ export default function HomePage() {
                 </div>
               )
             })}
-          </Slider>
+          </Marquee>
         </div>
       </div>
       {/* CUSTOMER REVIEWS ENDS */}

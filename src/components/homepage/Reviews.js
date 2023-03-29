@@ -9,7 +9,7 @@ const reviews = [
       "Thank  you for such fast and amazing delivery! it was really a great deal, the bookmark and the diary was amazing , Nice job & all the best qualido",
   },
   {
-    name: "Sayan Chakarborty",
+    name: "Sayan",
     location: "West Bengal",
     image: "",
     rating: 5,
@@ -18,7 +18,7 @@ const reviews = [
   },
   {
     name: "Veer Agarwal",
-    location: "Kanpur UP",
+    location: "Kanpur",
     image:
       "https://drive.google.com/file/d/1w9ao06YTW0jfHaGeYOks_5-JCXkn4fZa/view?usp=share_link",
     rating: 4.5,
@@ -27,7 +27,7 @@ const reviews = [
   },
   {
     name: "Ali",
-    location: "Sambhal UP",
+    location: "Sambhal",
     image:
       "https://drive.google.com/file/d/1V90EdeLskNVCsmNKRD2hfnLcAHBMBdoj/view?usp=share_link",
     rating: 4.5,
