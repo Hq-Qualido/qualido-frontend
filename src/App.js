@@ -29,7 +29,6 @@ import Community from "./components/community/Community";
 
 function App() {
   const { name, token } = useToken();
-  console.log(token)
   return (
     <>
       <CartProvider>
