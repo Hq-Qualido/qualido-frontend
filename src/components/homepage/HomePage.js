@@ -4,12 +4,10 @@ import "./Homepage.css";
 import Categories from "./Categories";
 import CustomerReview from "./CustomerReview";
 import WhyUS from "./WhyUS";
-import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 
-import s1 from "../../assets/s1.png";
-import s2 from "../../assets/s2.png";
-import s3 from "../../assets/s3.png";
+import Illustration1 from "../../assets/Illustration1.svg";
+import Illustration2 from "../../assets/Illustration2.svg";
 import customerPic from "../../assets/customerPic.png";
 import Privacy from "../../assets/Privacy.png";
 import Service from "../../assets/Service.png";
@@ -17,7 +15,7 @@ import chatSupport from "../../assets/chatSupport.png";
 import Footer from "../footer/Footer";
 import Loader from "../loader/Loader";
 import { baseUrl } from "../../BaseUrl";
-import { FaInfo, FaWhatsapp } from "react-icons/fa";
+import { FaSearch, FaWhatsapp } from "react-icons/fa";
 import UpcomingProducts from "./UpcomingProducts";
 import reviews from "./Reviews";
 
@@ -46,7 +44,7 @@ export default function HomePage() {
   };
 
   const customers = {
-    pauseOnHover:true,
+    pauseOnHover: true,
     autoplay: true,
     speed: 100,
     autoplaySpeed: 2000,
@@ -54,82 +52,75 @@ export default function HomePage() {
 
   return (
     <>
-      <Slider {...settings}>
-        {/* STARTS HERE 1ST  */}
-        <div className="container-fluid slider">
-          <div className="row slider-row">
-            <div className="col-lg-6 col-sm-6 slider-left">
-              <div className="slider-heading slideLeft-text fs-0">
-                Grab The Best
-              </div>
-              <div className="slider-heading slideRight-text fs-0 ">
-                Deals Here!
-              </div>
-              <p className="slider-para">
-                Now get all the books you have always wanted to read at much
-                cheaper prices than anywhere else.
-              </p>
-              <Link to="/products" className="button-52">
-                Shop Now
-              </Link>
-            </div>
-            <div className="col-lg-6 col-sm-6 slider-right">
-              <img className="slider-right-image" src={s1} alt="" />
-            </div>
-          </div>
-        </div>
-        {/* ENDS HERE !ST  */}
+      <div className="container my-3">
+        <Slider {...settings}>
+          {/* STARTS HERE 1ST  */}
+          <div className="container-fluid slider">
+            <div className="row slider-row">
+              <div className="col-lg-6 col-sm-6 slider-left">
+                <div className="slider-heading fs-1">Grab The Best</div>
+                <div className="slider-heading fs-1">Deals Here!</div>
+                <p className="slider-para">
+                  Now get all the books you have always wanted to read at much
+                  cheaper prices than anywhere else.
+                </p>
 
-        {/* STARTS HERE 2nd  */}
-        <div className="container-fluid slider">
-          <div className="row slider-row">
-            <div className="col-lg-6 col-sm-6 slider-left">
-              <div className="slider-heading slideLeft-text fs-0">
-                Latest arrivals
+                <div class="home_search_box">
+                  <input
+                    className="home_search_input"
+                    type="text"
+                    placeholder="Search your products"
+                  />
+                  <button className="main_search_btn">
+                    <FaSearch />
+                  </button>
+                </div>
               </div>
-              <div className="slider-heading slideRight-text fs-0 ">
-                Are Now Here!
+              <div className="col-lg-6 col-sm-6 slider-right">
+                <img
+                  className="slider-right-image"
+                  src={Illustration1}
+                  alt="Illustration1"
+                />
               </div>
-              <p className="slider-para">
-                We have brought you the latest most trendy books better and
-                before than anyone else.
-              </p>
-              <Link to="/products" className="button-52">
-                Shop Now
-              </Link>
-            </div>
-            <div className="col-lg-6 col-sm-6 slider-right">
-              <img className="slider-right-image" src={s2} alt="" />
             </div>
           </div>
-        </div>
-        {/* ENDS HERE 2nd */}
+          {/* ENDS HERE !ST  */}
 
-        {/* STARTS HERE 3rd  */}
-        <div className="container-fluid slider">
-          <div className="row slider-row">
-            <div className="col-lg-6 col-sm-6 slider-left">
-              <div className="slider-heading slideLeft-text fs-0">
-                Now Library at
+          {/* STARTS HERE 2nd  */}
+          <div className="container-fluid slider">
+            <div className="row slider-row">
+              <div className="col-lg-6 col-sm-6 slider-left">
+                <div className="slider-heading fs-1">Latest arrivals</div>
+                <div className="slider-heading fs-1">Are Now Here!</div>
+                <p className="slider-para">
+                  We have brought you the latest most trendy books better and
+                  before than anyone else.
+                </p>
+
+                <div class="home_search_box">
+                  <input
+                    className="home_search_input"
+                    type="text"
+                    placeholder="Search your products"
+                  />
+                  <button className="main_search_btn">
+                    <FaSearch />
+                  </button>
+                </div>
               </div>
-              <div className="slider-heading slideRight-text fs-0 ">
-                your home!
+              <div className="col-lg-6 col-sm-6 slider-right">
+                <img
+                  className="slider-right-image"
+                  src={Illustration2}
+                  alt="Illustration2"
+                />
               </div>
-              <p className="slider-para">
-                No need to leave your comfort , we'll deliver all your books to
-                your home at very minimal prices.
-              </p>
-              <Link to="/products" className="button-52">
-                Shop Now
-              </Link>
-            </div>
-            <div className="col-lg-6 col-sm-6 slider-right">
-              <img className="slider-right-image" src={s3} alt="" />
             </div>
           </div>
-        </div>
-        {/* ENDS HERE 3rd */}
-      </Slider>
+          {/* ENDS HERE 2nd */}
+        </Slider>
+      </div>
 
       {/* ALL CATEGORIES LIST STARTS  */}
       <div className="container-fluid categories my-5">
@@ -158,19 +149,23 @@ export default function HomePage() {
           <div className="text-center fs-2">Customer Reviews</div>
 
           <Marquee {...customers}>
-            {reviews.map((item,index)=>{
+            {reviews.map((item, index) => {
               return (
                 <div key={index}>
-                <CustomerReview 
-                  review={item.review}
-                  image={customerPic}
-                  name={item.name}
-                  location={item.location}
-                  rating={item.rating}
-                  classOfCard={(index+1)%2===0? "customerReview-card1":"customerReview-card2"}
-                />
+                  <CustomerReview
+                    review={item.review}
+                    image={customerPic}
+                    name={item.name}
+                    location={item.location}
+                    rating={item.rating}
+                    classOfCard={
+                      (index + 1) % 2 === 0
+                        ? "customerReview-card1"
+                        : "customerReview-card2"
+                    }
+                  />
                 </div>
-              )
+              );
             })}
           </Marquee>
         </div>
@@ -199,15 +194,15 @@ export default function HomePage() {
         </div>
       </div>
       {/* WHY CHOOSE US ENDS */}
-
+      {/* 
       <a
-       href="https://forms.gle/v3AzAVY2Wx4Spdr26"
-       target="_blank"
-       rel="noreferrer"
-       className="apply_form fs-6 shadow"
-       >
-       <FaInfo /> We're hiring 
-      </a>
+        href="https://forms.gle/v3AzAVY2Wx4Spdr26"
+        target="_blank"
+        rel="noreferrer"
+        className="apply_form fs-6 shadow"
+      >
+        <FaInfo /> We're hiring
+      </a> */}
 
       <a
         href="https://wa.me/+917042523617?text=I%20want%20to%20buy%20a%20book."
