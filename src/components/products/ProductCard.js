@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import { BsCartPlus , BsFillCartCheckFill} from "react-icons/bs";
+import { BsCartPlus, BsFillCartCheckFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
 
@@ -9,31 +9,37 @@ export default function ProductCard(props) {
   const handleNavigate = () => {
     navigate(`/products/${props._id}`);
   };
-  const { addItem ,getItem } = useCart();
+  const { addItem, getItem } = useCart();
   const checkItemInCart = getItem(props._id);
-  
+
   return (
     <>
       {!props.navigator ? (
         <div className=" product-card ">
           <div className="product-image">
-            <Link to={`${props._id} `} style={{ textDecoration: "none" }}>
-              <img src={props.urls[0]} alt="img" />
-            </Link>
-            <div className="over-image">
-              <span className="save-percentage">Save {props.discount}%</span>
-              <span
-                className="wishlist-btn my-2"
-                onClick={() =>
-                  addItem({
-                    id: props._id,
-                    price: props.prodSp,
-                    ...props,
-                  })
-                }
-              >
-               {checkItemInCart ?<BsFillCartCheckFill /> 
-              :   <BsCartPlus />}</span>
+            <div
+              className="product-bg-image"
+              style={{ backgroundImage: `url(${props.urls[0]})` }}
+            />
+            <div className="product-foreground">
+              <Link to={`${props._id} `} style={{ textDecoration: "none" }}>
+                <img src={props.urls[0]} alt="img" />
+              </Link>
+              <div className="over-image">
+                <span className="save-percentage">Save {props.discount}%</span>
+                <span
+                  className="wishlist-btn my-2"
+                  onClick={() =>
+                    addItem({
+                      id: props._id,
+                      price: props.prodSp,
+                      ...props,
+                    })
+                  }
+                >
+                  {checkItemInCart ? <BsFillCartCheckFill /> : <BsCartPlus />}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -77,8 +83,7 @@ export default function ProductCard(props) {
                   })
                 }
               >
-               {checkItemInCart ?<BsFillCartCheckFill /> 
-              :   <BsCartPlus />}
+                {checkItemInCart ? <BsFillCartCheckFill /> : <BsCartPlus />}
               </span>
             </div>
           </div>
