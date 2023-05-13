@@ -454,10 +454,12 @@ tbody tr td {
 }
 
 .sidebar ul li {
+  height: 45px;
   width: 100%;
   text-align: left;
+  align-items: center;
   position: relative;
-  display: block;
+  display: flex;
   text-transform: capitalize;
   color: #fff;
   font-size: 1.2rem;
