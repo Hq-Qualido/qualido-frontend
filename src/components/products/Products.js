@@ -12,6 +12,7 @@ import { baseUrl } from "../../BaseUrl";
 export default function Products() {
   const [loading, setLoading] = useState(false);
   const [datas, setDatas] = useState([]);
+
   const fetchProducts = async (val) => {
     const url = !val
       ? `${baseUrl}/products`
@@ -50,10 +51,7 @@ export default function Products() {
               datas.map((items, index) => {
                 return (
                   <div key={index}>
-                    <ProductCard
-                      {...items}
-                      navigator={false}
-                    />
+                    <ProductCard {...items} navigator={false} />
                   </div>
                 );
               })
