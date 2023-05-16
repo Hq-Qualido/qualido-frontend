@@ -15,9 +15,10 @@ import chatSupport from "../../assets/chatSupport.png";
 import Footer from "../footer/Footer";
 import Loader from "../loader/Loader";
 import { baseUrl } from "../../BaseUrl";
-import { FaSearch, FaWhatsapp } from "react-icons/fa";
+import { FaArrowRight, FaSearch, FaWhatsapp } from "react-icons/fa";
 import UpcomingProducts from "./UpcomingProducts";
 import reviews from "./Reviews";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const [allCategories, setAllCategories] = useState([]);
@@ -65,16 +66,16 @@ export default function HomePage() {
                   cheaper prices than anywhere else.
                 </p>
 
-                <div class="home_search_box">
-                  <input
-                    className="home_search_input"
-                    type="text"
-                    placeholder="Search your products"
-                  />
-                  <button className="main_search_btn">
-                    <FaSearch />
+                <Link
+                  to="/products"
+                  className="home_search_box"
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className="text-secondary px-2">View Products</div>
+                  <button className="main_search_btn text-secondary">
+                    <FaArrowRight />
                   </button>
-                </div>
+                </Link>
               </div>
               <div className="col-lg-6 col-sm-6 slider-right">
                 <img
@@ -98,16 +99,16 @@ export default function HomePage() {
                   before than anyone else.
                 </p>
 
-                <div class="home_search_box">
-                  <input
-                    className="home_search_input"
-                    type="text"
-                    placeholder="Search your products"
-                  />
-                  <button className="main_search_btn">
-                    <FaSearch />
+                <Link
+                  to="/products"
+                  className="home_search_box"
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className="text-secondary px-2">View Products</div>
+                  <button className="main_search_btn text-secondary">
+                    <FaArrowRight />
                   </button>
-                </div>
+                </Link>
               </div>
               <div className="col-lg-6 col-sm-6 slider-right">
                 <img
