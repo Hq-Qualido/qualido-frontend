@@ -90,11 +90,11 @@
 .product-image img {
   transition: all 01s ease-in-out;
   border-radius: 3px;
-  width: 170px;
+  width: 200px;
   height: auto;
 }
 .product-image img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .product-image .over-image {
   z-index: 1;
