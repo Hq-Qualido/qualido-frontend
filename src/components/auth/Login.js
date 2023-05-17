@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "./Login.css";
 import LoginGirl from "../../assets/loginGirl.png";
@@ -9,8 +9,12 @@ import useApi from "../../hooks/useApi";
 import useToken from "../../hooks/useToken";
 
 export default function Login() {
+  const { state } = useLocation();
+
+  console.log(state);
+
   const [values, setValues] = useState({
-    email: "",
+    email: state?.email ? state.email : "",
     password: "",
   });
   const [emailError, setEmailError] = useState("");
@@ -70,7 +74,7 @@ export default function Login() {
     if (loginData && !error && !loading) {
       setName(loginData.user.fullname);
       setToken(loginData.token);
-      window.location.replace("/dashboard")
+      window.location.replace("/dashboard");
     } else if (error) {
       setFinalError(error);
       console.log(error);

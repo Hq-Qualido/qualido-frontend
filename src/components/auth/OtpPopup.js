@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { FaRedo, FaTimes } from "react-icons/fa";
 import { FiAlertCircle } from "react-icons/fi";
 import useApi from "../../hooks/useApi";
 import authApi from "../../api/auth";
 import useToken from "../../hooks/useToken";
+import { Link } from "react-router-dom";
 
 export default function OtpPopup(props) {
-
-  const [otp, setOtp] = useState(new Array(6).fill(""));
   const [errorMessage, setErrorMessage] = useState("");
+  const inputRefs = useRef([]);
 
   const {
     data: verifyOtpData,
@@ -19,30 +19,40 @@ export default function OtpPopup(props) {
     networkError,
   } = useApi(authApi.verifyOtp);
 
-  const handleChange = (element, index) => {
-    if (isNaN(element.value)) return false;
-
-    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
-
-    if (element.nextSibling) {
-      element.nextSibling.focus();
+  const handleInputChange = (index, event) => {
+    setErrorMessage("");
+    const value = event.target.value;
+    if (value !== "" && index < inputRefs.current.length - 1) {
+      inputRefs.current[index + 1].focus();
     }
   };
+
+  const handleKeyDown = (index, event) => {
+    if (event.key === "Backspace" && index > 0 && event.target.value === "") {
+      inputRefs.current[index - 1].focus();
+    }
+  };
+
   const { setToken, setName } = useToken();
 
   async function handleSubmit() {
+    const otp = inputRefs.current.map((inputRef) => inputRef.value);
+
     verifyOtp({
-        email: props.userData.email,
-        otp: otp.join(""),
-    })
+      email: props.userData.email,
+      otp: otp.join(""),
+    });
   }
 
   useEffect(() => {
     if (verifyOtpData && !error && !loading) {
-      console.log(verifyOtpData , "verfotpdata")
-      setName(verifyOtpData.user.fullname);
-      setToken(verifyOtpData.token);
-      window.location.replace("/dashboard")
+      console.log(verifyOtpData, "verfotpdata");
+      if (verifyOtpData.message === "wrong otp") setErrorMessage("Wrong OTP.");
+      else {
+        setName(verifyOtpData.user.fullname);
+        setToken(verifyOtpData.token);
+        window.location.replace("/dashboard");
+      }
     } else if (error) {
       setErrorMessage(error);
       console.log(error);
@@ -58,63 +68,88 @@ export default function OtpPopup(props) {
           <div className="close" onClick={() => props.setTrigger(false)}>
             <FaTimes />
           </div>
-          <h1 className="user-email my-3">
-            Hi! 👋, <span> {props.userData.email}</span>
-          </h1>
-          <p>
-            We've sent an OTP to the above provided mail , please enter the OTP
-            to verify your mail.
-          </p>
-
-          <div
-            id="otp"
-            className="otp inputs d-flex flex-row justify-content-center mt-2"
-          >
-            {otp.map((data, index) => {
-              return (
-                <input
-                  className="otp-field mx-1"
-                  type="text"
-                  name="otp"
-                  maxLength="1"
-                  key={index}
-                  value={data}
-                  onChange={(e) => handleChange(e.target, index)}
-                  onFocus={(e) => e.target.select()}
-                />
-              );
-            })}
-          </div>
-
-          <div className="otp-buttons  mt-4 ">
-            <div
-              className="clear-btn mx-1"
-              onClick={(e) => setOtp([...otp.map((v) => "")])}
-            >
-              Clear
-            </div>
-            <div
-              className="buy-btn mx-1"
-              onClick={(e) => {
-                handleSubmit(e);
-              }}
-            >
-              Validate
-            </div>
-          </div>
-          <div className="error-message">
-             {errorMessage?<>
-              <FiAlertCircle />
-              {errorMessage}
+          {props.signupData?.message === "User already registered." ? (
+            <>
+              <h1 className="user-email my-3">
+                Hi! 👋, <span> {props.userData.fullname}</span>
+              </h1>
+              <p>You're already registered.</p>
+              <p>
+                Please{" "}
+                <Link to="/login" state={{ email: props.userData.email }}>
+                  login
+                </Link>
+              </p>
             </>
-               :""}
-          </div>
-          <div className="resend-otp">
-            Resend OTP
-            <span className="mx-1">
-              <FaRedo />
-            </span>
-          </div>
+          ) : (
+            <>
+              <h1 className="user-email my-3">
+                Hi! 👋, <span> {props.userData.email}</span>
+              </h1>
+              <p>
+                We've sent an OTP to the above provided mail , please enter the
+                OTP to verify your mail.
+              </p>
+
+              <div
+                id="otp"
+                className="otp inputs d-flex flex-row justify-content-center mt-2"
+              >
+                {[...Array(6)].map((_, index) => {
+                  return (
+                    <input
+                      className="otp-field mx-1"
+                      key={index}
+                      type="text"
+                      maxLength={1}
+                      ref={(el) => (inputRefs.current[index] = el)}
+                      onChange={(event) => handleInputChange(index, event)}
+                      onKeyDown={(event) => handleKeyDown(index, event)}
+                      onFocus={(e) => e.target.select()}
+                    />
+                  );
+                })}
+              </div>
+
+              <div className="otp-buttons  mt-4 ">
+                <div
+                  className="clear-btn mx-1"
+                  onClick={(e) => {
+                    inputRefs.current.forEach(
+                      (inputRef) => (inputRef.value = "")
+                    );
+                    inputRefs.current[0].focus();
+                  }}
+                >
+                  Clear
+                </div>
+                <div
+                  className="buy-btn mx-1"
+                  onClick={(e) => {
+                    handleSubmit(e);
+                  }}
+                >
+                  Validate
+                </div>
+              </div>
+              <div className="error-message">
+                {errorMessage ? (
+                  <>
+                    <FiAlertCircle />
+                    {errorMessage}
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="resend-otp">
+                Resend OTP
+                <span className="mx-1">
+                  <FaRedo />
+                </span>
+              </div>
+            </>
+          )}
         </div>
       </div>
     )

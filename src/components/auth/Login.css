@@ -66,20 +66,20 @@ input[type="text"],
   border: 1px solid grey;
 }
 
-.error-box{
-    font-size: 15px;
-    color: red;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
+.error-box {
+  font-size: 15px;
+  color: red;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
 }
-.error{
+.error {
   border: 1px solid red;
 }
 
@@ -157,7 +157,7 @@ input[type="text"],
   position: relative;
   width: fit-content;
   height: fit-content;
-  padding:3.5rem 3rem;
+  padding: 3.5rem 3rem;
   background-color: #ffffff;
   box-shadow: 3px 0px 50px 4px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -177,7 +177,7 @@ input[type="text"],
   text-align: center;
 }
 .popupPage .user-email {
-    width: fit-content;
+  width: fit-content;
   font-size: 30px;
   text-align: center;
 }
@@ -185,33 +185,34 @@ input[type="text"],
   color: #00899b;
 }
 
-#otp input[type="text"]{
+#otp input[type="text"] {
   width: 40px;
   height: 40px;
   padding: 5px;
-
+  outline-color: #00899b;
+  text-align: center;
 }
-.otp-buttons{
+.otp-buttons {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
 }
-.clear-btn{
+.clear-btn {
   padding: 7px 10px;
   border-radius: 5px;
   border: 1px solid grey;
 }
-.clear-btn:hover{
+.clear-btn:hover {
   background-color: grey;
   color: #fff;
   cursor: pointer;
 }
-.error-message{
+.error-message {
   color: red;
   text-transform: capitalize;
 }
-.resend-otp{
+.resend-otp {
   color: #00899b;
   align-items: center;
   vertical-align: middle;
@@ -259,9 +260,9 @@ input[type="text"],
   .form form label {
     width: 100%;
   }
-  .error-box{
+  .error-box {
     width: 100%;
-}
+  }
   .popupPage .popup {
     width: 95%;
     height: fit-content;
@@ -273,5 +274,4 @@ input[type="text"],
   .popupPage .user-email span {
     color: #00899b;
   }
-
 }

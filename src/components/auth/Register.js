@@ -64,10 +64,10 @@ export default function Register() {
       !confirmPassError
     ) {
       signup({
-          email: userData.email,
-          fullname: userData.fullname,
-          password: userData.confirmPass,
-      })
+        email: userData.email,
+        fullname: userData.fullname,
+        password: userData.confirmPass,
+      });
     }
   }
   useEffect(() => {
@@ -212,12 +212,18 @@ export default function Register() {
           </div>
         </div>
       </div>
-      {popup && signupData &&
+      {popup &&
+        signupData &&
         !emailError &&
         !fullnameError &&
         !createPassError &&
         !confirmPassError && (
-          <OtpPopup trigger={popup} userData={userData} setTrigger={setPopup} />
+          <OtpPopup
+            trigger={popup}
+            userData={userData}
+            signupData={signupData}
+            setTrigger={setPopup}
+          />
         )}
     </>
   );
