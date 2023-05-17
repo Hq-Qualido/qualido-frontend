@@ -44,6 +44,11 @@
   color: white;
 }
 
+.active {
+  background-color: #00a1b6;
+  color: #fff;
+}
+
 .products-list {
   grid-area: products-list;
   padding-top: 2rem;
