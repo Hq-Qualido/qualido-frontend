@@ -43,14 +43,16 @@ export default function ProductSidebar(props) {
   ];
   return (
     <>
-      <div className="sidebar">
-        <ul className="">
+      <div className="sidebar-body">
+        <ul className="sidebar-ul">
           {prodCategory.length > 0
             ? prodCategory?.map((c) => {
                 return (
                   <li
                     key={c._id}
-                    className={` ${c.name === active ? "active" : ""}`}
+                    className={`sidebar-li ${
+                      c.name === active ? "active" : ""
+                    }`}
                     id={c.name}
                     onClick={(e) => {
                       handleCategory(e);

@@ -17,6 +17,33 @@
   top: 0px;
 }
 
+.products-sidebar .sidebar-body {
+  background: #d6f7f7;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  height: 100vh;
+}
+
+.products-sidebar .sidebar-body .sidebar-ul {
+  margin: 0;
+  padding: 0;
+}
+.products-sidebar .sidebar-body .sidebar-ul .sidebar-li {
+  height: 40px;
+  list-style: none;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-transform: capitalize;
+}
+
+.products-sidebar .sidebar-body .sidebar-ul .sidebar-li:hover {
+  cursor: pointer;
+  background-color: #00a1b6;
+  color: white;
+}
+
 .products-list {
   grid-area: products-list;
   padding-top: 2rem;
@@ -78,10 +105,9 @@
 .product-image img {
   transition: all 01s ease-in-out;
   border-radius: 3px;
-  width: 170px;
+  width: 200px;
   height: auto;
 }
-
 .product-image .over-image {
   z-index: 1;
   position: absolute;
@@ -438,95 +464,4 @@ tbody tr td {
 .scroll-top:hover {
   color: #007484;
   cursor: pointer;
-}
-
-.sidebar {
-  height: 100vh;
-  background: #00899b;
-  box-shadow: inset -7px 0 9px -7px rgba(0, 0, 0, 0.4);
-  padding-top: 20px;
-}
-
-.sidebar ul {
-  position: relative;
-  width: 100%;
-  display: block;
-}
-
-.sidebar ul li {
-  height: 45px;
-  width: 100%;
-  text-align: left;
-  align-items: center;
-  position: relative;
-  display: flex;
-  text-transform: capitalize;
-  color: #fff;
-  font-size: 1.2rem;
-  padding: 5px 30px;
-  margin: 7px 0;
-  text-decoration: none;
-}
-
-.sidebar ul li:hover {
-  background: #fff;
-  letter-spacing: 0.2px;
-  color: #00545f;
-  transition: color 0.3s;
-  cursor: pointer;
-  box-shadow: 0 15px 8px -12px rgba(0, 0, 0, 0.1),
-    0 -15px 8px -12px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-
-.sidebar ul li:hover::before {
-  position: absolute;
-  content: "";
-  height: 30px;
-  width: 30px;
-  right: 0;
-  bottom: 100%;
-  border-bottom-right-radius: 13px;
-  box-shadow: 0 17px 0 #fff;
-}
-
-.sidebar ul li:hover::after {
-  position: absolute;
-  content: "";
-  height: 30px;
-  width: 30px;
-  right: 0;
-  top: 100%;
-  border-top-right-radius: 13px;
-  box-shadow: 0 -17px 0 #fff;
-}
-
-.sidebar .active {
-  border-radius: 10px;
-  background: #fff;
-  color: #00545f;
-  box-shadow: 0 15px 8px -12px rgba(0, 0, 0, 0.1),
-    0 -15px 8px -12px rgba(0, 0, 0, 0.1);
-}
-
-.active::after {
-  position: absolute;
-  content: "";
-  height: 30px;
-  width: 30px;
-  right: 0;
-  top: 100%;
-  border-top-right-radius: 13px;
-  box-shadow: 0 -17px 0 #fff;
-}
-
-.active::before {
-  position: absolute;
-  content: "";
-  height: 30px;
-  width: 30px;
-  right: 0;
-  bottom: 100%;
-  border-bottom-right-radius: 13px;
-  box-shadow: 0 17px 0 #fff;
 }
