@@ -15,7 +15,6 @@ export default function Categories() {
     const categs = `${baseUrl}/categories`;
     const catResponse = await fetch(categs);
     const catList = await catResponse.json();
-    console.log(catList);
     setAllCategories(catList.categories);
   };
   useEffect(() => {
