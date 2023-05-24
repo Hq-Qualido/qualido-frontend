@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 
@@ -6,12 +6,32 @@ import "./Dashboard.css";
 import DashCards from "./DashCards.js";
 import useToken from "../../hooks/useToken";
 import { useCart } from "react-use-cart";
+import authApi from "../../api/auth";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { name, removeToken, removeName } = useToken();
+  const { name, removeToken, setName, setToken, token, removeName } =
+    useToken();
 
   const { emptyCart } = useCart();
+
+  // const { state } = useLocation();
+
+  const cookieValue = document.cookie
+    .split("; ")
+    .find((cookie) => cookie.startsWith("auth_token"))
+    ?.split("=")[1];
+
+  const fetchData = async () => {
+    const res = await authApi.getUser(cookieValue);
+    setName(res.data.user.fullname);
+    setToken(res.data.token);
+    return window.location.replace("/dashboard");
+  };
+
+  useEffect(() => {
+    if (cookieValue && !token) fetchData();
+  }, []);
 
   const handleLogout = () => {
     document.cookie = "auth_token=;";
