@@ -50,7 +50,7 @@ function App() {
 
   useEffect(() => {
     if (cookieValue && !token) fetchData();
-  }, []);
+  }, [cookieValue]);
 
   return (
     <>
