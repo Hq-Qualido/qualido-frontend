@@ -5,11 +5,12 @@ import { FiAlertCircle } from "react-icons/fi";
 import useApi from "../../hooks/useApi";
 import authApi from "../../api/auth";
 import useToken from "../../hooks/useToken";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function OtpPopup(props) {
   const [errorMessage, setErrorMessage] = useState("");
   const inputRefs = useRef([]);
+  const navigate = useNavigate();
 
   const {
     data: verifyOtpData,
@@ -46,15 +47,11 @@ export default function OtpPopup(props) {
 
   useEffect(() => {
     if (verifyOtpData && !error && !loading) {
-      console.log(verifyOtpData, "verfotpdata");
-      if (verifyOtpData.message === "wrong otp") setErrorMessage("Wrong OTP.");
-      else {
-        setName(verifyOtpData.user.fullname);
-        setToken(verifyOtpData.token);
-        window.location.replace("/dashboard");
-      }
+      setName(verifyOtpData.user.fullname);
+      setToken(verifyOtpData.token);
+      return window.location.replace(props.from, { replace: true });
     } else if (error) {
-      setErrorMessage(error);
+      setErrorMessage(verifyOtpData.message);
       console.log(error);
     } else if (networkError) {
       console.log(networkError);

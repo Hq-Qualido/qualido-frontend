@@ -5,25 +5,42 @@ import CartCard from "./CartCard";
 import { Link } from "react-router-dom";
 import Footer from "../footer/Footer";
 import { useCart } from "react-use-cart";
-import { baseUrl } from "../../BaseUrl";
 import useToken from "../../hooks/useToken";
+import cartApi from "../../api/cart";
 
 export default function Cart() {
   const { name } = useToken();
 
-  const { isEmpty, totalUniqueItems, items, totalItems, cartTotal } = useCart();
+  const { isEmpty, totalUniqueItems, items, totalItems, cartTotal, setItems } =
+    useCart();
+
   const addToCart = async () => {
-    const response = await fetch(`${baseUrl}/cart/add`, {
-      method: "PUT",
-      body: JSON.stringify(items),
-      headers: { "Content-Type": "application/json" },
+    const itemData = items.map((item) => {
+      const { _id, quantity } = item;
+
+      return { productId: _id, quantity };
     });
-    const data = await response.json();
+
+    await cartApi.add({
+      totalUniqueItems,
+      items: itemData,
+      totalItems,
+      cartTotal,
+    });
+  };
+
+  const getCart = async () => {
+    const res = await cartApi.getCart();
+    console.log(res.data[0].items);
+    setItems(res.data[0].items);
   };
 
   useEffect(() => {
+    getCart();
+  }, []);
+
+  useEffect(() => {
     addToCart();
-    // eslint-disable-next-line
   }, [totalItems]);
 
   if (isEmpty)
@@ -67,7 +84,6 @@ export default function Cart() {
             })}
           </div>
         </div>
-
         <div className="cart-action">
           <div className="order-summary">
             <FaCheckCircle color="#03CD0B" fontSize={30} />
@@ -79,11 +95,11 @@ export default function Cart() {
 
           <div className="order-details fs-5">
             Subtotal ({totalItems} Items) :
-            <span style={{fontWeight:"500"}}> Rs {cartTotal} </span>
+            <span style={{ fontWeight: "500" }}> Rs {cartTotal} </span>
           </div>
-         <Link to={name && name.length>0 ? "/payment" : "/login" } style={{textDecoration:"none"}}>
-          <div className="buy-btn">Proceed to Buy</div>
-         </Link>
+          <Link to={"/payment"} style={{ textDecoration: "none" }}>
+            <div className="buy-btn">Proceed to Buy</div>
+          </Link>
         </div>
       </div>
       <Footer />

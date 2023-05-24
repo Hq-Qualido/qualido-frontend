@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
+import cartApi from "../../api/cart";
 
 export default function CartCard(props) {
-  const { removeItem, updateItemQuantity } = useCart();
+  const {
+    removeItem,
+    updateItemQuantity,
+    totalUniqueItems,
+    items,
+    totalItems,
+    cartTotal,
+  } = useCart();
+
+  // const updateCart = async () => {
+  //   const itemData = items.map((item) => {
+  //     const { _id, quantity } = item;
+
+  //     return { productId: _id, quantity };
+  //   });
+
+  //   console.log(items);
+  //   await cartApi.add({
+  //     totalUniqueItems,
+  //     items: itemData,
+  //     totalItems,
+  //     cartTotal,
+  //   });
+  // };
+
+  console.log(items);
+
+  // useEffect(() => {
+  //   updateCart();
+  // }, [items]);
 
   return (
     <>
@@ -15,7 +45,13 @@ export default function CartCard(props) {
         </div>
         <div className="cart-details">
           <Link to={`/products/${props._id}`}>
-            <div className="item-name">{props.prodName?( props.prodName.length>30? props.prodName.slice(0,30)+"..." :props.prodName ): ""}</div>
+            <div className="item-name">
+              {props.prodName
+                ? props.prodName.length > 30
+                  ? props.prodName.slice(0, 30) + "..."
+                  : props.prodName
+                : ""}
+            </div>
           </Link>
           <div className="author-name">Author : {props.authorName}</div>
           {props.inStock ? (
@@ -25,7 +61,7 @@ export default function CartCard(props) {
           )}
 
           <div className="set-quantity mt-1">
-            <span className="me-2">Quantity :  </span>
+            <span className="me-2">Quantity : </span>
             <button
               onClick={() => updateItemQuantity(props.id, props.quantity - 1)}
               className="set-count-btn "
@@ -41,16 +77,25 @@ export default function CartCard(props) {
             </button>
           </div>
           <div className="product-price my-1">
-              Rs {props.prodSp}{" "}
-              <span className="line_through_text">{props.prodMrp}</span>
-              <span className="saving"> {props.discount}% Off</span>
-            </div>
+            Rs {props.prodSp}{" "}
+            <span className="line_through_text">{props.prodMrp}</span>
+            <span className="saving"> {props.discount}% Off</span>
+          </div>
           <div className="d-flex flex-row justify-content-center align-items-center">
-            <div className="add_wishlist mx-2">  Add to wishlist</div>
-            <div className="remove-btn mx-2" type="button"  onClick={() => removeItem(props.id)}> Remove </div>
+            <div className="add_wishlist mx-2"> Add to wishlist</div>
+            <div
+              className="remove-btn mx-2"
+              type="button"
+              onClick={() => {
+                removeItem(props.id);
+                // updateCart();
+              }}
+            >
+              {" "}
+              Remove{" "}
+            </div>
           </div>
         </div>
-
       </div>
     </>
   );

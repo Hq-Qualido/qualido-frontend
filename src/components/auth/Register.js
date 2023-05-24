@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../../BaseUrl";
 import useApi from "../../hooks/useApi";
@@ -8,21 +8,21 @@ import LoginGirl from "../../assets/loginGirl.png";
 import google from "../../assets/google.png";
 import OtpPopup from "./OtpPopup";
 import "./Login.css";
+import useToken from "../../hooks/useToken";
 
 export default function Register() {
   const [popup, setPopup] = useState(false);
-
   const [fullnameError, setFullnameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [createPassError, setCreatePassError] = useState("");
   const [confirmPassError, setConfirmPassError] = useState("");
-
   const [userData, setUserData] = useState({
     email: "",
     fullname: "",
     createPass: "",
     confirmPass: "",
   });
+  const [finalError, setFinalError] = useState("");
 
   const {
     data: signupData,
@@ -31,6 +31,10 @@ export default function Register() {
     error,
     networkError,
   } = useApi(authApi.signup);
+
+  const location = useLocation();
+
+  const { from } = location.state || { from: "/" };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -72,13 +76,12 @@ export default function Register() {
   }
   useEffect(() => {
     if (signupData && !error && !loading) {
-      console.log(signupData, "signupData");
-      // setName(signupData.userData.fullname);
-      // setToken(signupData.token);
+      return setPopup(true);
     } else if (error) {
-      console.log(error);
+      return setFinalError(signupData.message);
     } else if (networkError) {
       console.log(networkError);
+      return setFinalError("It seems you are offline :(");
     }
   }, [signupData, networkError]);
 
@@ -188,11 +191,12 @@ export default function Register() {
                 </label>
 
                 <br />
-
+                {(error || networkError) && (
+                  <div className="error_message mx-auto mb-2">{finalError}</div>
+                )}
                 <div
                   className="dislodged-border"
                   onClick={(e) => {
-                    setPopup(true);
                     handleSubmit(e);
                   }}
                 >
@@ -222,6 +226,7 @@ export default function Register() {
             trigger={popup}
             userData={userData}
             signupData={signupData}
+            from={from}
             setTrigger={setPopup}
           />
         )}

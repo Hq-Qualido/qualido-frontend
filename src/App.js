@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-import { CartProvider } from "react-use-cart";
+import { CartProvider, useCart } from "react-use-cart";
 
 import HomePage from "./components/homepage/HomePage";
 import Navbar from "./components/navbar/Navbar";
@@ -26,9 +26,31 @@ import Payment from "./components/paymentGateway/Payment";
 import "./index.css";
 import useToken from "./hooks/useToken";
 import Community from "./components/community/Community";
+import { ProtectedRoutes } from "./components/utils/ProtectedRoutes";
+import { baseUrl } from "./BaseUrl";
+import cartApi from "./api/cart";
 
 function App() {
   const { name, token } = useToken();
+
+  //******************* google auth on hold **************************************//
+
+  // const cookieValue = document.cookie;
+  // .split("; ")
+  // .find((cookie) => cookie.startsWith("auth_token"))
+  // ?.split("=")[1];
+
+  // const fetchData = async () => {
+  //   // console.log("fetching");
+  //   await fetch(`${baseUrl}/auth/user`);
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
+  // console.log(cookieValue);
+
   return (
     <>
       <CartProvider>
@@ -40,53 +62,64 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/community" element={<Community />} />
 
-            <Route
-              path="/login"
-              element={token ? <Navigate to="/dashboard" replace /> : <Login />}
-            />
-            <Route path="/signup" element={<Register />} />
-
-            <Route path="/payment" element={<Payment />} />
-            <Route
-              path="/feedback"
-              element={
-                name ? <Feedback /> : <Navigate to="/login" replace={true} />
-              }
-            />
-            <Route
-              path="/dashboard"
-              element={
-                token ? <Dashboard /> : <Navigate to="/login" replace={true} />
-              }
-            />
-            <Route
-              path="/dashboard/wishlist"
-              element={
-                token ? <Wishlist /> : <Navigate to="/login" replace={true} />
-              }
-            />
-            <Route
-              path="/dashboard/orders"
-              element={
-                token ? <Orders /> : <Navigate to="/login" replace={true} />
-              }
-            />
-            <Route
-              path="/dashboard/security"
-              element={
-                token ? <Security /> : <Navigate to="/login" replace={true} />
-              }
-            />
-            <Route
-              path="/dashboard/my-addresses"
-              element={
-                token ? (
-                  <MyAddresses />
-                ) : (
-                  <Navigate to="/login" replace={true} />
-                )
-              }
-            />
+            {!token && (
+              <>
+                <Route
+                  path="/login"
+                  element={
+                    token ? <Navigate to="/dashboard" replace /> : <Login />
+                  }
+                />
+                <Route path="/signup" element={<Register />} />
+              </>
+            )}
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/payment" element={<Payment />} />
+              <Route
+                path="/feedback"
+                element={
+                  name ? <Feedback /> : <Navigate to="/login" replace={true} />
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  token ? (
+                    <Dashboard />
+                  ) : (
+                    <Navigate to="/login" replace={true} />
+                  )
+                }
+              />
+              <Route
+                path="/dashboard/wishlist"
+                element={
+                  token ? <Wishlist /> : <Navigate to="/login" replace={true} />
+                }
+              />
+              <Route
+                path="/dashboard/orders"
+                element={
+                  token ? <Orders /> : <Navigate to="/login" replace={true} />
+                }
+              />
+              <Route
+                path="/dashboard/security"
+                element={
+                  token ? <Security /> : <Navigate to="/login" replace={true} />
+                }
+              />
+              <Route
+                path="/dashboard/my-addresses"
+                element={
+                  token ? (
+                    <MyAddresses />
+                  ) : (
+                    <Navigate to="/login" replace={true} />
+                  )
+                }
+              />
+            </Route>
 
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
@@ -95,7 +128,7 @@ function App() {
               <Route path=":productId" element={<ProductId />} />
               <Route path="*" element={<Products />} />
             </Route>
-            <Route path="*" element={<Error />} />
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Routes>
         </Router>
       </CartProvider>

@@ -5,14 +5,18 @@ import { FaSignOutAlt } from "react-icons/fa";
 import "./Dashboard.css";
 import DashCards from "./DashCards.js";
 import useToken from "../../hooks/useToken";
+import { useCart } from "react-use-cart";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const {name, removeToken ,removeName} = useToken();
+  const { name, removeToken, removeName } = useToken();
+
+  const { emptyCart } = useCart();
 
   const handleLogout = () => {
     removeName();
     removeToken();
+    emptyCart();
     navigate("/");
     window.location.reload();
   };
@@ -23,9 +27,7 @@ export default function Dashboard() {
         <div className="row">
           <div className="container my-5">
             <div className="dashboard-top my-2">
-              <div className="p-2 fs-2 section-heading ">
-                Hello 👋, {name}
-              </div>
+              <div className="p-2 fs-2 section-heading ">Hello 👋, {name}</div>
               <div className="logout text-center " onClick={handleLogout}>
                 <span className="me-1">
                   <FaSignOutAlt />

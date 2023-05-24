@@ -9,14 +9,18 @@ import Footer from "../footer/Footer";
 import { Link, useParams } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useCart } from "react-use-cart";
+
 import { baseUrl } from "../../BaseUrl";
 import ProductImages from "./ProductImages";
+import cartApi from "../../api/cart";
+import deliveryApi from "../../api/delivery";
 
 export default function ProductId() {
   let { productId } = useParams();
   const location = useLocation();
   const [aboutAuthorDesc, setAboutAuthorDesc] = useState(150);
   const [descLength, setDescLength] = useState(200);
+  const [delivery_postcode, setDelivery_postcode] = useState("");
 
   // const randomNumber = Math.random() * 10;
   const [indivProd, setIndivProd] = useState([]);
@@ -52,8 +56,36 @@ export default function ProductId() {
     // eslint-disable-next-line
   }, [productId, location]);
 
-  const { addItem, getItem } = useCart();
+  const { addItem, getItem, totalItems, cartTotal, totalUniqueItems, items } =
+    useCart();
   const checkItemInCart = getItem(indivProd._id);
+
+  const addToCart = async () => {
+    const itemData = items.map((item) => {
+      const { _id, quantity } = item;
+
+      return { productId: _id, quantity };
+    });
+
+    await cartApi.add({
+      totalUniqueItems,
+      items: itemData,
+      totalItems,
+      cartTotal,
+    });
+  };
+
+  useEffect(() => {
+    addToCart();
+  }, [totalItems]);
+
+  const handleGetDeliveryDetail = async () => {
+    await deliveryApi.getDetail({
+      weight: indivProd.weight,
+      delivery_postcode,
+      isCod: false,
+    });
+  };
 
   return (
     <>
@@ -228,6 +260,14 @@ export default function ProductId() {
                   ) : (
                     ""
                   )}
+                </div>
+                <div>
+                  <p>Enter your pincode to check for delivery details.</p>
+                  <input
+                    type="number"
+                    onChange={(e) => setDelivery_postcode(e.target.value)}
+                  />
+                  <button onClick={handleGetDeliveryDetail}>Check</button>
                 </div>
               </div>
             ) : (

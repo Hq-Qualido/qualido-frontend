@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import "./Login.css";
 import LoginGirl from "../../assets/loginGirl.png";
@@ -10,8 +10,7 @@ import useToken from "../../hooks/useToken";
 
 export default function Login() {
   const { state } = useLocation();
-
-  console.log(state);
+  const navigate = useNavigate();
 
   const [values, setValues] = useState({
     email: state?.email ? state.email : "",
@@ -70,13 +69,15 @@ export default function Login() {
     }
   }
 
+  const { from } = state || { from: "/" };
+
   useEffect(() => {
     if (loginData && !error && !loading) {
       setName(loginData.user.fullname);
       setToken(loginData.token);
-      window.location.replace("/dashboard");
+      return window.location.replace(from, { replace: true });
     } else if (error) {
-      setFinalError(error);
+      setFinalError(loginData.message);
       console.log(error);
     } else if (networkError) {
       console.log(networkError);
@@ -98,7 +99,10 @@ export default function Login() {
           <div className="loginPage-left col-lg-6 col-sm-6">
             <div className="register-here mb-2">
               New User?
-              <Link to="/signup"> Register Here</Link>
+              <Link to="/signup" state={state}>
+                {" "}
+                Register Here
+              </Link>
             </div>
             <p>
               Join us and stay tuned to all <br /> the updates and

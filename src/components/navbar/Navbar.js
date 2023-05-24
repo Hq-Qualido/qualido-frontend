@@ -16,8 +16,8 @@ export default function Navbar() {
   const { name } = useToken();
 
   const space = name && name.indexOf(" ");
-  const firstName =  name && name.substring(0, space);
-  
+  const firstName = name && name.substring(0, space);
+
   return (
     <>
       <nav>

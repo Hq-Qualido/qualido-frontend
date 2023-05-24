@@ -41,6 +41,7 @@ export default function useToken() {
     setName: saveName,
     removeToken,
     removeName,
-    token,name,
+    token,
+    name,
   };
 }

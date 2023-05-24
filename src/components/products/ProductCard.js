@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { BsCartPlus, BsFillCartCheckFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
+
+import cartApi from "../../api/cart";
 
 export default function ProductCard(props) {
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate(`/products/${props._id}`);
   };
-  const { addItem, getItem } = useCart();
+  const { addItem, getItem, totalItems, cartTotal, totalUniqueItems, items } =
+    useCart();
   const checkItemInCart = getItem(props._id);
+
+  const addToCart = async () => {
+    const itemData = items.map((item) => {
+      const { _id, quantity } = item;
+
+      return { productId: _id, quantity };
+    });
+
+    await cartApi.add({
+      totalUniqueItems,
+      items: itemData,
+      totalItems,
+      cartTotal,
+    });
+  };
+
+  useEffect(() => {
+    addToCart();
+  }, [totalItems]);
 
   return (
     <>
