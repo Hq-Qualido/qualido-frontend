@@ -45,12 +45,12 @@ function App() {
     const res = await authApi.getUser(cookieValue);
     setName(res.data.user.fullname);
     setToken(res.data.token);
-    return window.location.replace("/");
+    return window.location.replace("/dashboard");
   };
 
   useEffect(() => {
     if (cookieValue && !token) fetchData();
-  }, [cookieValue]);
+  }, []);
 
   return (
     <>
