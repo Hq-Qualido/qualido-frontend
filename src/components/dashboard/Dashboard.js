@@ -14,6 +14,7 @@ export default function Dashboard() {
   const { emptyCart } = useCart();
 
   const handleLogout = () => {
+    document.cookie = "auth_token=;";
     removeName();
     removeToken();
     emptyCart();

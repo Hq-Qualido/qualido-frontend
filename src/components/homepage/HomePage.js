@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "./Homepage.css";
 import Categories from "./Categories";
@@ -18,6 +18,8 @@ import UpcomingProducts from "./UpcomingProducts";
 import reviews from "./Reviews";
 import { Link } from "react-router-dom";
 import NavInfo from "../navbar/NavInfo";
+import { useCart } from "react-use-cart";
+import cartApi from "../../api/cart";
 
 export default function HomePage() {
   const settings = {
@@ -37,6 +39,18 @@ export default function HomePage() {
     speed: 100,
     autoplaySpeed: 2000,
   };
+
+  const { setItems } = useCart();
+
+  const getCart = async () => {
+    const res = await cartApi.getCart();
+    console.log(res.data[0].items);
+    setItems(res.data[0].items);
+  };
+
+  useEffect(() => {
+    getCart();
+  }, []);
 
   return (
     <>

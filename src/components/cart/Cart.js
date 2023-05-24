@@ -95,7 +95,7 @@ export default function Cart() {
 
           <div className="order-details fs-5">
             Subtotal ({totalItems} Items) :
-            <span style={{ fontWeight: "500" }}> Rs {cartTotal} </span>
+            <span style={{ fontWeight: "500" }}> ₹ {cartTotal} </span>
           </div>
           <Link to={"/payment"} style={{ textDecoration: "none" }}>
             <div className="buy-btn">Proceed to Buy</div>

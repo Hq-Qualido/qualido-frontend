@@ -77,7 +77,7 @@ export default function CartCard(props) {
             </button>
           </div>
           <div className="product-price my-1">
-            Rs {props.prodSp}{" "}
+            ₹ {props.prodSp}{" "}
             <span className="line_through_text">{props.prodMrp}</span>
             <span className="saving"> {props.discount}% Off</span>
           </div>

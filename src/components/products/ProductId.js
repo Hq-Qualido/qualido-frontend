@@ -21,6 +21,7 @@ export default function ProductId() {
   const [aboutAuthorDesc, setAboutAuthorDesc] = useState(150);
   const [descLength, setDescLength] = useState(200);
   const [delivery_postcode, setDelivery_postcode] = useState("");
+  const [deliveryCharge, setDeliveryCharge] = useState("");
 
   // const randomNumber = Math.random() * 10;
   const [indivProd, setIndivProd] = useState([]);
@@ -80,11 +81,13 @@ export default function ProductId() {
   }, [totalItems]);
 
   const handleGetDeliveryDetail = async () => {
-    await deliveryApi.getDetail({
+    const res = await deliveryApi.getDetail({
       weight: indivProd.weight,
       delivery_postcode,
-      isCod: false,
+      isCod: 1,
     });
+
+    setDeliveryCharge(res.data.deliveryCharge);
   };
 
   return (
@@ -136,7 +139,7 @@ export default function ProductId() {
               <span>145 ratings</span>
             </div>
             <div className="product-price my-3 px-2">
-              Rs {indivProd.prodSp}{" "}
+              ₹ {indivProd.prodSp}{" "}
               <span className="line_through_text">{indivProd.prodMrp}</span>
               <span className="saving"> {indivProd.discount}% Off</span>
             </div>
@@ -261,6 +264,7 @@ export default function ProductId() {
                     ""
                   )}
                 </div>
+                {/***************************** delivery details ****************/}
                 <div>
                   <p>Enter your pincode to check for delivery details.</p>
                   <input
@@ -268,6 +272,7 @@ export default function ProductId() {
                     onChange={(e) => setDelivery_postcode(e.target.value)}
                   />
                   <button onClick={handleGetDeliveryDetail}>Check</button>
+                  {deliveryCharge && <p>₹ {deliveryCharge}</p>}
                 </div>
               </div>
             ) : (

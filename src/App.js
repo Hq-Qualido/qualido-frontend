@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import { CartProvider, useCart } from "react-use-cart";
 
@@ -29,27 +30,27 @@ import Community from "./components/community/Community";
 import { ProtectedRoutes } from "./components/utils/ProtectedRoutes";
 import { baseUrl } from "./BaseUrl";
 import cartApi from "./api/cart";
+import authApi from "./api/auth";
 
 function App() {
-  const { name, token } = useToken();
+  const { name, token, setName, setToken } = useToken();
+  // const { state } = useLocation();
 
-  //******************* google auth on hold **************************************//
+  const cookieValue = document.cookie
+    .split("; ")
+    .find((cookie) => cookie.startsWith("auth_token"))
+    ?.split("=")[1];
 
-  // const cookieValue = document.cookie;
-  // .split("; ")
-  // .find((cookie) => cookie.startsWith("auth_token"))
-  // ?.split("=")[1];
+  const fetchData = async () => {
+    const res = await authApi.getUser(cookieValue);
+    setName(res.data.user.fullname);
+    setToken(res.data.token);
+    return window.location.replace("/");
+  };
 
-  // const fetchData = async () => {
-  //   // console.log("fetching");
-  //   await fetch(`${baseUrl}/auth/user`);
-  // };
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // console.log(cookieValue);
+  useEffect(() => {
+    if (cookieValue && !token) fetchData();
+  }, []);
 
   return (
     <>

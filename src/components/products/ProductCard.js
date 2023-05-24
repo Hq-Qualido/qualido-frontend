@@ -75,7 +75,7 @@ export default function ProductCard(props) {
             </div>
             <div className="price-rating">
               <div className="product_price_card">
-                Rs {props.prodSp}
+                ₹ {props.prodSp}
                 <span className="line_through_text ms-1">{props.prodMrp}</span>
               </div>
               <div style={{ color: "orange" }} className="d-flex flex-row ">
@@ -120,7 +120,7 @@ export default function ProductCard(props) {
             </div>{" "}
             <div className="price-rating">
               <div className="product-price">
-                Rs {props.prodMrp}{" "}
+                ₹ {props.prodMrp}{" "}
                 <span
                   style={{
                     textDecoration: "line-through",

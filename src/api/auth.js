@@ -10,7 +10,7 @@ const googleLogin = () => client.get("/auth/google/url");
 
 const feedback = (data) => client.post("/feedback", data);
 
-// const getUser = () => client.get("/auth/user");
+const getUser = (token) => client.get(`/auth/user?token=${token}`);
 
 export default {
   verifyOtp,
@@ -18,5 +18,5 @@ export default {
   login,
   googleLogin,
   feedback,
-  // getUser,
+  getUser,
 };
