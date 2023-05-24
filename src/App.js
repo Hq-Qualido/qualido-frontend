@@ -31,6 +31,7 @@ import { ProtectedRoutes } from "./components/utils/ProtectedRoutes";
 import { baseUrl } from "./BaseUrl";
 import cartApi from "./api/cart";
 import authApi from "./api/auth";
+import { checkCookieAndExecuteAction } from "./components/utils/checkCookie";
 
 function App() {
   const { name, token, setName, setToken } = useToken();
@@ -45,11 +46,14 @@ function App() {
     const res = await authApi.getUser(cookieValue);
     setName(res.data.user.fullname);
     setToken(res.data.token);
-    return window.location.replace("/dashboard");
+    // return window.location.replace("/");
   };
 
   useEffect(() => {
     if (cookieValue && !token) fetchData();
+    checkCookieAndExecuteAction("auth_token", fetchData, 5000).then((r) =>
+      console.log(r)
+    );
   }, []);
 
   return (
