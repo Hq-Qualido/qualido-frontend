@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "./Homepage.css";
 import Categories from "./Categories";
@@ -13,26 +13,13 @@ import Privacy from "../../assets/Privacy.png";
 import Service from "../../assets/Service.png";
 import chatSupport from "../../assets/chatSupport.png";
 import Footer from "../footer/Footer";
-import Loader from "../loader/Loader";
-import { baseUrl } from "../../BaseUrl";
-import { FaArrowRight, FaSearch, FaWhatsapp } from "react-icons/fa";
+import { FaArrowRight, FaWhatsapp } from "react-icons/fa";
 import UpcomingProducts from "./UpcomingProducts";
 import reviews from "./Reviews";
 import { Link } from "react-router-dom";
+import NavInfo from "../navbar/NavInfo";
 
 export default function HomePage() {
-  const [allCategories, setAllCategories] = useState([]);
-
-  const fetchCategories = async () => {
-    const categs = `${baseUrl}/categories`;
-    const catResponse = await fetch(categs);
-    const catList = await catResponse.json();
-    setAllCategories(catList.categories);
-  };
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
   const settings = {
     dots: true,
     infinite: true,
@@ -53,7 +40,8 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="container my-3">
+      <NavInfo />
+      <div className="container my-5">
         <Slider {...settings}>
           {/* STARTS HERE 1ST  */}
           <div className="container-fluid slider">
@@ -123,21 +111,7 @@ export default function HomePage() {
         </Slider>
       </div>
 
-      {/* ALL CATEGORIES LIST STARTS  */}
-      <div className="container-fluid categories my-5">
-        <div className="text-center mb-5 fs-2">Categories</div>
-        <div className="row categories-body">
-          {allCategories.length > 0 ? (
-            allCategories?.map((item) => {
-              return <Categories key={item._id} {...item} />;
-            })
-          ) : (
-            <Loader type="dots" />
-          )}
-        </div>
-      </div>
-
-      {/* ALL CATEGORIES LIST ENDS  */}
+      <Categories />
 
       <div className="container" style={{ width: "80%" }}>
         <div className="text-center mb-5 fs-2">Upcoming Products</div>
@@ -195,15 +169,6 @@ export default function HomePage() {
         </div>
       </div>
       {/* WHY CHOOSE US ENDS */}
-      {/* 
-      <a
-        href="https://forms.gle/v3AzAVY2Wx4Spdr26"
-        target="_blank"
-        rel="noreferrer"
-        className="apply_form fs-6 shadow"
-      >
-        <FaInfo /> We're hiring
-      </a> */}
 
       <a
         href="https://wa.me/+917042523617?text=I%20want%20to%20buy%20a%20book."

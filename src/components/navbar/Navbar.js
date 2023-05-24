@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-// import { RiChatSmile3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import logobagLIGHT from "../../assets/logobagLIGHT.png";
+import navLogo from "../../assets/navLogo.svg";
 import { useCart } from "react-use-cart";
 import SearchBar from "./SearchBar";
 import useToken from "../../hooks/useToken";
@@ -14,16 +13,19 @@ export default function Navbar() {
   const { totalUniqueItems } = useCart();
 
   const { name } = useToken();
-
-  const space = name && name.indexOf(" ");
-  const firstName = name && name.substring(0, space);
-
+  let firstName;
+  if (name) {
+    const trimmedFullName = name && name.trim();
+    const nameArray = trimmedFullName.split(" ");
+    firstName = nameArray[0];
+  }
   return (
     <>
       <nav>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <div className="nav-logo">
-            <img src={logobagLIGHT} alt="qualidoLogo" className="mx-1" />{" "}
+          <div className="nav-logo fs-4">
+            <img src={navLogo} alt="qualidoLogo" className="mx-1" />{" "}
+            <span>Qualido</span>
           </div>
         </Link>
 
@@ -37,9 +39,9 @@ export default function Navbar() {
             }}
           >
             <span>
-              <FaShoppingCart />
+              <FaShoppingCart /> ({totalUniqueItems})
             </span>
-            Cart({totalUniqueItems})
+            Cart
           </Link>
           {/* <Link
             to="community"
@@ -67,7 +69,7 @@ export default function Navbar() {
           </Link>
         </div>
         <div
-          className="nav-btns fs-3"
+          className="nav-btns fs-2"
           onClick={() => {
             setIsExpanded(!isExpanded);
           }}
