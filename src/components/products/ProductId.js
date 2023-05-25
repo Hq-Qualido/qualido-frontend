@@ -86,8 +86,10 @@ export default function ProductId() {
       delivery_postcode,
       isCod: 1,
     });
-
-    setDeliveryCharge(res.data.deliveryCharge);
+    console.log(res, "delivery");
+    if (res.data.deliveryCharge)
+      setDeliveryCharge("₹ " + res.data.deliveryCharge);
+    else setDeliveryCharge("NA");
   };
 
   return (
@@ -265,14 +267,29 @@ export default function ProductId() {
                   )}
                 </div>
                 {/***************************** delivery details ****************/}
-                <div>
-                  <p>Enter your pincode to check for delivery details.</p>
-                  <input
-                    type="number"
-                    onChange={(e) => setDelivery_postcode(e.target.value)}
-                  />
-                  <button onClick={handleGetDeliveryDetail}>Check</button>
-                  {deliveryCharge && <p>₹ {deliveryCharge}</p>}
+                <div className="d-flex flex-column my-4 px-2">
+                  <div className="text-success fs-6">
+                    Free Delivery for prepaid orders.
+                  </div>
+                  <div className="text-success fs-6 mb-1">
+                    For COD enter your pincode to check for delivery charges
+                  </div>
+                  <div className="d-flex flex-wrap justify-content-start align-items-center">
+                    <input
+                      type="number"
+                      className="border border-2 rounded me-1 px-2 py-2"
+                      onChange={(e) => setDelivery_postcode(e.target.value)}
+                    />
+                    <div className="add-btn" onClick={handleGetDeliveryDetail}>
+                      Check
+                    </div>
+                    <div
+                      className="mx-2 fs-5"
+                      style={{ fontWeight: "500", color: " rgb(239, 140, 35)" }}
+                    >
+                      {deliveryCharge && deliveryCharge}
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : (
