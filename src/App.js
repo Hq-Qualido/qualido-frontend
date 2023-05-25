@@ -51,9 +51,9 @@ function App() {
 
   useEffect(() => {
     if (cookieValue && !token) fetchData();
-    checkCookieAndExecuteAction("auth_token", fetchData, 5000).then((r) =>
-      console.log(r)
-    );
+    // checkCookieAndExecuteAction("auth_token", fetchData, 5000).then((r) =>
+    //   console.log(r)
+    // );
   }, []);
 
   return (
