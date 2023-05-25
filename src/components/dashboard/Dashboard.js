@@ -16,7 +16,7 @@ export default function Dashboard() {
   // const { state } = useLocation();
 
   const handleLogout = () => {
-    document.cookie = "auth_token=;Domain=.qualido.in;";
+    document.cookie = "auth_token=; domain=.qualido.in;";
     removeName();
     removeToken();
     emptyCart();
