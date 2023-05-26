@@ -4,7 +4,7 @@ import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 export default function NavInfo() {
   return (
     <>
-      <div className="container-fluid nav_info px-4">
+      <div className="container-fluid nav_info">
         <div className="d-flex align-items-center justify-content-between fs-6">
           <div className="d-flex flex-wrap">
             <div className="mx-1">Blog</div>
@@ -18,7 +18,7 @@ export default function NavInfo() {
             </a>
             <a
               className="email_contact mx-2"
-              href="mailto:info.qualido21@gmail.com"
+              href="mailto:info.qualido21+website-queries@gmail.com"
               subject="Qualido website queries"
             >
               Support

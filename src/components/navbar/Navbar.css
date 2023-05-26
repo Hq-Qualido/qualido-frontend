@@ -114,7 +114,7 @@ nav .nav-menu .nav-menu-item:hover {
 }
 .nav_info {
   font-size: small;
-  padding: 5px;
+  padding: 0 2rem;
   border-bottom: 1px solid #e0e0e0;
 }
 .nav_info .whatsapp_link_contact,
@@ -183,7 +183,9 @@ nav .nav-menu .nav-menu-item:hover {
   nav {
     padding: 0 0.5rem;
   }
-
+  .nav_info {
+    padding: 0 0.5rem;
+  }
   .nav-logo img {
     width: 20px;
   }
