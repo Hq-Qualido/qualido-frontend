@@ -4,9 +4,12 @@ import {
   Routes,
   Route,
   Navigate,
-  useLocation,
+  // useLocation,
 } from "react-router-dom";
-import { CartProvider, useCart } from "react-use-cart";
+import {
+  CartProvider,
+  //  useCart
+} from "react-use-cart";
 
 import HomePage from "./components/homepage/HomePage";
 import Navbar from "./components/navbar/Navbar";
@@ -28,10 +31,9 @@ import "./index.css";
 import useToken from "./hooks/useToken";
 import Community from "./components/community/Community";
 import { ProtectedRoutes } from "./components/utils/ProtectedRoutes";
-import { baseUrl } from "./BaseUrl";
-import cartApi from "./api/cart";
+// import cartApi from "./api/cart";
 import authApi from "./api/auth";
-import { checkCookieAndExecuteAction } from "./components/utils/checkCookie";
+// import { checkCookieAndExecuteAction } from "./components/utils/checkCookie";
 
 function App() {
   const { name, token, setName, setToken } = useToken();
@@ -54,6 +56,7 @@ function App() {
     // checkCookieAndExecuteAction("auth_token", fetchData, 5000).then((r) =>
     //   console.log(r)
     // );
+    //eslint-disable-next-line
   }, []);
 
   return (
@@ -133,7 +136,7 @@ function App() {
               <Route path=":productId" element={<ProductId />} />
               <Route path="*" element={<Products />} />
             </Route>
-            <Route path="*" element={<Navigate to="/" replace={true} />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </Router>
       </CartProvider>
