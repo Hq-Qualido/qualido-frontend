@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Footer.css";
 import footerLogo from "../../assets/footerLogo.png";
-import {FaInstagram,FaLinkedin,FaTwitter} from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FiMail, FiPhoneCall } from "react-icons/fi";
 import { RiFilePaper2Line } from "react-icons/ri";
 import { BsQuestionCircle } from "react-icons/bs";
@@ -16,13 +16,13 @@ export default function Footer() {
     e.preventDefault();
     console.log(email);
   };
-  const handleScroll=()=>{
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
+  const handleScroll = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
-    }
+  };
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function Footer() {
             Let's keep in touch!
           </div>
           <p className=" text-center">
-            Stay tuned to our latest products and deals! 
+            Stay tuned to our latest products and deals!
           </p>
           <div className="subscribe_form">
             <input
@@ -54,80 +54,74 @@ export default function Footer() {
         <div className="footer-body">
           <div className="footer-logo">
             <Link to="/" onClick={handleScroll}>
-              <img src={footerLogo} alt="footerLogo"  />
+              <img src={footerLogo} alt="footerLogo" />
             </Link>
           </div>
           <div className="footer-services">
             <ul>
               <li>
-                 
-                 <span className="mx-2" >
-                   
-                  <FiMail />   
-                </span> 
-                  info.qualido21@gmail.com
+                <span className="mx-2">
+                  <FiMail />
+                </span>
+                info.qualido21@gmail.com
               </li>
               <li>
-                 
-                 <span className="mx-2" >
-                   
-                  <BsQuestionCircle />  
-                </span>  
-                 FAQs
+                <span className="mx-2">
+                  <BsQuestionCircle />
+                </span>
+                FAQs
               </li>
               <li>
-                 
-                 <span className="mx-2" >
-                   
-                  <FiPhoneCall /> 
-                </span> 
+                <span className="mx-2">
+                  <FiPhoneCall />
+                </span>
                 +91 70425 23617
               </li>
               <li>
-                 
-                 <span className="mx-2" >
-                   
-                  <HiOutlineLocationMarker /> 
-                </span> 
+                <span className="mx-2">
+                  <HiOutlineLocationMarker />
+                </span>
                 Location
               </li>
               <li>
-               
-               <span className="mx-2" >
-                 
-                <RiFilePaper2Line /> 
-              </span> 
-              Terms & Conditions
-            </li>
-            <li>
-               <span className="mx-2" >
-                <MdOutlinePrivacyTip /> 
-              </span> 
-              <a href="/privacy-policy" target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-                Privacy Policy
-              </a>
-            </li>
+                <span className="mx-2">
+                  <RiFilePaper2Line />
+                </span>
+                Terms & Conditions
+              </li>
+              <li>
+                <span className="mx-2">
+                  <MdOutlinePrivacyTip />
+                </span>
+                <a
+                  href="/privacy-policy"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ textDecoration: "none" }}
+                >
+                  Privacy Policy
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <hr />
 
         <div className="footer-bottom">
-          
-        <ul className="terms">
+          <ul className="terms">
             <li>
-              <span className="mx-2" >
-              <MdOutlineCopyright /> 
-             </span>
+              <span className="mx-2">
+                <MdOutlineCopyright />
+              </span>
               Qualido.in - 2022
             </li>
           </ul>
-          
+
           <div className="social-icons">
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://instagram.com/qualido.in?igshid=YmMyMTA2M2Y="
+              href="https://www.instagram.com/qualido.in/"
               className="footer-icon"
             >
               <FaInstagram />
@@ -135,23 +129,20 @@ export default function Footer() {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://www.linkedin.com/company/qialido/"
+              href="https://www.linkedin.com/company/qualido-hq/"
               className="footer-icon"
             >
-               
               <FaLinkedin />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://twitter.com/qualido21?t=GzrZfQrBhE1bJGcGoXJVgw&s=08"
+              href="https://twitter.com/qualido21"
               className="footer-icon"
             >
-               
               <FaTwitter />
             </a>
           </div>
-
         </div>
       </div>
     </>
