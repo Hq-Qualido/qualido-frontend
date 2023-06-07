@@ -93,7 +93,7 @@ nav .nav-menu {
 }
 nav .nav-menu .nav-menu-item {
   color: #464949;
-  padding: 0px 10px;
+  padding: 5px 10px;
   display: flex;
   align-items: center;
   justify-content: center;

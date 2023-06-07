@@ -17,7 +17,7 @@ export const Dropdown = ({ firstName }) => {
   return (
     <div className="dropdown_menu">
       <div
-        className="d-flex flex-row align-items-center justify-content-center px-4 py-2 text-sm"
+        className="d-flex flex-row align-items-center justify-content-center text-sm"
         onClick={toggleDropdown}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}

@@ -91,4 +91,5 @@
 
 .rotate_180 {
   transform: rotate(180deg);
+  transition: all 0.5s ease-in-out;
 }
