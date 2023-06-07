@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { baseUrl } from "../../BaseUrl";
 import useApi from "../../hooks/useApi";
@@ -8,7 +8,7 @@ import LoginGirl from "../../assets/loginGirl.png";
 import google from "../../assets/google.png";
 import OtpPopup from "./OtpPopup";
 import "./Login.css";
-import useToken from "../../hooks/useToken";
+import { Helmet } from "react-helmet";
 
 export default function Register() {
   const [popup, setPopup] = useState(false);
@@ -94,6 +94,11 @@ export default function Register() {
 
   return (
     <>
+      <Helmet
+        title="Login | Qualido.in"
+        content="This is qualido webite which is an e-commerce company aiming to provide and sell books to readers at much cheaper price than anywhere else."
+        url="/signup"
+      />
       <div className="container-fluid loginPage">
         <div className="row">
           <div className="loginPage-left col-lg-6 col-sm-6">

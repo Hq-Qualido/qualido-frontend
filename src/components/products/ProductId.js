@@ -14,6 +14,7 @@ import { baseUrl } from "../../BaseUrl";
 import ProductImages from "./ProductImages";
 import cartApi from "../../api/cart";
 import deliveryApi from "../../api/delivery";
+import { Helmet } from "react-helmet";
 
 export default function ProductId() {
   let { productId } = useParams();
@@ -94,6 +95,11 @@ export default function ProductId() {
 
   return (
     <>
+      <Helmet
+        title={`${indivProd?.prodName} | Qualido.in`}
+        content={indivProd.description}
+        url="/products/:productId"
+      />
       <div className="container my-5">
         <div className="row">
           <div className="col-lg-4 col-sm-6 productID-left">

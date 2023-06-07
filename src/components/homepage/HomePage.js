@@ -19,6 +19,7 @@ import reviews from "./Reviews";
 import { Link } from "react-router-dom";
 import NavInfo from "../navbar/NavInfo";
 import { useCart } from "react-use-cart";
+import { Helmet } from "react-helmet";
 import cartApi from "../../api/cart";
 
 export default function HomePage() {
@@ -54,6 +55,11 @@ export default function HomePage() {
 
   return (
     <>
+      <Helmet
+        title="Qualido.in"
+        content="This is qualido webite which is an e-commerce company aiming to provide and sell books to readers at much cheaper price than anywhere else."
+        url="/"
+      />
       <NavInfo />
       <div className="container my-5">
         <Slider {...settings}>

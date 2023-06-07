@@ -6,6 +6,7 @@ import "./Dashboard.css";
 import DashCards from "./DashCards.js";
 import useToken from "../../hooks/useToken";
 import { useCart } from "react-use-cart";
+import { Helmet } from "react-helmet";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -27,6 +28,11 @@ export default function Dashboard() {
 
   return (
     <>
+      <Helmet
+        title="My Profile | Qualido.in"
+        content="This is a dashboard page for the user registered successfully on qualido website, having details about all the books bought,wishlisted, along with address and all other informations."
+        url="/dashboard"
+      />
       <div className="container my-4">
         <div className="row">
           <div className="container my-5">

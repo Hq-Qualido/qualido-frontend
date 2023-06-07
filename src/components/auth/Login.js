@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "./Login.css";
 import LoginGirl from "../../assets/loginGirl.png";
@@ -7,10 +7,10 @@ import google from "../../assets/google.png";
 import authApi from "../../api/auth";
 import useApi from "../../hooks/useApi";
 import useToken from "../../hooks/useToken";
+import { Helmet } from "react-helmet";
 
 export default function Login() {
   const { state } = useLocation();
-  const navigate = useNavigate();
 
   const [values, setValues] = useState({
     email: state?.email ? state.email : "",
@@ -94,6 +94,11 @@ export default function Login() {
 
   return (
     <>
+      <Helmet
+        title="Login | Qualido.in"
+        content="This is qualido webite which is an e-commerce company aiming to provide and sell books to readers at much cheaper price than anywhere else."
+        url="/login"
+      />
       <div className="container-fluid loginPage">
         <div className="row">
           <div className="loginPage-left col-lg-6 col-sm-6">

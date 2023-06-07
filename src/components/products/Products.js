@@ -8,11 +8,12 @@ import ProductCard from "./ProductCard";
 import "./Products.css";
 import ProductSidebar from "./ProductSidebar";
 import { baseUrl } from "../../BaseUrl";
+import { Helmet } from "react-helmet";
 
 export default function Products() {
-  const [searchParam] = useSearchParams()
-  const categoryParam = searchParam.get('category')
-  console.log(categoryParam)
+  const [searchParam] = useSearchParams();
+  const categoryParam = searchParam.get("category");
+  console.log(categoryParam);
   const [loading, setLoading] = useState(false);
   const [datas, setDatas] = useState([]);
 
@@ -37,17 +38,24 @@ export default function Products() {
 
   return (
     <>
+      <Helmet
+        title={`${categoryParam ? categoryParam : "All"} books | Qualido.in`}
+        content="All products(books) of qualido website at much affordable price."
+        url="/products"
+      />
       <Outlet />
 
       <div className="products-page">
         {/* SIDEBAR STARTS  */}
         <div className="products-sidebar">
-          <ProductSidebar returnCategory={fetchProducts} categoryParam={categoryParam}/>
+          <ProductSidebar
+            returnCategory={fetchProducts}
+            categoryParam={categoryParam}
+          />
         </div>
         {/* SIDEBAR ENDS  */}
 
         {/* PRODUCT LIST STARTS */}
-
         <div className="products-list container-fluid">
           <div className="products-list-body">
             {!loading ? (
