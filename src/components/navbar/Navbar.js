@@ -7,6 +7,7 @@ import navLogo from "../../assets/navLogo.svg";
 import { useCart } from "react-use-cart";
 import SearchBar from "./SearchBar";
 import useToken from "../../hooks/useToken";
+import Dropdown from "./DropDown";
 
 export default function Navbar() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -43,30 +44,24 @@ export default function Navbar() {
             </span>
             Cart
           </Link>
-          {/* <Link
-            to="community"
-            className="nav-menu-item"
-            onClick={() => {
-              setIsExpanded(!isExpanded);
-            }}
-          >
-            <span>
-              <RiChatSmile3Fill />
-            </span>
-            Chat
-          </Link> */}
-          <Link
-            to="dashboard"
-            className="nav-menu-item"
-            onClick={() => {
-              setIsExpanded(!isExpanded);
-            }}
-          >
-            <span>
-              <FaUserCircle />
-            </span>
-            {name ? firstName : "Account"}
-          </Link>
+          {firstName ? (
+            <div className="nav-menu-item d-flex flex-row">
+              <Dropdown firstName={firstName} />
+            </div>
+          ) : (
+            <Link
+              to="dashboard"
+              className="nav-menu-item"
+              onClick={() => {
+                setIsExpanded(!isExpanded);
+              }}
+            >
+              <span>
+                <FaUserCircle />
+              </span>
+              Sign In
+            </Link>
+          )}
         </div>
         <div
           className="nav-btns fs-2"
