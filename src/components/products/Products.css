@@ -35,13 +35,18 @@
 .products-sidebar .sidebar-body .sidebar-ul .sidebar-li {
   height: 40px;
   list-style: none;
-  padding-left: 1rem;
+  padding-left: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   text-transform: capitalize;
+  color: #686868;
+  text-decoration: none;
   margin: 2px 5px;
   border-radius: 10px;
+}
+.products-sidebar .sidebar-body .sidebar-ul .sidebar-li.active {
+  color: #ffffff;
 }
 
 .products-sidebar .sidebar-body .sidebar-ul .sidebar-li:hover {
@@ -457,6 +462,9 @@ tbody tr td {
     margin-right: 5px;
     padding: 5px;
     border-radius: 5px;
+  }  
+  .products-sidebar .sidebar-body .sidebar-ul .sidebar-li.active {
+    color: #00899b;
   }
 
   .productID-right .product-buttons {

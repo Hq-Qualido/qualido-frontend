@@ -45,7 +45,7 @@ export default function Categories() {
             allCategories?.map((item) => {
               return (
                 <div className="mx-2" key={item._id}>
-                  <Link to="/products" className="category_image">
+                  <Link to={`/products?category=${item.name}`} className="category_image">
                     <img src={item.url} alt={item.name} />
                   </Link>
                   <div className="text-capitalize text-secondary fs-5 px-1">

@@ -1,8 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { baseUrl } from "../../BaseUrl";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function ProductSidebar(props) {
+  const [searchParam, setSearchParams] = useSearchParams();
+  const categoryParam = searchParam.get("category");
+
   const [active, setActive] = useState("");
   const [prodCategory, setProdCategory] = useState([]);
 
@@ -45,13 +49,20 @@ export default function ProductSidebar(props) {
     <>
       <div className="sidebar-body">
         <ul className="sidebar-ul">
+          <div
+            className={`sidebar-li ${categoryParam === "" ? "active" : ""}`}
+            onClick={() => setSearchParams({category:""})}
+          >
+            All
+          </div>
           {prodCategory.length > 0
             ? prodCategory?.map((c) => {
                 return (
-                  <li
+                  <Link
+                    to={`/products?category=${c.name}`}
                     key={c._id}
                     className={`sidebar-li ${
-                      c.name === active ? "active" : ""
+                      c.name === categoryParam ? "active" : ""
                     }`}
                     id={c.name}
                     onClick={(e) => {
@@ -59,7 +70,7 @@ export default function ProductSidebar(props) {
                     }}
                   >
                     {c.name}
-                  </li>
+                  </Link>
                 );
               })
             : dummyCategories.map((d) => {
