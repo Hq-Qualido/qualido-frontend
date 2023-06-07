@@ -55,31 +55,51 @@ export const Dropdown = ({ firstName }) => {
             Hello 👋, <span className="name_span"> {firstName} </span>
           </div>
 
-          <Link className="dropdown_link" to="/dashboard">
+          <Link
+            onClick={() => setIsOpen(false)}
+            className="dropdown_link"
+            to="/dashboard"
+          >
             <span className="dashboard_span">
               <TbLayoutDashboard />
             </span>
             <div>Dashboard</div>
           </Link>
-          <Link className="dropdown_link" to="/dashboard/wishlist">
+          <Link
+            onClick={() => setIsOpen(false)}
+            className="dropdown_link"
+            to="/dashboard/wishlist"
+          >
             <span className="wishlist_span">
               <AiOutlineGift />
             </span>
             <div>Wishlist</div>
           </Link>
-          <Link className="dropdown_link" to="/dashboard/orders">
+          <Link
+            onClick={() => setIsOpen(false)}
+            className="dropdown_link"
+            to="/dashboard/orders"
+          >
             <span className="orders_span">
               <TbTruckDelivery />
             </span>
             <div>My Orders</div>
           </Link>
-          <Link className="dropdown_link" to="/dashboard/security">
+          <Link
+            onClick={() => setIsOpen(false)}
+            className="dropdown_link"
+            to="/dashboard/security"
+          >
             <span className="security_span">
               <BiLockOpenAlt />
             </span>
             <div>Security</div>
           </Link>
-          <Link className="dropdown_link" to="/dashboard/my-addresses">
+          <Link
+            onClick={() => setIsOpen(false)}
+            className="dropdown_link"
+            to="/dashboard/my-addresses"
+          >
             <span className="address_span">
               <MdOutlineLocationOn />
             </span>
