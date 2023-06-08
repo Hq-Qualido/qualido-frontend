@@ -1,5 +1,6 @@
 import React from "react";
 import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function NavInfo() {
   return (
@@ -7,7 +8,7 @@ export default function NavInfo() {
       <div className="container-fluid nav_info">
         <div className="d-flex align-items-center justify-content-between fs-6">
           <div className="d-flex flex-wrap">
-            <div className="mx-1">Blog</div>
+            <Link to="/blog" className="mx-1 whatsapp_link_contact">Blog</Link>
             <a
               className="whatsapp_link_contact mx-2"
               href="https://wa.me/+917042523617?text=I%20want%20to%20buy%20a%20book."
