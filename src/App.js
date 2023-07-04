@@ -33,6 +33,9 @@ import { ProtectedRoutes } from "./components/utils/ProtectedRoutes";
 // import cartApi from "./api/cart";
 import authApi from "./api/auth";
 import BlogPage from "./components/blog/BlogPage";
+import RefundPolicy from "./components/documents/RefundPolicy";
+import TermsConditions from "./components/documents/TermsConditions";
+import Support from "./components/documents/Support";
 // import { checkCookieAndExecuteAction } from "./components/utils/checkCookie";
 
 function App() {
@@ -130,6 +133,9 @@ function App() {
             </Route>
 
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/tnc" element={<TermsConditions />} />
+            <Route path="/support" element={<Support />} />
 
             <Route path="/products">
               <Route index element={<Products />} />
