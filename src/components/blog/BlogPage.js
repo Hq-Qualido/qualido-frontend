@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import Footer from "../footer/Footer";
 import blogPosts from "./BlogPosts.json";
 import { FaRegHeart, FaRegThumbsUp, FaRegLaugh, FaUser } from "react-icons/fa";
-import { MdClose } from "react-icons/md";
+import { MdClose,MdAdd } from "react-icons/md";
 import "./BlogPage.css";
-import { FaEdit } from "react-icons/fa";
 import WriteBlog from "./WriteBlog";
 
 const BlogPage = () => {
@@ -32,7 +31,7 @@ const BlogPage = () => {
           <div className="text-center fs-3">Welcome to the Qualido Blog</div>
           <div className="my_btn">
             <div className="floating_btn" onClick={createBlog}>
-              {blog ? <MdClose /> : <FaEdit />}
+              {blog ? <MdClose /> : <MdAdd />}
             </div>
             <WriteBlog show={blog} />
           </div>
