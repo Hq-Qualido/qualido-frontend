@@ -37,6 +37,7 @@ import RefundPolicy from "./components/documents/RefundPolicy";
 import TermsConditions from "./components/documents/TermsConditions";
 import Support from "./components/documents/Support";
 import PaymentSuccess from "./components/paymentGateway/PaymentSuccess";
+import PaymentCancel from "./components/paymentGateway/PaymentCancel";
 // import { checkCookieAndExecuteAction } from "./components/utils/checkCookie";
 
 function App() {
@@ -88,6 +89,7 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               <Route path="/payment" element={<Payment />} />
               <Route path="/payment/success" element={<PaymentSuccess />} />
+              <Route path="/payment/cancel" element={<PaymentCancel />} />
               <Route
                 path="/feedback"
                 element={
