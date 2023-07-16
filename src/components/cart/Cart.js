@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import "./Cart.css";
 import CartCard from "./CartCard";
@@ -7,10 +7,12 @@ import Footer from "../footer/Footer";
 import { useCart } from "react-use-cart";
 import cartApi from "../../api/cart";
 import { Helmet } from "react-helmet";
+import CartDataContext from "../../hooks/CartContext";
 
 export default function Cart() {
   const { isEmpty, totalUniqueItems, items, totalItems, cartTotal, setItems } =
     useCart();
+  const { setCartData } = useContext(CartDataContext);
 
   const addToCart = async () => {
     const itemData = items.map((item) => {
@@ -29,13 +31,16 @@ export default function Cart() {
 
   const getCart = async () => {
     const res = await cartApi.getCart();
-    console.log(res.data[0].items);
+    console.log(res.data[0].items, "why cart");
     setItems(res.data[0].items);
   };
 
   useEffect(() => {
     getCart();
-  }, []);
+    setCartData(
+      items.map((item) => ({ id: item.id, quantity: item.quantity }))
+    );
+  }, [items]);
 
   useEffect(() => {
     addToCart();

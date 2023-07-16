@@ -1,39 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
-import cartApi from "../../api/cart";
 
 export default function CartCard(props) {
-  const {
-    removeItem,
-    updateItemQuantity,
-    totalUniqueItems,
-    items,
-    totalItems,
-    cartTotal,
-  } = useCart();
+  const { removeItem, updateItemQuantity, items } = useCart();
 
-  // const updateCart = async () => {
-  //   const itemData = items.map((item) => {
-  //     const { _id, quantity } = item;
-
-  //     return { productId: _id, quantity };
-  //   });
-
-  //   console.log(items);
-  //   await cartApi.add({
-  //     totalUniqueItems,
-  //     items: itemData,
-  //     totalItems,
-  //     cartTotal,
-  //   });
-  // };
-
-  console.log(items);
-
-  // useEffect(() => {
-  //   updateCart();
-  // }, [items]);
+  console.log(items, "why this cartcard");
 
   return (
     <>

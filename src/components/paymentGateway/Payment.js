@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Address from "./Address";
 import "./Gateway.css";
 import OrderSummary from "./OrderSummary";
@@ -6,13 +6,11 @@ import PaymentMethods from "./PaymentMethods";
 import PaymentSteps from "./PaymentSteps";
 import PaymentHandler from "../../api/payment";
 import useApi from "../../hooks/useApi";
-
-const itemData = [
-  { id: "63a1f20352f650e580d1a80c", quantity: 3 },
-  { id: "63adc3b1f6fd553ac41d48cf", quantity: 1 },
-];
+import CartDataContext from "../../hooks/CartContext";
 
 export default function Payment() {
+  const { cartData } = useContext(CartDataContext);
+  console.log(cartData, "cartData");
   const [steps, setSteps] = useState(1);
   const {
     data: payData,
@@ -25,7 +23,7 @@ export default function Payment() {
 
   async function handlePayment() {
     try {
-      await request({ items: itemData });
+      await request({ items: cartData });
     } catch (error) {
       console.error(error);
     }
