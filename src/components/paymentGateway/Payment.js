@@ -10,7 +10,6 @@ import CartDataContext from "../../hooks/CartContext";
 
 export default function Payment() {
   const { cartData } = useContext(CartDataContext);
-  console.log(cartData, "cartData");
   const [steps, setSteps] = useState(1);
   const {
     data: payData,
@@ -23,7 +22,16 @@ export default function Payment() {
 
   async function handlePayment() {
     try {
-      await request({ items: cartData });
+      await request({
+        items:
+          cartData &&
+          cartData.map((item) => {
+            return {
+              id: item.id,
+              quantity: item.quantity,
+            };
+          }),
+      });
     } catch (error) {
       console.error(error);
     }
@@ -45,7 +53,7 @@ export default function Payment() {
         <>
           <PaymentSteps step={steps} />
 
-          <div className="payment_container p-2 mx-auto">
+          <div className="payment_container p-lg-2 p-sm-1 mx-auto">
             {steps === 1 ? <Address /> : ""}
             {steps === 2 ? <OrderSummary /> : ""}
             {steps === 3 ? <PaymentMethods /> : ""}
@@ -81,7 +89,9 @@ export default function Payment() {
           </div>
         </>
       ) : (
-        "Redirecting to stripe.."
+        <div className="fs-5 text-Secondary p-3 text-center">
+          Redirecting to stripe...
+        </div>
       )}
     </>
   );

@@ -1,35 +1,39 @@
-import React from "react";
-import Clothing from "../../assets/Clothing.svg";
+import React, { useContext } from "react";
+import CartDataContext from "../../hooks/CartContext";
 
 export default function OrderSummary() {
+  const { cartData } = useContext(CartDataContext);
   return (
     <>
-      <div className="border-bottom p-2 d-flex flex-row">
-        <img
-          className="my-2 my-auto"
-          style={{ width: "100px" }}
-          src={Clothing}
-          alt=""
-        />
-        <div className="my-auto mx-1">
-          <div className="text-dark overflow-hidden">Product Name</div>
-          <div className="text-secondary overflow-hidden">Quantity=1</div>
-        </div>
-        <div className="text-secondary my-auto ms-auto me-1">Rs 456</div>
-      </div>
-
-      <div className="border-bottom p-2 d-flex flex-row">
-        <img
-          className="my-2 my-auto"
-          style={{ width: "100px" }}
-          src={Clothing}
-          alt=""
-        />
-        <div className="my-auto mx-1">
-          <div className="text-dark overflow-hidden">Product Name</div>
-          <div className="text-secondary overflow-hidden">Quantity=1</div>
-        </div>
-        <div className="text-secondary my-auto ms-auto me-1">Rs 456</div>
+      <div className="border-bottom p-2 d-flex flex-column">
+        {cartData?.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className="container d-flex flex-row justify-content-evenly align-items-center"
+            >
+              <div className="px-2 py-1">
+                <img
+                  className="my-2 my-auto"
+                  style={{ width: "50px" }}
+                  src={item?.urls[0]}
+                  alt=""
+                />
+              </div>
+              <div className="my-auto mx-1">
+                <div className="text-dark overflow-hidden">
+                  {item.prodName.slice(0, 20)}...
+                </div>
+                <div className="text-secondary overflow-hidden">
+                  Quantity = {item.quantity}
+                </div>
+              </div>
+              <div className="text-secondary my-auto ms-auto me-1">
+                Rs. {item.prodSp * item.quantity}
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <div className="my-3">

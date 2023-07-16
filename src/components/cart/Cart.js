@@ -37,9 +37,7 @@ export default function Cart() {
 
   useEffect(() => {
     getCart();
-    setCartData(
-      items.map((item) => ({ id: item.id, quantity: item.quantity }))
-    );
+    setCartData(items);
   }, [items]);
 
   useEffect(() => {
