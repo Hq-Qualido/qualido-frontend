@@ -1,40 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Address from "./Address";
 import "./Gateway.css";
 import OrderSummary from "./OrderSummary";
 import PaymentMethods from "./PaymentMethods";
 import PaymentSteps from "./PaymentSteps";
-import { baseUrl } from "../../BaseUrl";
+import PaymentHandler from "../../api/payment";
+import useApi from "../../hooks/useApi";
+
+const itemData = [
+  { id: "63a1f20352f650e580d1a80c", quantity: 3 },
+  { id: "63adc3b1f6fd553ac41d48cf", quantity: 1 },
+];
 
 export default function Payment() {
   const [steps, setSteps] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const {
+    data: payData,
+    res: payResp,
+    loading,
+    error,
+    request,
+    networkError,
+  } = useApi(PaymentHandler.createPayment);
 
-  const handlePayment = async () => {
-    setLoading(true);
-    fetch(`${baseUrl}/payment/create-checkout-session`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: [
-          { id: "63a1f20352f650e580d1a80c", quantity: 3 },
-          { id: "63adc3b1f6fd553ac41d48cf", quantity: 1 },
-        ],
-      }),
-    })
-      .then((res) => {
-        if (res.ok) return res.json();
-        return res.json().then((json) => Promise.reject(json));
-      })
-      .then(({ url }) => {
-        window.location.replace(url);
-      })
-      .catch((e) => {
-        console.error(e.error);
-      });
-  };
+  async function handlePayment() {
+    try {
+      await request({ items: itemData });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    if (payData && !error && !loading) {
+      return window.location.replace(payResp.data.url);
+    } else if (error) {
+      console.log(error);
+    } else if (networkError) {
+      console.log(networkError);
+    }
+  }, [payData, error, loading, payResp, networkError]);
 
   return (
     <>
