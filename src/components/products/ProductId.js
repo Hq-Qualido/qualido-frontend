@@ -128,9 +128,19 @@ export default function ProductId() {
                   Add to Cart
                 </div>
               )}
-              <div className="buy-btn mx-1">
+              <Link
+                to="/cart"
+                className="buy-btn mx-1"
+                onClick={() =>
+                  addItem({
+                    id: indivProd._id,
+                    price: indivProd.prodSp,
+                    ...indivProd,
+                  })
+                }
+              >
                 <FaRupeeSign /> Buy Now
-              </div>
+              </Link>
             </div>
           </div>
           <div className="col-lg-8 col-sm-6 productID-right">
