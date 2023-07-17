@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import "./Footer.css";
 import footerLogo from "../../assets/footerLogo.png";
 import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { FiMail, FiPhoneCall } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
 import { RiFilePaper2Line } from "react-icons/ri";
 import { BsQuestionCircle } from "react-icons/bs";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import { MdOutlinePrivacyTip, MdOutlineCopyright } from "react-icons/md";
+import { MdOutlinePrivacyTip } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -52,7 +51,7 @@ export default function Footer() {
         <hr className="hr" />
 
         <div className="footer-body">
-          <div className="footer-logo">
+          <div className="footer-logo my-4">
             <Link to="/" onClick={handleScroll}>
               <img src={footerLogo} alt="footerLogo" />
             </Link>
@@ -63,42 +62,53 @@ export default function Footer() {
                 <span className="mx-2">
                   <FiMail />
                 </span>
-                info.qualido21@gmail.com
+                <a
+                  href="mailto:info.qualido21@gmail.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  info.qualido21@gmail.com
+                </a>
               </li>
               <li>
                 <span className="mx-2">
                   <BsQuestionCircle />
                 </span>
-                FAQs
+                <a href="/" target="_blank" rel="noreferrer">
+                  FAQs
+                </a>
               </li>
+
               <li>
                 <span className="mx-2">
-                  <FiPhoneCall />
+                  <BsQuestionCircle />
                 </span>
-                +91 70425 23617
+                <a href="/support" target="_blank" rel="noreferrer">
+                  Help & Support
+                </a>
               </li>
+
               <li>
                 <span className="mx-2">
-                  <HiOutlineLocationMarker />
+                  <BsQuestionCircle />
                 </span>
-                Location
+                <a href="/refund-policy" target="_blank" rel="noreferrer">
+                  Refund Policy
+                </a>
               </li>
               <li>
                 <span className="mx-2">
                   <RiFilePaper2Line />
                 </span>
-                Terms & Conditions
+                <a href="/tnc" target="_blank" rel="noreferrer">
+                  Terms & Conditions
+                </a>
               </li>
               <li>
                 <span className="mx-2">
                   <MdOutlinePrivacyTip />
                 </span>
-                <a
-                  href="/privacy-policy"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ textDecoration: "none" }}
-                >
+                <a href="/privacy-policy" target="_blank" rel="noreferrer">
                   Privacy Policy
                 </a>
               </li>
@@ -108,16 +118,13 @@ export default function Footer() {
         <hr />
 
         <div className="footer-bottom">
-          <ul className="terms">
-            <li>
-              <span className="mx-2">
-                <MdOutlineCopyright />
-              </span>
-              Qualido.in - 2022
-            </li>
+          <ul className="terms order-2 order-sm-1">
+            <div className="p-2 text-left">
+              &copy; Qualido.in - 2022 <br /> New Delhi, +91 70425 23617
+            </div>
           </ul>
 
-          <div className="social-icons">
+          <div className="social-icons order-1 order-sm-2">
             <a
               target="_blank"
               rel="noreferrer"
