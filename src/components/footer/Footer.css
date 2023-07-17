@@ -72,12 +72,11 @@
   margin-top: 5px;
 }
 .footer-body .footer-services ul li a {
-  color: #ffffffd8;
+  color: #ffffff;
   text-decoration: none;
 }
 
 .footer-body .footer-services ul li a:hover {
-  color: #ffffff;
   text-decoration: underline;
   cursor: pointer;
   text-decoration: underline;
