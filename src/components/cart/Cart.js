@@ -38,7 +38,7 @@ export default function Cart() {
   useEffect(() => {
     getCart();
     setCartData(items);
-  }, [items]);
+  }, []);
 
   useEffect(() => {
     addToCart();
