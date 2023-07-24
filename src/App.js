@@ -68,7 +68,7 @@ function App() {
   return (
     <>
       <CartProvider>
-        <CartDataContext.Provider value={{cartData,setCartData}}>
+        <CartDataContext.Provider value={{ cartData, setCartData }}>
           <Router>
             <Navbar />
             <Routes>
@@ -152,7 +152,10 @@ function App() {
 
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/refund-policy" element={<RefundPolicy />} />
-              <Route path="/tnc" element={<TermsConditions />} />
+              <Route
+                path="/terms-and-conditions"
+                element={<TermsConditions />}
+              />
               <Route path="/support" element={<Support />} />
 
               <Route path="/products">

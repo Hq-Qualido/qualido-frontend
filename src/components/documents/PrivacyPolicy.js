@@ -4,7 +4,10 @@ import "./PrivacyPolicy.css";
 
 const PrivacyPolicy = () => {
   return (
-    <div class="c25 doc-content">
+    <div
+      style={{ padding: 50, paddingRight: "25%", paddingLeft: "25%" }}
+      class="c25 doc-content"
+    >
       <p class="c3">
         <span class="c8">PRIVACY POLICY</span>
       </p>
@@ -18,10 +21,7 @@ const PrivacyPolicy = () => {
           website
         </span>
         <span class="c6">
-          <a
-            class="c9"
-            href="https://www.google.com/url?q=http://www.qualido.in/&amp;sa=D&amp;source=editors&amp;ust=1673288195265754&amp;usg=AOvVaw07io59qqOkTT_osl39ehP8"
-          >
+          <a class="c9" href="https://www.qualido.in">
             &nbsp;www.qualido.in
           </a>
         </span>
@@ -43,10 +43,7 @@ const PrivacyPolicy = () => {
           Privacy Policy, the
         </span>
         <span class="c6">
-          <a
-            class="c9"
-            href="https://www.google.com/url?q=https://www.flipkart.com/pages/terms&amp;sa=D&amp;source=editors&amp;ust=1673288195266249&amp;usg=AOvVaw0QCNEzLkKPUJxOmKnUnleo"
-          >
+          <a class="c9" href="https://qualido.in/terms-and-conditions">
             &nbsp;Terms of Use
           </a>
         </span>

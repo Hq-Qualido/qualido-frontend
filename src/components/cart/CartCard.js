@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 
 export default function CartCard(props) {
-  const { removeItem, updateItemQuantity, items } = useCart();
-
-  console.log(items, "why this cartcard");
+  const { removeItem, updateItemQuantity } = useCart();
 
   return (
     <>

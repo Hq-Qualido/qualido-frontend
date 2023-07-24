@@ -100,7 +100,11 @@ export default function Footer() {
                 <span className="mx-2">
                   <RiFilePaper2Line />
                 </span>
-                <a href="/tnc" target="_blank" rel="noreferrer">
+                <a
+                  href="/terms-and-conditions"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Terms & Conditions
                 </a>
               </li>

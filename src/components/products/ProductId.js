@@ -77,9 +77,9 @@ export default function ProductId() {
     });
   };
 
-  useEffect(() => {
-    addToCart();
-  }, [totalItems]);
+  // useEffect(() => {
+  //   addToCart();
+  // }, [totalItems]);
 
   const handleGetDeliveryDetail = async () => {
     const res = await deliveryApi.getDetail({
@@ -117,13 +117,14 @@ export default function ProductId() {
               ) : (
                 <div
                   className="cart-btn mx-1"
-                  onClick={() =>
+                  onClick={() => {
                     addItem({
                       id: indivProd._id,
                       price: indivProd.prodSp,
                       ...indivProd,
-                    })
-                  }
+                    });
+                    addToCart();
+                  }}
                 >
                   Add to Cart
                 </div>

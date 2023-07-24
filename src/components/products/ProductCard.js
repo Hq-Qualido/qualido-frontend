@@ -30,9 +30,9 @@ export default function ProductCard(props) {
     });
   };
 
-  useEffect(() => {
-    addToCart();
-  }, [totalItems]);
+  // useEffect(() => {
+  //   addToCart();
+  // }, [totalItems]);
 
   return (
     <>
@@ -51,13 +51,14 @@ export default function ProductCard(props) {
                 <span className="save-percentage">Save {props.discount}%</span>
                 <span
                   className="wishlist-btn my-2"
-                  onClick={() =>
+                  onClick={() => {
                     addItem({
                       id: props._id,
                       price: props.prodSp,
                       ...props,
-                    })
-                  }
+                    });
+                    addToCart();
+                  }}
                 >
                   {checkItemInCart ? <BsFillCartCheckFill /> : <BsCartPlus />}
                 </span>
