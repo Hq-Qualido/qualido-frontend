@@ -7,7 +7,7 @@ export default function PaymentCancel() {
     <div>
       <div className="container d-flex justify-content-center align-items-center">
         <div className="col-lg-6 col-sm-6 my-5 d-flex flex-column justify-content-center shadow-sm rounded rounded-3">
-          <div className="my-4">
+          {/* <div className="my-4">
             <lottie-player
               src="https://assets8.lottiefiles.com/packages/lf20_P7BPtXPF6l.json"
               background="transparent"
@@ -16,7 +16,7 @@ export default function PaymentCancel() {
               // loop
               autoplay
             ></lottie-player>
-          </div>
+          </div> */}
           <div className="fs-2 text-center">Payment Cancelled!</div>
 
           <div className="container d-flex flex-wrap justify-content-center align-items-center">
