@@ -5,7 +5,7 @@ import Footer from "../footer/Footer";
 export default function PaymentCancel() {
   return (
     <div>
-      {/* <div className="container d-flex justify-content-center align-items-center">
+      <div className="container d-flex justify-content-center align-items-center">
         <div className="col-lg-6 col-sm-6 my-5 d-flex flex-column justify-content-center shadow-sm rounded rounded-3">
           <div className="my-4">
             <lottie-player
@@ -13,7 +13,7 @@ export default function PaymentCancel() {
               background="transparent"
               speed="1"
               style={{ width: "auto", height: "250px" }}
-              // loop
+              loop
               autoplay
             ></lottie-player>
           </div>
@@ -30,13 +30,6 @@ export default function PaymentCancel() {
               Go To Cart
             </Link>
           </div>
-        </div>
-      </div> */}
-      <div>
-        <div>Payment Cancelled!</div>
-        <div>
-          <Link to="/products">Continue Shopping</Link>
-          <Link to="/cart">Go To Cart</Link>
         </div>
       </div>
       <Footer />
