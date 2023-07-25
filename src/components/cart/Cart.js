@@ -2,21 +2,24 @@ import React, { useEffect, useContext } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import "./Cart.css";
 import CartCard from "./CartCard";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../footer/Footer";
 import { useCart } from "react-use-cart";
 import cartApi from "../../api/cart";
 import { Helmet } from "react-helmet";
 import CartDataContext from "../../hooks/CartContext";
 import useApi from "../../hooks/useApi";
+import useToken from "../../hooks/useToken";
 import orderApi from "../../api/order";
 
 export default function Cart() {
   const { isEmpty, totalUniqueItems, items, totalItems, cartTotal, setItems } =
     useCart();
   const { cartData, setCartData } = useContext(CartDataContext);
+  const { token } = useToken();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     data,
@@ -56,7 +59,8 @@ export default function Cart() {
   }, [totalItems]);
 
   const handleOrder = () => {
-    console.log(cartTotal);
+    if (!token)
+      return navigate("/login", { state: { from: location.pathname } });
 
     sendOrder({
       items:
