@@ -1,6 +1,21 @@
 import React from "react";
 
-export default function Address() {
+export default function Address({
+  name,
+  setName,
+  phoneNumber,
+  setPhoneNumber,
+  house_flat_no,
+  setHouse_flat_no,
+  area_street_colony,
+  setArea_street_colony,
+  pincode,
+  setPincode,
+  state,
+  setState,
+  city,
+  setCity,
+}) {
   return (
     <>
       <form>
@@ -10,6 +25,8 @@ export default function Address() {
             className="form-control"
             id=""
             placeholder="name@example.com"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <label className="text-secondary" htmlFor="">
             Your Name
@@ -22,6 +39,8 @@ export default function Address() {
             className="form-control"
             id=""
             placeholder="name@example.com"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
           <label className="text-secondary" htmlFor="">
             Phone Number
@@ -34,9 +53,11 @@ export default function Address() {
             className="form-control"
             id=""
             placeholder="name@example.com"
+            value={house_flat_no}
+            onChange={(e) => setHouse_flat_no(e.target.value)}
           />
           <label className="text-secondary" htmlFor="">
-            House Number
+            House/Flat Number
           </label>
         </div>
 
@@ -46,6 +67,8 @@ export default function Address() {
             className="form-control"
             id=""
             placeholder="name@example.com"
+            value={area_street_colony}
+            onChange={(e) => setArea_street_colony(e.target.value)}
           />
           <label className="text-secondary" htmlFor="">
             Road , Area , Street , Colony
@@ -59,6 +82,8 @@ export default function Address() {
               className="form-control"
               id=""
               placeholder="name@example.com"
+              value={pincode}
+              onChange={(e) => setPincode(e.target.value)}
             />
             <label className="text-secondary" htmlFor="">
               Pincode
@@ -71,20 +96,22 @@ export default function Address() {
               className="form-control"
               id=""
               placeholder="name@example.com"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
             />
             <label className="text-secondary" htmlFor="">
               City
             </label>
           </div>
         </div>
-
-        
         <div className="form-floating mb-3 p-0">
           <input
             type="text"
             className="form-control"
             id=""
             placeholder="name@example.com"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
           />
           <label className="text-secondary" htmlFor="">
             State

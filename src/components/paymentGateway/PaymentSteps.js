@@ -36,7 +36,7 @@ export default function PaymentSteps(props) {
           <span
             className={`text-${props.step === 2 ? "primary" : "secondary"}`}
           >
-            Order Summary
+            Payment Method
           </span>
         </div>
 
@@ -54,7 +54,7 @@ export default function PaymentSteps(props) {
           <span
             className={`text-${props.step === 3 ? "primary" : "secondary"}`}
           >
-            Payment
+            Order Summary
           </span>
         </div>
       </div>

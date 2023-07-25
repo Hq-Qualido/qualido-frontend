@@ -13,7 +13,7 @@ export default function PaymentSuccess() {
               background="transparent"
               speed="1"
               style={{ width: "auto", height: "350px" }}
-              loop
+              // loop
               autoplay
             ></lottie-player>
           </div>

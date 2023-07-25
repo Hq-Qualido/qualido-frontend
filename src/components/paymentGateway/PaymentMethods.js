@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-export default function PaymentMethods() {
-  const [paymentMethod, setPaymentMethod] = useState("");
-
+export default function PaymentMethods({ paymentMethod, setPaymentMethod }) {
   return (
     <>
       <div className="text-center my-1"> Select Payment method :-</div>

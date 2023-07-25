@@ -1,12 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CartDataContext from "../../hooks/CartContext";
+import useApi from "../../hooks/useApi";
+import orderApi from "../../api/order";
 
-export default function OrderSummary() {
-  const { cartData } = useContext(CartDataContext);
+export default function OrderSummary({ orderId }) {
+  // const [orderDetails, setOrderDetails] = useState({});
+
+  // const { cartData } = useContext(CartDataContext);
+
+  const { data: orderData, request: getOrderDetails } = useApi(
+    orderApi.getOrder
+  );
+
+  useEffect(() => {
+    getOrderDetails(orderId);
+  }, []);
+
+  console.log(orderData);
+
+  // useEffect(() => {
+  //   setOrderDetails(orderData);
+  // }, [orderData]);
+
   return (
     <>
       <div className="border-bottom p-2 d-flex flex-column">
-        {cartData?.map((item, index) => {
+        {orderData?.products.map((item, index) => {
           return (
             <div
               key={index}
@@ -29,7 +48,7 @@ export default function OrderSummary() {
                 </div>
               </div>
               <div className="text-secondary my-auto ms-auto me-1">
-                Rs. {item.prodSp * item.quantity}
+                Rs. {item.prodMrp * item.quantity}
               </div>
             </div>
           );
@@ -42,23 +61,28 @@ export default function OrderSummary() {
         </div>
         <div className="container">
           <div className="d-flex flex-row justify-content-between my-1 p-1">
-            <div>Price(2 items)</div>
-            <div>₹ 45</div>
+            <div>Price ({orderData?.products.length} items)</div>
+            <div>₹ {orderData?.totalProdMrp}</div>
           </div>
 
           <div className="d-flex flex-row justify-content-between my-1 p-1">
             <div>Discount</div>
-            <div>-₹ 5</div>
+            <div>
+              -₹ {orderData?.totalProdMrp - orderData?.totalProductsAmount}
+              {"  "}({orderData?.discount}%)
+            </div>
           </div>
 
           <div className="d-flex flex-row justify-content-between my-1 p-1">
             <div>Delivery Charge</div>
-            <div>₹ 10</div>
+            <div>₹ {orderData?.deliveryCharge}</div>
           </div>
 
           <div className="border-top d-flex flex-row justify-content-between my-2 p-2 fs-5">
-            <div> Subtotal (3 Items) : </div>
-            <div style={{ fontWeight: "500" }}>₹ {456} </div>
+            <div> Subtotal ({orderData?.products.length} Items) : </div>
+            <div style={{ fontWeight: "500" }}>
+              ₹ {orderData?.totalProductsAmount + orderData?.deliveryCharge}
+            </div>
           </div>
         </div>
       </div>

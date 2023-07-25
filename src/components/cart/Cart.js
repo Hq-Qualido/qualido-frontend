@@ -2,17 +2,28 @@ import React, { useEffect, useContext } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import "./Cart.css";
 import CartCard from "./CartCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../footer/Footer";
 import { useCart } from "react-use-cart";
 import cartApi from "../../api/cart";
 import { Helmet } from "react-helmet";
 import CartDataContext from "../../hooks/CartContext";
+import useApi from "../../hooks/useApi";
+import orderApi from "../../api/order";
 
 export default function Cart() {
   const { isEmpty, totalUniqueItems, items, totalItems, cartTotal, setItems } =
     useCart();
-  const { setCartData } = useContext(CartDataContext);
+  const { cartData, setCartData } = useContext(CartDataContext);
+
+  const navigate = useNavigate();
+
+  const {
+    data,
+    request: sendOrder,
+    error,
+    loading,
+  } = useApi(orderApi.newOrder);
 
   const addToCart = async () => {
     const itemData = items.map((item) => {
@@ -43,6 +54,28 @@ export default function Cart() {
   useEffect(() => {
     addToCart();
   }, [totalItems]);
+
+  const handleOrder = () => {
+    console.log(cartTotal);
+
+    sendOrder({
+      items:
+        cartData &&
+        cartData.map((item) => {
+          return {
+            id: item.id,
+            quantity: item.quantity,
+          };
+        }),
+    });
+  };
+
+  useEffect(() => {
+    if (!loading && data?.message === "order_added_success") {
+      console.log(data);
+      return navigate("/payment", { state: { orderId: data.orderId } });
+    } else if (error) return alert(data.message);
+  }, [data, loading]);
 
   if (isEmpty)
     return (
@@ -110,9 +143,9 @@ export default function Cart() {
             Subtotal ({totalItems} Items) :
             <span style={{ fontWeight: "500" }}> ₹ {cartTotal} </span>
           </div>
-          <Link to={"/payment"} style={{ textDecoration: "none" }}>
+          <div onClick={handleOrder} style={{ textDecoration: "none" }}>
             <div className="buy-btn">Proceed to Buy</div>
-          </Link>
+          </div>
         </div>
       </div>
       <Footer />

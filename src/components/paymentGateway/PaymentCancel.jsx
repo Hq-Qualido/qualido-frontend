@@ -13,7 +13,7 @@ export default function PaymentCancel() {
               background="transparent"
               speed="1"
               style={{ width: "auto", height: "250px" }}
-              loop
+              // loop
               autoplay
             ></lottie-player>
           </div>

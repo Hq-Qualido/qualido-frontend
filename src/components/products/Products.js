@@ -13,7 +13,7 @@ import { Helmet } from "react-helmet";
 export default function Products() {
   const [searchParam] = useSearchParams();
   const categoryParam = searchParam.get("category");
-  console.log(categoryParam);
+  // console.log(categoryParam);
   const [loading, setLoading] = useState(false);
   const [datas, setDatas] = useState([]);
 

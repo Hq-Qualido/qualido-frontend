@@ -16,9 +16,10 @@ export default function ProductCard(props) {
   const checkItemInCart = getItem(props._id);
 
   const addToCart = async () => {
+    console.log("HERE");
     const itemData = items.map((item) => {
       const { _id, quantity } = item;
-
+      console.log(items);
       return { productId: _id, quantity };
     });
 
@@ -52,6 +53,7 @@ export default function ProductCard(props) {
                 <span
                   className="wishlist-btn my-2"
                   onClick={() => {
+                    console.log("clicked");
                     addItem({
                       id: props._id,
                       price: props.prodSp,
@@ -98,13 +100,14 @@ export default function ProductCard(props) {
               </span>
               <span
                 className="wishlist-btn my-2"
-                onClick={() =>
+                onClick={() => {
                   addItem({
                     id: props._id,
                     price: props.prodSp,
                     ...props,
-                  })
-                }
+                  });
+                  addToCart();
+                }}
               >
                 {checkItemInCart ? <BsFillCartCheckFill /> : <BsCartPlus />}
               </span>
