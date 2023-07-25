@@ -91,7 +91,7 @@ export default function Payment() {
       console.log("IN PAYMENT JS");
       setCartData([]);
       setItems([]);
-      navigate("/payment/success");
+      if (paymentMethod === "cod") navigate("/#/payment/success");
     }
   }, [payData]);
 
