@@ -5,9 +5,9 @@ import Footer from "../footer/Footer";
 export default function PaymentSuccess() {
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center">
+      {/* <div className="container d-flex justify-content-center align-items-center">
         <div className="col-lg-6 col-sm-6 my-5 d-flex flex-column justify-content-center shadow-sm rounded rounded-3">
-          {/* <div>
+          <div>
             <lottie-player
               src="https://assets6.lottiefiles.com/packages/lf20_ufoeuntu.json"
               background="transparent"
@@ -16,7 +16,7 @@ export default function PaymentSuccess() {
               // loop
               autoplay
             ></lottie-player>
-          </div> */}
+          </div>
           <div className="fs-2 text-center">Order Confirmed!</div>
 
           <div className="container d-flex flex-wrap justify-content-center align-items-center">
@@ -30,6 +30,12 @@ export default function PaymentSuccess() {
               Track Order
             </Link>
           </div>
+        </div>
+      </div> */}
+      <div>
+        <div>Order Confirmed!</div>
+        <div>
+          <Link to="/products">Continue Shopping</Link>
         </div>
       </div>
       <Footer />

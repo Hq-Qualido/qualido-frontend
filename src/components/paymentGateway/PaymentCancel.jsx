@@ -5,9 +5,9 @@ import Footer from "../footer/Footer";
 export default function PaymentCancel() {
   return (
     <div>
-      <div className="container d-flex justify-content-center align-items-center">
+      {/* <div className="container d-flex justify-content-center align-items-center">
         <div className="col-lg-6 col-sm-6 my-5 d-flex flex-column justify-content-center shadow-sm rounded rounded-3">
-          {/* <div className="my-4">
+          <div className="my-4">
             <lottie-player
               src="https://assets8.lottiefiles.com/packages/lf20_P7BPtXPF6l.json"
               background="transparent"
@@ -16,7 +16,7 @@ export default function PaymentCancel() {
               // loop
               autoplay
             ></lottie-player>
-          </div> */}
+          </div>
           <div className="fs-2 text-center">Payment Cancelled!</div>
 
           <div className="container d-flex flex-wrap justify-content-center align-items-center">
@@ -30,6 +30,13 @@ export default function PaymentCancel() {
               Go To Cart
             </Link>
           </div>
+        </div>
+      </div> */}
+      <div>
+        <div>Payment Cancelled!</div>
+        <div>
+          <Link to="/products">Continue Shopping</Link>
+          <Link to="/cart">Go To Cart</Link>
         </div>
       </div>
       <Footer />
