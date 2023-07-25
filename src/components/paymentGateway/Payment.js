@@ -59,7 +59,7 @@ export default function Payment() {
   }, []);
 
   useEffect(() => {
-    if (addressData?.message === "address_fetched") {
+    if (addressData?.message === "address_fetched" && addressData?.addresses) {
       const address = addressData?.addresses.addressDetails[0];
 
       setName(address.name);

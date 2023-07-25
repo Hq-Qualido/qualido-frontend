@@ -6,7 +6,7 @@ import { RiSecurePaymentFill } from "react-icons/ri";
 import { TbTruckDelivery } from "react-icons/tb";
 // import ProductCard from "./ProductCard";
 import Footer from "../footer/Footer";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useCart } from "react-use-cart";
 
@@ -29,6 +29,8 @@ export default function ProductId() {
   const [sameProds, setSameProds] = useState([]);
   const [category, setCategory] = useState("");
   const [prodImage, setProdImage] = useState("");
+
+  const navigate = useNavigate();
 
   const fetchProductData = async () => {
     const url1 = `${baseUrl}/products`;
@@ -62,7 +64,7 @@ export default function ProductId() {
     useCart();
   const checkItemInCart = getItem(indivProd._id);
 
-  const addToCart = async () => {
+  const addToCart = async ({ isBuynow }) => {
     const itemData = items.map((item) => {
       const { _id, quantity } = item;
 
@@ -75,6 +77,8 @@ export default function ProductId() {
       totalItems,
       cartTotal,
     });
+
+    if (isBuynow) return navigate("/cart");
   };
 
   // useEffect(() => {
@@ -129,19 +133,20 @@ export default function ProductId() {
                   Add to Cart
                 </div>
               )}
-              <Link
-                to="/cart"
+              <div
+                // to="/cart"
                 className="buy-btn mx-1"
-                onClick={() =>
+                onClick={() => {
                   addItem({
                     id: indivProd._id,
                     price: indivProd.prodSp,
                     ...indivProd,
-                  })
-                }
+                  });
+                  addToCart({ isBuynow: true });
+                }}
               >
                 <FaRupeeSign /> Buy Now
-              </Link>
+              </div>
             </div>
           </div>
           <div className="col-lg-8 col-sm-6 productID-right">
