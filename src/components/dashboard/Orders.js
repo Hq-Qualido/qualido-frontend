@@ -4,6 +4,7 @@ import orderApi from "../../api/order";
 import useToken from "../../hooks/useToken";
 import { useLocation, useNavigate } from "react-router-dom";
 import OrderDetailsCard from "./orderDetails/OrderDetailsCard";
+import { Helmet } from "react-helmet";
 
 export default function Orders() {
   const [my_orders, setMy_orders] = useState([]);
@@ -41,6 +42,11 @@ export default function Orders() {
 
   return (
     <>
+      <Helmet
+        title="My Orders | Qualido.in"
+        content="This is your orders page of qualido webite"
+        url="/orders"
+      />
       <div className="container text-center p-5 fs-5">
         {my_orders
           ? my_orders.map((item, index) => {

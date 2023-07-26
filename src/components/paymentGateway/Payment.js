@@ -12,6 +12,7 @@ import PaymentHandler from "../../api/payment";
 import addressApi from "../../api/address";
 import orderApi from "../../api/order";
 import { useCart } from "react-use-cart";
+import { Helmet } from "react-helmet";
 
 export default function Payment() {
   const { setCartData } = useContext(CartDataContext);
@@ -178,6 +179,11 @@ export default function Payment() {
 
   return (
     <>
+      <Helmet
+        title="Secure Payment | Qualido.in"
+        content="This is your orders page of qualido webite"
+        url="/payment"
+      />
       {!loading ? (
         <>
           <PaymentSteps step={steps} />
