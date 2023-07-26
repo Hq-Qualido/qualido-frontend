@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import "./Cart.css";
 import CartCard from "./CartCard";
@@ -20,6 +20,7 @@ export default function Cart() {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const {
     data,
@@ -59,6 +60,7 @@ export default function Cart() {
   }, [totalItems]);
 
   const handleOrder = () => {
+    setIsDisabled(true);
     if (!token)
       return navigate("/login", { state: { from: location.pathname } });
 
@@ -147,8 +149,17 @@ export default function Cart() {
             Subtotal ({totalItems} Items) :
             <span style={{ fontWeight: "500" }}> ₹ {cartTotal} </span>
           </div>
-          <div onClick={handleOrder} style={{ textDecoration: "none" }}>
-            <div className="buy-btn">Proceed to Buy</div>
+          <div
+            onClick={handleOrder}
+            style={{
+              opacity: isDisabled ? 0.5 : 1,
+              pointerEvents: isDisabled ? "none" : "auto",
+              textDecoration: "none",
+            }}
+          >
+            <div className="buy-btn">
+              {loading ? "Redirecting..." : "Proceed to Buy"}
+            </div>
           </div>
         </div>
       </div>
