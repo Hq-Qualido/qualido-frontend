@@ -234,6 +234,8 @@ export default function Payment() {
                   ? addAddressLoading
                     ? "loading..."
                     : "Next"
+                  : paymentMethod === "cod"
+                  ? "Place Order"
                   : "Make Payment"}
               </div>
             </div>
