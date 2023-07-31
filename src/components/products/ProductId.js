@@ -186,7 +186,11 @@ export default function ProductId() {
                 <tr>
                   <td className="col-lg-4 col-sm-6 light_text">Publisher</td>
                   <td className="col-lg-8 col-sm-6">
-                    {indivProd.publisher ? indivProd.publisher : "NA"}
+                    {indivProd.publisher ? (
+                      <>{indivProd.publisher.split(";").join(", ")}</>
+                    ) : (
+                      "NA"
+                    )}
                   </td>
                 </tr>
                 <tr>
