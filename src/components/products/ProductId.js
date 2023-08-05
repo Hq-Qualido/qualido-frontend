@@ -9,6 +9,7 @@ import Footer from "../footer/Footer";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useCart } from "react-use-cart";
+import Cookies from "js-cookie";
 
 import { baseUrl } from "../../BaseUrl";
 import ProductImages from "./ProductImages";
@@ -96,6 +97,21 @@ export default function ProductId() {
       setDeliveryCharge("₹ " + res.data.deliveryCharge);
     else setDeliveryCharge("NA");
   };
+
+  // ____________________________
+  useEffect(() => {
+    const recentlyViewed = JSON.parse(Cookies.get("recentlyViewed") || "[]");
+    const filteredRecentlyViewed = recentlyViewed.filter(
+      (id) => id !== productId
+    );
+
+    filteredRecentlyViewed.unshift(productId);
+    const updatedRecentlyViewed = filteredRecentlyViewed.slice(0, 5);
+
+    Cookies.set("recentlyViewed", JSON.stringify(updatedRecentlyViewed), {
+      expires: 7,
+    });
+  }, [productId]);
 
   return (
     <>

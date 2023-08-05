@@ -21,6 +21,7 @@ import NavInfo from "../navbar/NavInfo";
 import { useCart } from "react-use-cart";
 import { Helmet } from "react-helmet";
 import cartApi from "../../api/cart";
+import RecentlyViewed from "../products/recent/RecentlyViewed";
 
 export default function HomePage() {
   const settings = {
@@ -45,7 +46,7 @@ export default function HomePage() {
 
   const getCart = async () => {
     const res = await cartApi.getCart();
-    console.log(res.data[0].items);
+    // console.log(res.data[0].items);
     setItems(res.data[0].items);
   };
 
@@ -132,12 +133,14 @@ export default function HomePage() {
       </div>
 
       <Categories />
+      <div className="container">
+        <RecentlyViewed />
+      </div>
 
       <div className="container" style={{ width: "80%" }}>
         <div className="text-center mb-5 fs-2">Upcoming Products</div>
         <UpcomingProducts />
       </div>
-
       {/* CUSTOMER REVIEWS STARTS */}
       <div className="container-fluid customer-reviews">
         <div className="row customer-reviews-row">
