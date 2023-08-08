@@ -150,18 +150,25 @@ export default function ProductId() {
                 </div>
               )}
               <div
-                // to="/cart"
-                className="buy-btn mx-1"
-                onClick={() => {
-                  addItem({
-                    id: indivProd._id,
-                    price: indivProd.prodSp,
-                    ...indivProd,
-                  });
-                  addToCart({ isBuynow: true });
+                style={{
+                  opacity: !indivProd.inStock ? 0.5 : 1,
+                  pointerEvents: !indivProd.inStock ? "none" : "auto",
                 }}
               >
-                <FaRupeeSign /> Buy Now
+                <div
+                  // to="/cart"
+                  className="buy-btn mx-1"
+                  onClick={() => {
+                    addItem({
+                      id: indivProd._id,
+                      price: indivProd.prodSp,
+                      ...indivProd,
+                    });
+                    addToCart({ isBuynow: true });
+                  }}
+                >
+                  <FaRupeeSign /> Buy Now
+                </div>
               </div>
             </div>
           </div>
@@ -181,6 +188,13 @@ export default function ProductId() {
             <div className="product-price my-3 px-2">
               ₹ {indivProd.prodSp}{" "}
               <span className="line_through_text">{indivProd.prodMrp}</span>
+              <span className="stock">
+                {indivProd?.inStock ? (
+                  <div className="in_stock">In Stock</div>
+                ) : (
+                  <div className="unavailable">Currently-Unavailable</div>
+                )}
+              </span>
               <span className="saving"> {indivProd.discount}% Off</span>
             </div>
 
