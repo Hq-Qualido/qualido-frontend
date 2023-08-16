@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import authApi from "../../api/auth";
+import useApi from "../../hooks/useApi";
+import useToken from "../../hooks/useToken";
+import Loader from "../loader/Loader";
 
 export default function Security() {
   const [disable, setDisable] = useState(true);
   const [values, setValues] = useState({
     fullname: "",
     phone: "",
-    password: "",
+    // password: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,9 +19,38 @@ export default function Security() {
       [name]: value,
     });
   };
-  async function handleSubmit() {
-    console.log(values, "usersedited value");
-  }
+
+  const { token } = useToken();
+  const { data, error, loading, request: getUser } = useApi(authApi.getUser);
+  const {
+    data: updateUserData,
+    // error: updateUserError,
+    loading: updateUserLoading,
+    request: updateUser,
+  } = useApi(authApi.updateUser);
+
+  const handleUpdateUser = async () => {
+    console.log(values);
+    updateUser(values);
+  };
+
+  useEffect(() => {
+    if (updateUserData?.message === "user_updated_successfully")
+      setDisable(true);
+  }, [updateUserData]);
+
+  useEffect(() => {
+    getUser(token);
+  }, [token]);
+
+  useEffect(() => {
+    if (data?.user) {
+      setValues({ fullname: data?.user.fullname, phone: data?.user.phone });
+    }
+  }, [data]);
+
+  if (!data || loading) return <Loader type="dots" />;
+  else if (error) return <div>{data.message}</div>;
 
   return (
     <>
@@ -30,7 +64,7 @@ export default function Security() {
               <input
                 name="email"
                 type="text"
-                placeholder="srivastava+qualido@gmail.com"
+                placeholder={data?.user.email}
                 disabled={true}
               />
             </div>
@@ -53,7 +87,7 @@ export default function Security() {
                 value={values.fullname}
                 onChange={handleChange}
                 type="text"
-                placeholder="Vivek Srivastava"
+                placeholder={data?.user.fullname}
                 disabled={disable}
               />
             </div>
@@ -76,12 +110,12 @@ export default function Security() {
                 type="rel"
                 value={values.phone}
                 onChange={handleChange}
-                placeholder="+91 8989656545"
+                placeholder={data?.user.phone}
                 disabled={disable}
               />
             </div>
 
-            <div className="user-info-section my-2">
+            {/* <div className="user-info-section my-2">
               <label htmlFor="phone" className="users-number mt-1">
                 Update Password{" "}
                 <span
@@ -102,11 +136,15 @@ export default function Security() {
                 placeholder="*************"
                 disabled={disable}
               />
-            </div>
+            </div> */}
 
-            <div className="info-btn mt-4" onClick={handleSubmit}>
+            <button
+              className="info-btn mt-4"
+              onClick={handleUpdateUser}
+              disabled={updateUserLoading || disable}
+            >
               Submit
-            </div>
+            </button>
           </form>
         </div>
       </div>

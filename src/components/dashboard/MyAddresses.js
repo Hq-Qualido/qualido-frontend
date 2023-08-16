@@ -1,28 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useApi from "../../hooks/useApi";
+import addressApi from "../../api/address";
+import Loader from "../loader/Loader";
 
 export default function MyAddresses() {
   const [addNewAddress, setAddNewAddress] = useState(false);
+  const {
+    data: addressData,
+    loading,
+    error,
+    request: fetchAddress,
+  } = useApi(addressApi.get);
+
+  useEffect(() => {
+    fetchAddress();
+  }, []);
+
+  if (!addressData || loading) return <Loader type="dots" />;
+  else if (error) return <div>{addressData.message}</div>;
+
   return (
     <>
       <div className="container d-flex flex-column">
         <div className="fs-4 text-center mt-3">My Addresses</div>
-        <div className="d-flex flex-row justify-content-between py-2 px-3 m-3 rounded shadow-sm">
-          <div className="my-2 px-2">
-            <span className="border border-primary text-primary rounded rounded-full px-2">
-              Home
-            </span>
-            <br /> Quarter -No. 420 <br /> City - ABC City <br /> State : UP
+        {addressData?.addresses?.addressDetails.map((address) => (
+          <div className="d-flex flex-row justify-content-between py-2 px-3 m-3 rounded border-2 shadow-sm">
+            <div className="my-2 px-2">
+              {/* <span className="border border-primary text-primary rounded rounded-full px-2">
+                Home
+              </span> */}
+              <br /> <span className="address-info">Name: </span>
+              {address.name} <br />{" "}
+              <span className="address-info">Phone Number: </span>
+              {address.phoneNumber} <br />{" "}
+              <span className="address-info">City:</span> {address.city} <br />{" "}
+              <span className="address-info">State:</span> {address.state}
+            </div>
+            <div className="my-2 px-2">
+              <br /> <span className="address-info">House/Flat no.:</span>{" "}
+              {address.house_flat_no} <br />{" "}
+              <span className="address-info">Area/Street/Colony:</span>{" "}
+              {address.area_street_colony} <br />{" "}
+              <span className="address-info">Pin Code:</span> {address.pincode}
+            </div>
+            {/* <div className="edit-btn my-auto">Edit</div> */}
           </div>
-          <div className="edit-btn my-auto">Edit</div>
-        </div>
-        <div
+        ))}
+        {/* <div
           className="add-btn my-3 mx-auto"
           onClick={() => {
             setAddNewAddress(!addNewAddress);
           }}
         >
           {!addNewAddress ? "Add New Address" : "Cancel"}
-        </div>
+        </div> */}
 
         {addNewAddress ? (
           <div>

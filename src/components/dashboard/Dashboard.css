@@ -1,39 +1,39 @@
-.dashboard-top{
+.dashboard-top {
   display: flex;
   align-items: center;
   justify-content: space-around;
   height: fit-content;
 }
 
-.dashboard-top .logout{
-  padding:5px 10px;
+.dashboard-top .logout {
+  padding: 5px 10px;
   border-radius: 5px;
-  border: 2px solid #00A1B6;
-  color: #00A1B6;
+  border: 2px solid #00a1b6;
+  color: #00a1b6;
 }
-.dashboard-top .logout:hover{
+.dashboard-top .logout:hover {
   cursor: pointer;
-  color: #00899B;
-  border: 2px solid #00899B;
+  color: #00899b;
+  border: 2px solid #00899b;
 }
 
-.dashboard-row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+.dashboard-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.dashboard-row a{
-    width: max-content;
-    text-decoration:none;
-     padding:0px;
+.dashboard-row a {
+  width: max-content;
+  text-decoration: none;
+  padding: 0px;
 }
-.dashCards{
-    background-image: url('../../assets/cut.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-blend-mode:multiply;
-    background-color: #fff;
+.dashCards {
+  background-image: url("../../assets/cut.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-color: #fff;
   border-radius: 15px;
   box-shadow: 0px 6px 47px 0px #6474831a;
   padding: 1rem;
@@ -47,84 +47,87 @@
   color: #6a6a6a;
 }
 
+.dashCards:hover {
+  color: white;
+  background-color: #00a1b6;
+  border: 5px solid #ffffff33;
+  cursor: pointer;
+}
 
-.dashCards:hover{
-    color:white;
-    background-color: #00A1B6;
-    border: 5px solid #FFFFFF33;
-    cursor:pointer;
-  }
-  
-  /* wishlist PAGE CSS  STARTS*/
-  .wishlist-page{
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+/* wishlist PAGE CSS  STARTS*/
+.wishlist-page {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
-  .wishlist-page .wishlist-para{
-    text-align: center;
-  }
-  /* wishlist PAGE CSS ENDS  */
+.wishlist-page .wishlist-para {
+  text-align: center;
+}
+/* wishlist PAGE CSS ENDS  */
 
-  
-  
-  /* LOGIN SECURITY PAGE CSS  */
-.user-info-section input{
+/* LOGIN SECURITY PAGE CSS  */
+.user-info-section input {
   height: 50px;
 }
 
-input[type="rel"]{
+input[type="rel"] {
   width: 100%;
   padding: 5px 10px;
   border-radius: 5px;
   border: 1px solid grey;
 }
 
-.security-page{
-    width: 70%;
+.security-page {
+  width: 70%;
 }
-  .user-info-section{
-display: flex;
-align-items: flex-start;
-justify-content: center;
-flex-direction: column;
-  }
+.user-info-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
 
-  .users-email,.users-number,.users-fullname{
-    font-size: 1.5rem;
-    color: rgb(57, 57, 57);
-  }
-  
-  .edit-btn{
-    color: rgb(0, 106, 255);
-    font-size:1rem;
-  }
-  .edit-btn:hover{
-    cursor: pointer;
-  }
+.address-info {
+  color: #00899b;
+}
 
-  /* LOGIN SECURITY PAGE CSS  */
-@media only screen and (max-width:900px){
-  .dashboard-top h1{
+.users-email,
+.users-number,
+.users-fullname {
+  font-size: 1.5rem;
+  color: rgb(57, 57, 57);
+}
+
+.edit-btn {
+  color: rgb(0, 106, 255);
+  font-size: 1rem;
+}
+.edit-btn:hover {
+  cursor: pointer;
+}
+
+/* LOGIN SECURITY PAGE CSS  */
+@media only screen and (max-width: 900px) {
+  .dashboard-top h1 {
     font-size: 25px;
-    }
-  .dashCards{
+  }
+  .dashCards {
     width: 300px;
   }
-  
-.security-page{
-  width: 90%;
-}
+
+  .security-page {
+    width: 90%;
+  }
 }
 
-@media only screen and (max-width:400px){
-.security-page{
-  width: 95%;
-}
+@media only screen and (max-width: 400px) {
+  .security-page {
+    width: 95%;
+  }
 }

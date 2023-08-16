@@ -12,6 +12,8 @@ const feedback = (data) => client.post("/feedback", data);
 
 const getUser = (token) => client.get(`/auth/user?token=${token}`);
 
+const updateUser = (data) => client.put(`/auth/update`, data);
+
 export default {
   verifyOtp,
   signup,
@@ -19,4 +21,5 @@ export default {
   googleLogin,
   feedback,
   getUser,
+  updateUser,
 };

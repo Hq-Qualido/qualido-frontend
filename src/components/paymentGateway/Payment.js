@@ -27,6 +27,7 @@ export default function Payment() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [isAddressFilled, setIsAddressFilled] = useState(false);
 
   const navigate = useNavigate();
   const { state: orderDetail } = useLocation();
@@ -62,6 +63,8 @@ export default function Payment() {
   useEffect(() => {
     if (addressData?.message === "address_fetched" && addressData?.addresses) {
       const address = addressData?.addresses.addressDetails[0];
+
+      if (address.name !== "") setIsAddressFilled(true);
 
       setName(address.name);
       setPhoneNumber(address.phoneNumber);
@@ -127,7 +130,12 @@ export default function Payment() {
     ) {
       updateOrder({
         orderId: orderDetail.orderId,
-        address: { ...address, _id: addAddressData.addressId },
+        address: {
+          ...address,
+          _id: isAddressFilled
+            ? addressData.addresses.addressDetails[0]._id
+            : addAddressData.addressId,
+        },
       });
       if (updateOrderError) return alert("Something went wrong.");
       // setSteps(steps + 1);
@@ -153,7 +161,7 @@ export default function Payment() {
         )
           return alert("Please fill all details.");
         // if (!addAddressError && !addAddressLoading) setSteps(steps + 1);
-        handleAddAddress();
+        if (!isAddressFilled) handleAddAddress();
         break;
       case 2:
         updateOrder({ orderId: orderDetail.orderId, paymentMethod });
