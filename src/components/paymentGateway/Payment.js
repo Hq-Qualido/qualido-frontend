@@ -50,6 +50,7 @@ export default function Payment() {
 
   const {
     data: orderData,
+    loading: updateOrderLoading,
     request: updateOrder,
     error: updateOrderError,
   } = useApi(orderApi.updateOrder);
@@ -95,7 +96,8 @@ export default function Payment() {
       console.log("IN PAYMENT JS");
       setCartData([]);
       setItems([]);
-      if (paymentMethod === "cod") navigate("/#/payment/success");
+      console.log(paymentMethod);
+      if (paymentMethod === "cod") navigate("/payment/success");
     }
   }, [payData]);
 
@@ -113,7 +115,7 @@ export default function Payment() {
     addAddress(address);
   };
 
-  useEffect(() => {
+  const addAddressToOrder = () => {
     const address = {
       name,
       phoneNumber,
@@ -123,23 +125,26 @@ export default function Payment() {
       city,
       state,
     };
+
+    updateOrder({
+      orderId: orderDetail.orderId,
+      address: {
+        ...address,
+        _id: isAddressFilled
+          ? addressData.addresses.addressDetails[0]._id
+          : addAddressData.addressId,
+      },
+    });
+    if (updateOrderError) return alert("Something went wrong.");
+  };
+
+  useEffect(() => {
     if (
       !addAddressLoading &&
       (addAddressData?.message === "address_added_successfully" ||
         addAddressData?.message === "new_address_added_successfully")
-    ) {
-      updateOrder({
-        orderId: orderDetail.orderId,
-        address: {
-          ...address,
-          _id: isAddressFilled
-            ? addressData.addresses.addressDetails[0]._id
-            : addAddressData.addressId,
-        },
-      });
-      if (updateOrderError) return alert("Something went wrong.");
-      // setSteps(steps + 1);
-    }
+    )
+      addAddressToOrder();
   }, [addAddressData]);
 
   useEffect(() => {
@@ -160,8 +165,9 @@ export default function Payment() {
           !state
         )
           return alert("Please fill all details.");
-        // if (!addAddressError && !addAddressLoading) setSteps(steps + 1);
+
         if (!isAddressFilled) handleAddAddress();
+        else addAddressToOrder();
         break;
       case 2:
         updateOrder({ orderId: orderDetail.orderId, paymentMethod });
@@ -170,20 +176,19 @@ export default function Payment() {
         handlePayment();
         break;
       default:
-        setSteps(steps + 1);
         break;
     }
   };
 
   useEffect(() => {
-    if (payData && !error && !loading) {
+    if (payData && !error && !loading && paymentMethod === "online") {
       return window.location.replace(payResp.data.url);
     } else if (error) {
       console.log(error);
     } else if (networkError) {
       console.log(networkError);
     }
-  }, [payData, error, loading, payResp, networkError]);
+  }, [payData, error, loading, payResp, networkError, paymentMethod]);
 
   return (
     <>
@@ -237,15 +242,19 @@ export default function Payment() {
               >
                 {steps === 1 ? "Cancel" : "Previous"}
               </div>
-              <div className="next-btn" onClick={handleNextClick}>
+              <button
+                className="next-btn"
+                onClick={handleNextClick}
+                disabled={addAddressLoading || updateOrderLoading}
+              >
                 {steps !== 3
-                  ? addAddressLoading
+                  ? addAddressLoading || updateOrderLoading
                     ? "loading..."
                     : "Next"
                   : paymentMethod === "cod"
                   ? "Place Order"
                   : "Make Payment"}
-              </div>
+              </button>
             </div>
           </div>
         </>
